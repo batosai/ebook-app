@@ -1,0 +1,26 @@
+export default {
+  aside: {
+    position: "fixed",
+    top: "50px",
+    right: "-250px",
+    width: "210px",
+    height: "calc(100% - 40px)",
+    backgroundColor: "#1e2127",
+    color: "#fff",
+    padding: "20px",
+  },
+  close: {
+    color: "#000",
+    backgroundColor: "#fff",
+    float: "right",
+    textDecoration: "none",
+    textAlign: "center",
+    borderRadius: "50px",
+    border: "1px solid #fff",
+    width: "20px",
+    height: "20px",
+    lineHeight: "20px",
+    marginBottom: "20px",
+    cursor:'pointer',
+  },
+};
