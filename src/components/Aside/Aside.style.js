@@ -1,3 +1,5 @@
+import { primary1Color, primary3Color, hover1Color, accent1Color, notificationColor } from '../../color';
+
 export default {
   content: {
     position: "fixed",
@@ -5,7 +7,7 @@ export default {
     left: 0,
     width: "250px",
     height: "100%",
-    backgroundColor: "#1e2127",
+    backgroundColor: primary3Color,
   },
   list: {
     overflow: "hidden",
@@ -15,12 +17,12 @@ export default {
       listStyle: "none",
       margin: "20px",
       link: {
-        color: "#cfd2da",
+        color: accent1Color,
         textDecoration: "none",
         display: "block",
         padding: "10px",
         hover: {
-          backgroundColor: "#181818",
+          backgroundColor: primary1Color,
           borderRadius: "5px"
         }
       },
@@ -38,19 +40,30 @@ export default {
         marginRight: "2px",
       },
       btn: {
+        position: "relative",
         width: "100%",
         display: "inline-block",
-        background: "#181818 center center",
+        background: primary1Color + " center center",
         border: "none",
-        color: "#fff",
+        color: accent1Color,
         fontSize: "25px",
         textAlign: "center",
+        textDecoration: 'none',
         padding: "10px 0",
         cursor:'pointer',
         margin: 0,
         hover: {
-          background: "#272727",
+          background: hover1Color,
         },
+        notification: {
+          position: "absolute",
+          top: "0",
+          right: "0",
+          display: "block",
+          fontSize: "10px",
+          backgroundColor: notificationColor,
+          padding: "5px",
+        }
       },
     }
   },

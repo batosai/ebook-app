@@ -7,7 +7,8 @@ class Setting extends Component {
   render() {
     return (
       <div style={ styles.content }>
-        Setting
+        <p style={ styles.text }>OPDS</p>
+        <input type="text" style={ styles.url } value="http://apple.com/fr" />
       </div>
     );
   }

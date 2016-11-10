@@ -31,7 +31,11 @@ class Button extends Component {
       btnHover = this.props.style.hover;
     }
     return (
-      <Link to={ this.props.to } style={ {...this.props.style, ...btnHover} } activeStyle={ this.props.style.hover } onMouseEnter={ e => this.onMouseEnterHandler(e) } onMouseLeave={ e => this.onMouseLeaveHandler(e) } ><span className={ this.props.className }></span></Link>
+      <Link to={ this.props.to } style={ {...this.props.style, ...btnHover} } activeStyle={ this.props.style.hover } onMouseEnter={ e => this.onMouseEnterHandler(e) } onMouseLeave={ e => this.onMouseLeaveHandler(e) } ><span className={ this.props.className }></span>
+      { this.props.children
+        ? this.props.children
+        : null
+      }</Link>
     );
   }
 }

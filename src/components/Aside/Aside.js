@@ -15,9 +15,6 @@ class Aside extends Component {
     ))
   }
 
-  // TODO : Create modules config css (variable color);
-  // TODO : revoir tous les fichier structure / syntaxe style={styles.list} ou style={ styles.list }
-
   render() {
     return (
       <nav style={ styles.content }>
@@ -27,7 +24,7 @@ class Aside extends Component {
         <footer style={ styles.footer }>
           <ul style={ styles.list }>
             <li style={ {...styles.footer.item, ...styles.footer.item.first} }>
-              <Button to={ '/task' } style={ styles.footer.item.btn } className="fontawesome-tasks" />
+              <Button to={ '/task' } style={ styles.footer.item.btn } className="fontawesome-tasks"><span style={ styles.footer.item.btn.notification }>2</span></Button>
             </li>
             <li style={ styles.footer.item }>
               <Button to={ '/setting' } style={ styles.footer.item.btn } className="fontawesome-cog" />

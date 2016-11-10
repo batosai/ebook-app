@@ -1,11 +1,13 @@
+import { primary1Color, primary2Color, accent1Color } from '../../color';
+
 export default {
   content: {
     position: "fixed",
     top: "0",
-    backgroundColor: "#181818",
+    backgroundColor: primary1Color,
     width: "100%",
     height: "50px",
-    color: "#fff",
+    color: accent1Color,
   },
   title: {
     margin:0,
@@ -26,7 +28,7 @@ export default {
   },
   btn: {
     height: "3vh",
-    background: "#fff",
+    background: accent1Color,
     border: 0,
     borderRadius: "5px",
     cursor:'pointer',
@@ -36,8 +38,8 @@ export default {
     height: "3vh",
     border: "none",
     marginRight: ".5vw",
-    backgroundColor: "#252830",
+    backgroundColor: primary2Color,
     borderRadius: "5px",
-    color: "#fff",
+    color: accent1Color,
   },
 };

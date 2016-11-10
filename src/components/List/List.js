@@ -5,6 +5,8 @@ import * as Types from '../../types';
 import { getBooks } from '../../actions/items';
 import AnimateLink from '../AnimateLink';
 
+import { accent1Color } from '../../color';
+
 import styles from './List.style';
 
 class List extends Component {
@@ -15,8 +17,22 @@ class List extends Component {
     return this.props.items.map(item => (
       <li style={ stylesGrid.item } key={ item.id }>
         { this.props.children
-          ? <AnimateLink to={ `/list/${this.props.params.slug}/${item.id}` }><img src={ item.image } style={ stylesGrid.item.image } alt="" /></AnimateLink>
-        : <Link to={ `/list/${this.props.params.slug}/${item.id}` }><img src={ item.image } style={ stylesGrid.item.image } alt="" /></Link>
+          ? <AnimateLink to={ `/list/${this.props.params.slug}/${item.id}` }>
+            <img src={ item.image } style={ stylesGrid.item.image } alt="" />
+            <div style={ stylesGrid.item.content }>
+              <h1>{ item.name }</h1>
+              <p>Nombre de page : { item.pageNumber }</p>
+              <p>Type : { item.type }</p>
+            </div>
+          </AnimateLink>
+          : <Link to={ `/list/${this.props.params.slug}/${item.id}` } style={ stylesGrid.item.link }>
+            <img src={ item.image } style={ stylesGrid.item.image } alt="" />
+            <div style={ stylesGrid.item.content }>
+              <h1>{ item.name }</h1>
+              <p>Nombre de page : { item.pageNumber }</p>
+              <p>Type : { item.type }</p>
+            </div>
+          </Link>
         }
       </li>
     ));
