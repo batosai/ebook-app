@@ -1,7 +1,7 @@
 import React, { Component, PropTypes as T } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router'
-import { getBook } from '../../actions/list';
+import { getBook } from '../../actions/items';
 import { asideToggle, clearUrl } from '../../actions/link';
 import AnimateLink from '../AnimateLink';
 
@@ -21,6 +21,7 @@ class Card extends Component {
   }
 
   render() {
+
     return (
       <Motion defaultStyle={ {x: 0} } onRest={ () => this.onRest() } style={ {x: spring(this.props.open ? -250 : 0, {precision:1, stiffness: 350})} }>
         {({x}) =>
@@ -30,7 +31,7 @@ class Card extends Component {
                 ...styles.aside
               }}>
 
-            <span style={ styles.close }><AnimateLink to={ '/list/' }>x</AnimateLink></span>
+            <span style={ styles.close }><AnimateLink to={ `/list/${this.props.params.slug}` }>x</AnimateLink></span>
             <img src={ this.props.book.image } width="210" alt="" />
             <h1>{ this.props.book.name }</h1>
             <p>Nombre de page : { this.props.book.pageNumber }</p>
@@ -45,11 +46,11 @@ class Card extends Component {
     );
   }
 
-  componentWillMount () {
+  componentWillMount() {
       this.props.getBook(this.props.params.id);
   }
 
-  componentWillUpdate () {
+  componentWillUpdate() {
     this.props.getBook(this.props.params.id);
   }
 
@@ -68,9 +69,9 @@ Card.defaultProps = {
   book: {},
   open: true,
   redirection: null
-}
+};
 
-function mapStateToProps (appState) {
+function mapStateToProps(appState) {
   return {
     open: appState.link.open,
     redirection: appState.link.redirection,

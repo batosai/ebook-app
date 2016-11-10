@@ -30,9 +30,6 @@ export default {
     border: 0,
     borderRadius: "5px",
     cursor:'pointer',
-    focus: {
-      background: "#999",
-    }
   },
   search: {
     width: "10vw",

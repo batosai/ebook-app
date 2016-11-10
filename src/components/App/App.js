@@ -6,17 +6,17 @@ const links = [
   {
     id: 1,
     name: 'Spiderman',
-    href: 'http://google.fr'
+    href: '/list/spiderman'
   },
   {
     id: 2,
     name: 'New All difference, spiderman all new difference',
-    href: 'http://facebook.fr'
+    href: '/list/new-spiderman'
   },
   {
     id: 3,
     name: 'Avenger',
-    href: 'http://www.apple.com/fr'
+    href: '/list/avenger'
   },
 ];
 

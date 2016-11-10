@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import Button from './Button';
+import { Link } from 'react-router';
 import './Aside.css';
 
 import styles from './Aside.style';
 
 class Aside extends Component {
 
-  renderLinks () {
+  renderLinks() {
     return this.props.links.map(link => (
       <li style={ styles.list.item } key={ link.id }>
-        <a href={ link.href } style={ styles.list.item.link }>{ link.name }</a>
+        <Link to={ link.href } style={ styles.list.item.link } activeStyle={ styles.list.item.link.hover }>{ link.name }</Link>
       </li>
     ))
   }
@@ -26,10 +27,10 @@ class Aside extends Component {
         <footer style={ styles.footer }>
           <ul style={ styles.list }>
             <li style={ {...styles.footer.item, ...styles.footer.item.first} }>
-              <Button style={ styles.footer.item.btn } className="fontawesome-tasks" />
+              <Button to={ '/task' } style={ styles.footer.item.btn } className="fontawesome-tasks" />
             </li>
             <li style={ styles.footer.item }>
-              <Button style={ styles.footer.item.btn } className="fontawesome-cog" />
+              <Button to={ '/setting' } style={ styles.footer.item.btn } className="fontawesome-cog" />
             </li>
           </ul>
         </footer>
@@ -40,6 +41,6 @@ class Aside extends Component {
 
 Aside.propTypes = {
   links : React.PropTypes.arrayOf(React.PropTypes.object).isRequired
-}
+};
 
 export default Aside;

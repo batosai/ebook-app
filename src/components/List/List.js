@@ -2,7 +2,7 @@ import React, { Component, PropTypes as T } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import * as Types from '../../types';
-import { getBooks } from '../../actions/list';
+import { getBooks } from '../../actions/items';
 import AnimateLink from '../AnimateLink';
 
 import styles from './List.style';
@@ -10,11 +10,13 @@ import styles from './List.style';
 class List extends Component {
 
   renderItems() {
+    const stylesGrid = this.props.type === 'collection' ? styles.collection : styles.list;
+
     return this.props.items.map(item => (
-      <li style={ styles.list.item } key={ item.id }>
+      <li style={ stylesGrid.item } key={ item.id }>
         { this.props.children
-          ? <AnimateLink to={ '/list/' + item.id }><img src={ item.image } alt="" width="190" height="280" /></AnimateLink>
-          : <Link to={ '/list/' + item.id }><img src={ item.image } alt="" width="190" height="280" /></Link>
+          ? <AnimateLink to={ `/list/${this.props.params.slug}/${item.id}` }><img src={ item.image } style={ stylesGrid.item.image } alt="" /></AnimateLink>
+        : <Link to={ `/list/${this.props.params.slug}/${item.id}` }><img src={ item.image } style={ stylesGrid.item.image } alt="" /></Link>
         }
       </li>
     ));
@@ -27,7 +29,6 @@ class List extends Component {
           <ul style={ styles.list }>
             { this.renderItems() }
           </ul>
-          Add Search, filter, collections ?
         </section>
         { this.props.children
           ? this.props.children
@@ -37,23 +38,25 @@ class List extends Component {
     );
   }
 
-  componentWillMount () {
+  componentWillMount() {
     this.props.getBooks();
   }
 }
 
 List.propTypes = {
-  items: React.PropTypes.arrayOf(Types.Item),
+  items: T.arrayOf(Types.Item),
+  type: T.string,
   getBooks: T.func.isRequired,
 };
 
 List.defaultProps = {
   items: []
-}
+};
 
-function mapStateToProps (appState) {
+function mapStateToProps(appState) {
   return {
-    items: appState.items
+    items: appState.items,
+    type: appState.list.type,
   };
 }
 

@@ -1,16 +1,18 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
-import listReducer from './reducers/list';
+import itemsReducer from './reducers/items';
 import itemReducer from './reducers/item';
 import linkReducer from './reducers/link';
+import listReducer from './reducers/list';
 
 import { routerReducer } from 'react-router-redux';
 
 export default () => createStore(
   combineReducers({
-    items: listReducer,
+    items: itemsReducer,
     item: itemReducer,
+    list: listReducer,
     link: linkReducer,
     routing: routerReducer
   }),

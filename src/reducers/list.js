@@ -1,13 +1,24 @@
-import { ITEMS_SUCCESS } from '../actions/list';
+import { LIST_TYPE, LIST_SWITCH_TYPE } from '../actions/list';
 
 import { createReducer } from '../helpers';
 
-const initialState = [ /* {id, name, image, pageNumber, type, read, collection} */ ];
+const initialState = {
+  type: 'collection',
+};
 
 const reducers = {
 
-  [ITEMS_SUCCESS]: (prevState, payload) =>
-    payload.items,
+  [LIST_TYPE]: (prevState, payload) =>
+    prevState.type,
+
+  [LIST_SWITCH_TYPE]: (prevState, payload) => {
+    if(prevState.type === 'collection') {
+      return Object.assign({}, prevState, { type: 'list' });
+    }
+    else {
+      return Object.assign({}, prevState, { type: 'collection' });
+    }
+  },
 
 }
 

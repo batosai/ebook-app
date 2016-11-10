@@ -1,4 +1,4 @@
-import { ITEM_SUCCESS } from '../actions/list';
+import { ITEM_SUCCESS } from '../actions/items';
 import { createReducer } from '../helpers';
 
 const initialState = {};
