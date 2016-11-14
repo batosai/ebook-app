@@ -1,4 +1,4 @@
-import { primary1Color, primary3Color, hover1Color, accent1Color, notificationColor } from '../../color';
+import { primary1Color, primary3Color, hover1Color, accent1Color, pastilleColor } from '../../color';
 
 export default {
   content: {
@@ -55,13 +55,13 @@ export default {
         hover: {
           background: hover1Color,
         },
-        notification: {
+        pastille: {
           position: "absolute",
           top: "0",
           right: "0",
           display: "block",
           fontSize: "10px",
-          backgroundColor: notificationColor,
+          backgroundColor: pastilleColor,
           padding: "5px",
         }
       },

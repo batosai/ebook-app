@@ -5,8 +5,6 @@ import * as Types from '../../types';
 import { getBooks } from '../../actions/items';
 import AnimateLink from '../AnimateLink';
 
-import { accent1Color } from '../../color';
-
 import styles from './List.style';
 
 class List extends Component {

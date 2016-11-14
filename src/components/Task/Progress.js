@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { primary1Color, notificationColor, accent1Color } from '../../color';
+import { primary1Color, pastilleColor, accent1Color } from '../../color';
 
 const styles = {
   content: {
@@ -13,7 +13,7 @@ const styles = {
   line: {
     width: "0%",
     height: "100%",
-    backgroundColor: notificationColor,
+    backgroundColor: pastilleColor,
     borderRadius: "30px",
     textAlign: "center",
     fontSize: "12px",
