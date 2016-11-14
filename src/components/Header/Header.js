@@ -2,7 +2,8 @@ import React, { Component, PropTypes as T } from 'react';
 import { connect } from 'react-redux';
 import { toogleType } from '../../actions/list';
 
-import '../Fonts/awesome.css';
+import '../Fonts/Awesome/awesome.css';
+import '../Fonts/Shrikhand/shrikhand.css';
 import './Header.css';
 
 import styles from './Header.style';
@@ -16,7 +17,7 @@ class Header extends Component {
   render() {
     return (
       <header style={ styles.content }>
-        <h1 style={ styles.title }>e-book</h1>
+        <h1 style={ styles.title }>eBook</h1>
 
         <ul style={ styles.list }>
           <li style={ styles.list.item }>

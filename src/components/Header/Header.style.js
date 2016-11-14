@@ -12,6 +12,9 @@ export default {
   title: {
     margin:0,
     display: "inline-block",
+    fontFamily: "FontShrikhand",
+    fontSize: "32px",
+    marginLeft: "30px",
   },
   list: {
     float: "right",

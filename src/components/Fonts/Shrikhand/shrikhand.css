@@ -1,0 +1,11 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'FontShrikhand';
+  font-style: normal;
+  font-weight: normal;
+  src: url('Shrikhand-Regular.eot');
+  src: url('Shrikhand-Regular.eot?#iefix') format('eot'),
+  url('Shrikhand-Regular.woff') format('woff'),
+  url('Shrikhand-Regular.ttf') format('truetype'),
+  url('Shrikhand-Regular.svg#FontShrikhandRegular') format('svg');
+}
