@@ -34,6 +34,7 @@ class Aside extends Component {
       <nav style={ styles.content }>
         <ul style={ styles.list }>
           { this.renderLinks() }
+          <li><Link to="/" style={ styles.list.item.link } activeStyle={ styles.list.item.link.hover }>home</Link></li>
           <li><a onClick={ () => this.add() }>increment</a></li>
         </ul>
         <footer style={ styles.footer }>

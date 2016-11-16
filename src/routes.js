@@ -8,7 +8,6 @@ import Card from './components/Card/Card';
 import Task from './components/Task/Task';
 import Setting from './components/Setting/Setting';
 
-
 export default (
   <Route path="/" component={ App }>
     <IndexRoute component={ Splash } />

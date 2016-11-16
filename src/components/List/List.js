@@ -53,8 +53,17 @@ class List extends Component {
   }
 
   componentWillMount() {
-    this.props.getBooks();
+    this.props.getBooks(this.props.routeParams.slug);
   }
+
+  componentDidUpdate (nextProps, nextState) {
+    if(this.props.routeParams.slug !== nextProps.routeParams.slug) {
+      this.props.getBooks(this.props.routeParams.slug);
+      // return true;
+    }
+    // return false;
+  }
+
 }
 
 List.propTypes = {

@@ -10,7 +10,7 @@ export const getItems = () =>
           pageNumber: 39,
           type:'cbr',
           read:true,
-          collection:''
+          collection:'new-spiderman'
         },
         {
           id: '2',
@@ -19,7 +19,7 @@ export const getItems = () =>
           pageNumber: 49,
           type:'pdf',
           read:true,
-          collection:''
+          collection:'avenger'
         },
         {
           id: '3',
@@ -28,7 +28,7 @@ export const getItems = () =>
           pageNumber: 50,
           type:'epub',
           read:true,
-          collection:'Spiderman v1'
+          collection:'spiderman'
         },
         {
           id: '4',
@@ -37,7 +37,7 @@ export const getItems = () =>
           pageNumber: 39,
           type:'cbr',
           read:true,
-          collection:''
+          collection:'new-spiderman'
         },
         {
           id: '5',
@@ -46,7 +46,7 @@ export const getItems = () =>
           pageNumber: 49,
           type:'pdf',
           read:true,
-          collection:''
+          collection:'new-spiderman'
         },
         {
           id: '6',
@@ -55,7 +55,7 @@ export const getItems = () =>
           pageNumber: 50,
           type:'epub',
           read:true,
-          collection:'Spiderman v1'
+          collection:'spiderman'
         },
         {
           id: '7',
@@ -64,7 +64,7 @@ export const getItems = () =>
           pageNumber: 50,
           type:'epub',
           read:true,
-          collection:'Spiderman v1'
+          collection:'spiderman'
         },
         {
           id: '8',
@@ -73,7 +73,7 @@ export const getItems = () =>
           pageNumber: 39,
           type:'cbr',
           read:true,
-          collection:''
+          collection:'new-spiderman'
         },
         {
           id: '9',
@@ -82,7 +82,7 @@ export const getItems = () =>
           pageNumber: 49,
           type:'pdf',
           read:true,
-          collection:''
+          collection:'avenger'
         },
         {
           id: '10',
@@ -91,7 +91,7 @@ export const getItems = () =>
           pageNumber: 50,
           type:'epub',
           read:true,
-          collection:'Spiderman v1'
+          collection:'spiderman'
         },
         {
           id: '11',
@@ -100,7 +100,7 @@ export const getItems = () =>
           pageNumber: 39,
           type:'cbr',
           read:true,
-          collection:''
+          collection:'avenger'
         },
         {
           id: '12',
@@ -109,7 +109,7 @@ export const getItems = () =>
           pageNumber: 49,
           type:'pdf',
           read:true,
-          collection:''
+          collection:'avenger'
         },
         {
           id: '13',
@@ -118,7 +118,7 @@ export const getItems = () =>
           pageNumber: 50,
           type:'epub',
           read:true,
-          collection:'Spiderman v1'
+          collection:'spiderman'
         },
         {
           id: '14',
@@ -127,11 +127,15 @@ export const getItems = () =>
           pageNumber: 50,
           type:'epub',
           read:true,
-          collection:'Spiderman v1'
+          collection:'spiderman'
         },
       ])
     );
   }, 10));
+
+export const getItemsByCollection = slug =>
+  getItems()
+  .then(items => items.filter(item => item.collection === slug));
 
 export const getItem = id =>
   getItems()

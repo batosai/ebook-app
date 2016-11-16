@@ -1,5 +1,5 @@
 import { createAction } from '../helpers';
-import { getItem, getItems } from '../api';
+import { getItem, getItemsByCollection } from '../api';
 
 export const ITEMS_REQUEST = 'list:items:request';
 export const ITEMS_SUCCESS = 'list:items:success';
@@ -8,9 +8,9 @@ export const ITEMS_FAILURE = 'list:items:failure';
 const itemsRequest = createAction(ITEMS_REQUEST, () => null);
 const itemsSuccess = createAction(ITEMS_SUCCESS, (items) => ({ items }));
 const itemsFailure = createAction(ITEMS_FAILURE, (error) => ({ error }));
-export const getBooks = text => dispatch => {
-  dispatch(itemsRequest(text));
-  getItems()
+export const getBooks = slug => dispatch => {
+  dispatch(itemsRequest(slug));
+  getItemsByCollection(slug)
   .then(items => dispatch(itemsSuccess(items)))
   .catch(error => dispatch(itemsFailure(error)));
 };

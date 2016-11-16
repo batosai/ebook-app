@@ -6,12 +6,12 @@ export const TASK_ADD    = 'task:add';
 export const TASK_REMOVE = 'task:remove';
 
 const count = createAction(TASK_COUNT, () => null);
-export const getTaskCount = text => dispatch => {
+export const getTaskCount = dispatch => {
   dispatch(count());
 };
 
 const get = createAction(TASK_GET, () => null );
-export const getTask = text => dispatch => {
+export const getTask = dispatch => {
   dispatch(get());
 };
 
@@ -21,6 +21,6 @@ export const addTask = task => dispatch => {
 };
 
 const remove = createAction(TASK_REMOVE, (id) => (id));
-export const removeTask = text => dispatch => {
-  dispatch(remove(text));
+export const removeTask = id => dispatch => {
+  dispatch(remove(id));
 };

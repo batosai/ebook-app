@@ -18,6 +18,7 @@ export default {
       margin: "0 25px",
       float: "right",
       color: accent1Color,
+      cursor: 'pointer'
     }
   }
 };
