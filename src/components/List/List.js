@@ -59,9 +59,7 @@ class List extends Component {
   componentDidUpdate (nextProps, nextState) {
     if(this.props.routeParams.slug !== nextProps.routeParams.slug) {
       this.props.getBooks(this.props.routeParams.slug);
-      // return true;
     }
-    // return false;
   }
 
 }

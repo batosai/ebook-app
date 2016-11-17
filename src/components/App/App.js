@@ -23,17 +23,12 @@ const links = [
 ];
 
 class App extends Component {
-  constructor (props) {
-    super(props);
-
-    this.state = { links };
-  }
 
   render() {
     return (
       <div className="App" style={ styles }>
         <Header />
-        <Aside links={ this.state.links } />
+        <Aside links={ links } />
         { this.props.children }
       </div>
     );
