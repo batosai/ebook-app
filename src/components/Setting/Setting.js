@@ -8,7 +8,7 @@ class Setting extends Component {
     return (
       <div style={ styles.content }>
         <p style={ styles.text }>OPDS</p>
-        <input type="text" style={ styles.url } value="http://apple.com/fr" />
+        <input type="text" style={ styles.url } onChange={ e => e.preventDefault } value="http://apple.com/fr" />
       </div>
     );
   }

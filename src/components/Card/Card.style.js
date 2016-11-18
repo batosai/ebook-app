@@ -1,5 +1,13 @@
 import { primary3Color, accent1Color, accent2Color } from '../../color';
 
+const fontSize = "14px";
+const editor = {
+  fontSize,
+  backgroundColor: "transparent",
+  border: "none",
+  color: accent1Color,
+}
+
 export default {
   aside: {
     position: "fixed",
@@ -10,6 +18,7 @@ export default {
     backgroundColor: primary3Color,
     color: accent1Color,
     padding: "20px",
+    fontSize
   },
   close: {
     color: accent2Color,
@@ -23,6 +32,21 @@ export default {
     height: "20px",
     lineHeight: "20px",
     marginBottom: "20px",
-    cursor:'pointer',
+    cursor: "pointer",
+  },
+  title: {
+    fontSize: "22px",
+  },
+  text: {
+    width: "40px",
+    ...editor,
+  },
+  longText: {
+    width: "140px",
+    ...editor,
+  },
+  description: {
+    width: "210px",
+    ...editor,
   },
 };

@@ -12,12 +12,47 @@ import { Motion, spring } from 'react-motion';
 
 class Card extends Component {
 
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      book: {
+        name: 'Test'
+      }
+    };
+  }
+
   onRest() {
     if(this.props.redirection) {
       browserHistory.push(this.props.redirection.url);
       this.props.clearUrl();
       this.props.asideToggle();
     }
+  }
+
+  // TODO Je ne peux pas mettre à jour l'api, il me faut un service.
+  // 2) Il manque les champs edition pour le champs lu
+  // drag and drop book (besoin api)
+  // delete book. (besoin api)
+  // card warning
+  // Upload book
+  // Upload cover
+  // splash screen
+  // search
+
+  // Server express / socket.io
+  // pas de db pour l'instant juste mettre les flux en dure.
+  // mettre les appel dans le fichier api.
+  // Ne pas mettre de liaison ailleur.
+  // essayer d'optimiser d'avantage.
+
+
+  // 1) Test https://github.com/davidkpiano/react-redux-form
+
+  onChange(e) {
+    this.setState({book: {
+      name: e.target.value
+    }});
   }
 
   render() {
@@ -33,13 +68,13 @@ class Card extends Component {
 
             <span style={ styles.close }><AnimateLink to={ `/list/${this.props.params.slug}` }>x</AnimateLink></span>
             <img src={ this.props.book.image } width="210" alt="" />
-            <h1>{ this.props.book.name }</h1>
-            <p>Nombre de page : { this.props.book.pageNumber }</p>
+            <h1><input type="text" style={ { ...styles.longText, ...styles.title } } onChange={ (e) => this.onChange(e) } value={ this.state.book.name } /></h1>
+            <p>Nombre de page : <input type="text" style={ styles.text } onChange={ e => e.preventDefault } value={ this.props.book.pageNumber } /></p>
             <p>Type : { this.props.book.type }</p>
             <p>Lu : { this.props.book.read ?  'oui' : 'non' }</p>
-            <p>Série : { this.props.book.collection }</p>
-            <p>Tag : </p>
-            <p>Description : </p>
+            <p>Série : <input type="text" style={ styles.longText } onChange={ e => e.preventDefault } value={ this.props.book.collection } /></p>
+            <p>Tag : <input type="text" style={ styles.longText } onChange={ e => e.preventDefault } value="" /></p>
+            <p>Description : <textarea style={ styles.description } onChange={ e => e.preventDefault }></textarea></p>
           </aside>
         }
       </Motion>
@@ -47,7 +82,7 @@ class Card extends Component {
   }
 
   componentWillMount() {
-      this.props.getBook(this.props.params.id);
+    this.props.getBook(this.props.params.id);
   }
 
   componentWillUpdate() {
@@ -59,10 +94,10 @@ class Card extends Component {
 Card.propTypes = {
   book: Types.Item,
   open: T.bool,
-  redirection: T.string,
+  redirection: T.object,
   getBook: T.func.isRequired,
   asideToggle: T.func.isRequired,
-  clearUrl: T.func.clearUrl
+  clearUrl: T.func.isRequired
 };
 
 Card.defaultProps = {
@@ -75,7 +110,7 @@ function mapStateToProps(appState) {
   return {
     open: appState.link.open,
     redirection: appState.link.redirection,
-    book: appState.item
+    book: appState.item,
   };
 }
 

@@ -9,11 +9,15 @@ import styles from './List.style';
 
 class List extends Component {
 
+  onDragStart(item, e) {
+    e.dataTransfer.setData("itemId", item.id);
+  }
+
   renderItems() {
     const stylesGrid = this.props.type === 'collection' ? styles.collection : styles.list;
 
     return this.props.items.map(item => (
-      <li style={ stylesGrid.item } key={ item.id }>
+      <li style={ stylesGrid.item } draggable="true" onDragStart={ e => this.onDragStart(item, e) } key={ item.id }>
         { this.props.children
           ? <AnimateLink to={ `/list/${this.props.params.slug}/${item.id}` }>
             <img src={ item.image } style={ stylesGrid.item.image } alt="" />
