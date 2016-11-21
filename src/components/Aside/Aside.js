@@ -11,9 +11,10 @@ import styles from './Aside.style';
 class Aside extends Component {
 
   onDropTarget(link, e) {
-    var id = e.dataTransfer.getData("itemId");
+    let item = JSON.parse(e.dataTransfer.getData("item"));
 
-    this.props.updateBook(id, link.slug, () => {
+    item.collection = link.slug;
+    this.props.updateBook(item, () => {
       this.props.toogleUpdate();
     });
     e.preventDefault();

@@ -141,15 +141,15 @@ export const getItem = id =>
   getItems()
   .then(items => items.find(item => item.id === id));
 
-export const changeCollection = (id, collection) =>
+export const changeCollection = (item) =>
   new Promise(resolve => setTimeout(() => {
-    console.log(id, collection);
-    let item = items.find(item => item.id === id);
-    item.collection = collection;
+    const index = items.findIndex(i => i.id === item.id);
 
+    if (index > -1) {
+        items.splice(index, 1);
+    }
     items.push(item);
 
-    // items = Object.assign({}, items, { item }),
     resolve(items);
   }, 10));
 

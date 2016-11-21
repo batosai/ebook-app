@@ -10,7 +10,7 @@ import styles from './List.style';
 class List extends Component {
 
   onDragStart(item, e) {
-    e.dataTransfer.setData("itemId", item.id);
+    e.dataTransfer.setData("item", JSON.stringify(item));
   }
 
   renderItems() {

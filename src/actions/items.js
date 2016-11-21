@@ -32,13 +32,13 @@ export const getBook = text => dispatch => {
 export const ITEM_UPDATE  = 'list:item:update';
 export const ITEM_UPDATE_FAILURE = 'list:item:update:failure';
 
-const itemUpdateSuccess = createAction(ITEM_UPDATE, (id, collection) => ({ id, collection }));
+const itemUpdateSuccess = createAction(ITEM_UPDATE, (item) => ({ item }));
 const itemUpdateFailure = createAction(ITEM_UPDATE_FAILURE, (error) => ({ error }));
 
-export const updateBook = (id, collection, success) => dispatch => {
-  changeCollection(id, collection)
-  .then((id, collection) => {
-    dispatch(itemUpdateSuccess(id, collection));
+export const updateBook = (item, success) => dispatch => {
+  changeCollection(item)
+  .then((item) => {
+    dispatch(itemUpdateSuccess(item));
     success();
   })
   .catch(error => dispatch(itemUpdateFailure(error)));
