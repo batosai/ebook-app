@@ -1,5 +1,5 @@
 import { createAction } from '../helpers';
-import { getItem, getItemsByCollection } from '../api';
+import { getItem, getItemsByCollection, changeCollection } from '../api';
 
 export const ITEMS_REQUEST = 'list:items:request';
 export const ITEMS_SUCCESS = 'list:items:success';
@@ -29,10 +29,17 @@ export const getBook = text => dispatch => {
   .catch(error => dispatch(itemFailure(error)));
 };
 
-export const LIST_TYPE = 'list:switch';
+export const ITEM_UPDATE  = 'list:item:update';
+export const ITEM_UPDATE_FAILURE = 'list:item:update:failure';
 
-const s = createAction(LIST_TYPE, () => null);
+const itemUpdateSuccess = createAction(ITEM_UPDATE, (id, collection) => ({ id, collection }));
+const itemUpdateFailure = createAction(ITEM_UPDATE_FAILURE, (error) => ({ error }));
 
-export const listSwitch = text => dispatch => {
-  dispatch(s(text));
+export const updateBook = (id, collection, success) => dispatch => {
+  changeCollection(id, collection)
+  .then((id, collection) => {
+    dispatch(itemUpdateSuccess(id, collection));
+    success();
+  })
+  .catch(error => dispatch(itemUpdateFailure(error)));
 };

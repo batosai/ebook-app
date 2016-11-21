@@ -47,7 +47,8 @@ class Card extends Component {
   // essayer d'optimiser d'avantage.
 
 
-  // 1) Test https://github.com/davidkpiano/react-redux-form
+  // 1a) Revoir l'update wording fonctionnement etc
+  // 1b) Test https://github.com/davidkpiano/react-redux-form
 
   onChange(e) {
     this.setState({book: {

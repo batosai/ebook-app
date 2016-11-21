@@ -8,16 +8,19 @@ const links = [
   {
     id: 1,
     name: 'Spiderman',
+    slug: 'spiderman',
     href: '/list/spiderman'
   },
   {
     id: 2,
     name: 'New All difference, spiderman all new difference',
+    slug: 'new-spiderman',
     href: '/list/new-spiderman'
   },
   {
     id: 3,
     name: 'Avenger',
+    slug: 'avenger',
     href: '/list/avenger'
   },
 ];

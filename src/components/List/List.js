@@ -61,7 +61,7 @@ class List extends Component {
   }
 
   componentDidUpdate (nextProps, nextState) {
-    if(this.props.routeParams.slug !== nextProps.routeParams.slug) {
+    if(this.props.routeParams.slug !== nextProps.routeParams.slug || this.props.isUpdate) {
       this.props.getBooks(this.props.routeParams.slug);
     }
   }
@@ -71,6 +71,7 @@ class List extends Component {
 List.propTypes = {
   items: T.arrayOf(Types.Item),
   type: T.string,
+  isUpdate: T.bool,
   getBooks: T.func.isRequired,
 };
 
@@ -82,6 +83,7 @@ function mapStateToProps(appState) {
   return {
     items: appState.items,
     type: appState.list.type,
+    isUpdate: appState.list.update,
   };
 }
 

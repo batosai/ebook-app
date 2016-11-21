@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Footer from './Footer';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import { updateBook } from '../../actions/items';
+import { toogleUpdate } from '../../actions/list';
 import './Aside.css';
 
 import styles from './Aside.style';
@@ -9,7 +12,10 @@ class Aside extends Component {
 
   onDropTarget(link, e) {
     var id = e.dataTransfer.getData("itemId");
-    console.log(link.name, id);
+
+    this.props.updateBook(id, link.slug, () => {
+      this.props.toogleUpdate();
+    });
     e.preventDefault();
   }
 
@@ -37,4 +43,8 @@ Aside.propTypes = {
   links : React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
 };
 
-export default Aside;
+function mapStateToProps(appState) {
+  return appState;
+}
+
+export default connect(mapStateToProps, { updateBook, toogleUpdate })(Aside);
