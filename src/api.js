@@ -7,7 +7,9 @@ let items = [
     pageNumber: 39,
     type:'cbr',
     read:true,
-    collection:'new-spiderman'
+    collection:'new-spiderman',
+tag:'new-spiderman',
+description:'',
   },
   {
     id: '2',
@@ -16,7 +18,9 @@ let items = [
     pageNumber: 49,
     type:'pdf',
     read:true,
-    collection:'avenger'
+    collection:'avenger',
+tag:'avenger',
+description:'',
   },
   {
     id: '3',
@@ -25,16 +29,20 @@ let items = [
     pageNumber: 50,
     type:'epub',
     read:true,
-    collection:'spiderman'
+    collection:'spiderman',
+tag:'spiderman',
+description:'',
   },
   {
     id: '4',
-    name: 'Hulk',
+    name: 'Hulk2',
     image:'http://placehold.it/190x280/ff0000',
     pageNumber: 39,
     type:'cbr',
     read:true,
-    collection:'new-spiderman'
+    collection:'new-spiderman',
+tag:'new-spiderman',
+description:'',
   },
   {
     id: '5',
@@ -43,7 +51,9 @@ let items = [
     pageNumber: 49,
     type:'pdf',
     read:true,
-    collection:'new-spiderman'
+    collection:'new-spiderman',
+tag:'new-spiderman',
+description:'',
   },
   {
     id: '6',
@@ -52,7 +62,9 @@ let items = [
     pageNumber: 50,
     type:'epub',
     read:true,
-    collection:'spiderman'
+    collection:'spiderman',
+tag:'spiderman',
+description:'',
   },
   {
     id: '7',
@@ -61,16 +73,20 @@ let items = [
     pageNumber: 50,
     type:'epub',
     read:true,
-    collection:'spiderman'
+    collection:'spiderman',
+tag:'spiderman',
+description:'',
   },
   {
     id: '8',
-    name: 'Hulk',
+    name: 'Hulk3',
     image:'http://placehold.it/190x280/ff0000',
     pageNumber: 39,
     type:'cbr',
     read:true,
-    collection:'new-spiderman'
+    collection:'new-spiderman',
+tag:'new-spiderman',
+description:'',
   },
   {
     id: '9',
@@ -79,7 +95,9 @@ let items = [
     pageNumber: 49,
     type:'pdf',
     read:true,
-    collection:'avenger'
+    collection:'avenger',
+tag:'avenger',
+description:'',
   },
   {
     id: '10',
@@ -88,7 +106,9 @@ let items = [
     pageNumber: 50,
     type:'epub',
     read:true,
-    collection:'spiderman'
+    collection:'spiderman',
+tag:'spiderman',
+description:'',
   },
   {
     id: '11',
@@ -97,7 +117,9 @@ let items = [
     pageNumber: 39,
     type:'cbr',
     read:true,
-    collection:'avenger'
+    collection:'avenger',
+tag:'avenger',
+description:'',
   },
   {
     id: '12',
@@ -106,7 +128,9 @@ let items = [
     pageNumber: 49,
     type:'pdf',
     read:true,
-    collection:'avenger'
+    collection:'avenger',
+tag:'avenger',
+description:'',
   },
   {
     id: '13',
@@ -115,7 +139,9 @@ let items = [
     pageNumber: 50,
     type:'epub',
     read:true,
-    collection:'spiderman'
+    collection:'spiderman',
+tag:'spiderman',
+description:'',
   },
   {
     id: '14',
@@ -124,7 +150,9 @@ let items = [
     pageNumber: 50,
     type:'epub',
     read:true,
-    collection:'spiderman'
+    collection:'spiderman',
+tag:'spiderman',
+description:'',
   },
 ];
 

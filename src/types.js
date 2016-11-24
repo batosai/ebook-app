@@ -7,5 +7,7 @@ export const Item = T.shape({
   pageNumber: T.number,
   type: T.string,
   read: T.bool,
-  collection: T.string
+  collection: T.string,
+  tag: T.string,
+  description: T.string,
 });

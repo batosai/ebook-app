@@ -8,7 +8,9 @@ const initialState = {
   pageNumber: 0,
   type: '',
   read: false,
-  collection: ''
+  collection: '',
+  tag: '',
+  description: '',
 };
 
 const reducers = {

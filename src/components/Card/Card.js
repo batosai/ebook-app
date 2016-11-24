@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router'
 import { getBook } from '../../actions/items';
 import { asideToggle, clearUrl } from '../../actions/link';
+import { updateBook } from '../../actions/items';
+import { toogleUpdate } from '../../actions/list';
+import Field from './Field';
 import AnimateLink from '../AnimateLink';
 
 import * as Types    from '../../types';
@@ -12,16 +15,6 @@ import { Motion, spring } from 'react-motion';
 
 class Card extends Component {
 
-  constructor (props) {
-    super(props);
-
-    this.state = {
-      book: {
-        name: 'Test'
-      }
-    };
-  }
-
   onRest() {
     if(this.props.redirection) {
       browserHistory.push(this.props.redirection.url);
@@ -30,8 +23,9 @@ class Card extends Component {
     }
   }
 
-  // TODO Je ne peux pas mettre à jour l'api, il me faut un service.
-  // 2) Il manque les champs edition pour le champs lu
+  // select : https://jedwatson.github.io/react-select/
+  // tag : https://github.com/olahol/react-tagsinput
+  // Il manque les champs editions pour le champs lu
   // drag and drop book (besoin api)
   // delete book. (besoin api)
   // card warning
@@ -47,17 +41,25 @@ class Card extends Component {
   // essayer d'optimiser d'avantage.
 
 
-  // 1a) Revoir l'update wording fonctionnement etc
-  // 1b) Test https://github.com/davidkpiano/react-redux-form
+  onUpdate(text) {
+    let item = this.props.book;
+    item.name = text;
 
-  onChange(e) {
-    this.setState({book: {
-      name: e.target.value
-    }});
+    this.props.updateBook(item, () => {
+      this.props.toogleUpdate();
+    });
+  }
+
+  onChange(text, model) {
+    let item = this.props.book;
+    item[model] = text;
+
+    this.props.updateBook(item, () => {
+      this.props.toogleUpdate();
+    });
   }
 
   render() {
-
     return (
       <Motion defaultStyle={ {x: 0} } onRest={ () => this.onRest() } style={ {x: spring(this.props.open ? -250 : 0, {precision:1, stiffness: 350})} }>
         {({x}) =>
@@ -69,16 +71,38 @@ class Card extends Component {
 
             <span style={ styles.close }><AnimateLink to={ `/list/${this.props.params.slug}` }>x</AnimateLink></span>
             <img src={ this.props.book.image } width="210" alt="" />
-            <h1><input type="text" style={ { ...styles.longText, ...styles.title } } onChange={ (e) => this.onChange(e) } value={ this.state.book.name } /></h1>
-            <p>Nombre de page : <input type="text" style={ styles.text } onChange={ e => e.preventDefault } value={ this.props.book.pageNumber } /></p>
+            <h1>
+              <Field
+                  style={ { ...styles.longText, ...styles.title } }
+                  defaultValue={ this.props.book.name }
+                  onChange={ text => this.onChange(text, 'name') } />
+            </h1>
+
+            <p>Nombre de page :
+              <Field
+                style={ styles.text }
+                defaultValue={ this.props.book.pageNumber }
+                onChange={ text => this.onChange(text, 'pageNumber') } />
+
+            </p>
+
             <p>Type : { this.props.book.type }</p>
+
             <p>Lu : { this.props.book.read ?  'oui' : 'non' }</p>
-            <p>Série : <input type="text" style={ styles.longText } onChange={ e => e.preventDefault } value={ this.props.book.collection } /></p>
-            <p>Tag : <input type="text" style={ styles.longText } onChange={ e => e.preventDefault } value="" /></p>
-            <p>Description : <textarea style={ styles.description } onChange={ e => e.preventDefault }></textarea></p>
+
+            <p>Série : <select><option>{ this.props.book.collection }</option></select></p>
+
+            <p>Tag :
+              <Field
+                  style={ styles.longText }
+                  defaultValue={ this.props.book.tag }
+                  onChange={ text => this.onChange(text, 'tag') } />
+            </p>
+
+            <p>Description : <textarea style={ styles.description } onChange={ e => this.onChange(e, 'description') } value={ this.props.book.description } /></p>
           </aside>
         }
-      </Motion>
+      </Motion>
     );
   }
 
@@ -86,7 +110,7 @@ class Card extends Component {
     this.props.getBook(this.props.params.id);
   }
 
-  componentWillUpdate() {
+  componentDidUpdate (nextProps, nextState) {
     this.props.getBook(this.props.params.id);
   }
 
@@ -112,7 +136,8 @@ function mapStateToProps(appState) {
     open: appState.link.open,
     redirection: appState.link.redirection,
     book: appState.item,
+    ...appState
   };
 }
 
-export default connect(mapStateToProps, { getBook, asideToggle, clearUrl })(Card);
+export default connect(mapStateToProps, { getBook, asideToggle, clearUrl, updateBook, toogleUpdate })(Card);
