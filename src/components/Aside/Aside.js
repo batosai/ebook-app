@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { updateBook } from '../../actions/items';
 import { toogleUpdate } from '../../actions/list';
+import { getCategories } from '../../actions/collections';
 import './Aside.css';
 
 import styles from './Aside.style';
@@ -21,11 +22,11 @@ class Aside extends Component {
   }
 
   renderLinks() {
-    return this.props.links.map(link => (
+    return this.props.categories.map(link => (
       <li style={ styles.list.item } onDragOver={ (e) => e.preventDefault() } onDrop={ e => this.onDropTarget(link, e) } key={ link.id }>
         <Link to={ link.href } style={ styles.list.item.link } activeStyle={ styles.list.item.link.hover }>{ link.name }</Link>
       </li>
-    ))
+    ));
   }
 
   render() {
@@ -38,14 +39,22 @@ class Aside extends Component {
       </nav>
     );
   }
+
+  componentWillMount() {
+    this.props.getCategories();
+  }
 }
 
 Aside.propTypes = {
-  links : React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+  getCategories: React.PropTypes.func.isRequired,
+  categories : React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
 };
 
 function mapStateToProps(appState) {
-  return appState;
+  return {
+    categories: appState.collections,
+    ...appState,
+  };
 }
 
-export default connect(mapStateToProps, { updateBook, toogleUpdate })(Aside);
+export default connect(mapStateToProps, { updateBook, toogleUpdate, getCategories })(Aside);

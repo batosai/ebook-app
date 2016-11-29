@@ -1,3 +1,23 @@
+const collections = [
+  {
+    id: 1,
+    name: 'Spiderman',
+    slug: 'spiderman',
+    href: '/list/spiderman'
+  },
+  {
+    id: 2,
+    name: 'New All difference, spiderman all new difference',
+    slug: 'new-spiderman',
+    href: '/list/new-spiderman'
+  },
+  {
+    id: 3,
+    name: 'Avenger',
+    slug: 'avenger',
+    href: '/list/avenger'
+  },
+];
 
 let items = [
   {
@@ -105,7 +125,7 @@ description:'',
     image:'http://placehold.it/190x280/ff0000',
     pageNumber: 50,
     type:'epub',
-    read:true,
+    read:false,
     collection:'spiderman',
 tag:'spiderman',
 description:'',
@@ -184,3 +204,8 @@ export const changeCollection = (item) =>
 // export const removeItem = id =>
 //   getItems()
 //   .then(items => items.find(item => item.id === id));
+
+  export const getCollections = () =>
+    new Promise(resolve => setTimeout(() => {
+      resolve(collections);
+    }, 10));

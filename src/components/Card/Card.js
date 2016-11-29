@@ -5,6 +5,7 @@ import { getBook } from '../../actions/items';
 import { asideToggle, clearUrl } from '../../actions/link';
 import { updateBook } from '../../actions/items';
 import { toogleUpdate } from '../../actions/list';
+import { getCategories } from '../../actions/collections';
 import Field from './Field';
 import AnimateLink from '../AnimateLink';
 
@@ -23,11 +24,7 @@ class Card extends Component {
     }
   }
 
-  // select : https://jedwatson.github.io/react-select/
-  // tag : https://github.com/olahol/react-tagsinput
-  // Il manque les champs editions pour le champs lu
-  // drag and drop book (besoin api)
-  // delete book. (besoin api)
+
   // card warning
   // Upload book
   // Upload cover
@@ -40,23 +37,28 @@ class Card extends Component {
   // Ne pas mettre de liaison ailleur.
   // essayer d'optimiser d'avantage.
 
-
-  onUpdate(text) {
+  onChange(text, model) {
     let item = this.props.book;
-    item.name = text;
+
+    if(model === "pageNumber") {
+      item[model] = Number(text);
+    }
+    else if(model === "read") {
+      item[model] = (text === 'true');
+    }
+    else {
+      item[model] = text;
+    }
 
     this.props.updateBook(item, () => {
       this.props.toogleUpdate();
     });
   }
 
-  onChange(text, model) {
-    let item = this.props.book;
-    item[model] = text;
-
-    this.props.updateBook(item, () => {
-      this.props.toogleUpdate();
-    });
+  renderCollection() {
+    return this.props.categories.map(link => (
+      <option value={ link.slug }>{ link.name }</option>
+    ));
   }
 
   render() {
@@ -82,15 +84,22 @@ class Card extends Component {
             <p>Nombre de page :
               <Field
                 style={ styles.text }
-                defaultValue={ this.props.book.pageNumber }
+                defaultValue={ String(this.props.book.pageNumber) }
                 onChange={ text => this.onChange(text, 'pageNumber') } />
             </p>
 
             <p>Type : { this.props.book.type }</p>
 
-            <p>Lu : { this.props.book.read ?  'oui' : 'non' }</p>
+            <p>Lu : <select value={ String(this.props.book.read) } onChange={ e => this.onChange(e.target.value, 'read') }>
+                <option value="true">oui</option>
+                <option value="false">non</option>
+              </select>
+            </p>
 
-            <p>Série : <select><option>{ this.props.book.collection }</option></select></p>
+            <p>Série : <select value={ String(this.props.book.collection) } onChange={ e => this.onChange(e.target.value, 'collection') }>
+              { this.renderCollection() }
+              </select>
+            </p>
 
             <p>Tag :
               <Field
@@ -114,6 +123,7 @@ class Card extends Component {
 
   componentWillMount() {
     this.props.getBook(this.props.params.id);
+    this.props.getCategories();
   }
 
   componentDidUpdate (nextProps, nextState) {
@@ -128,7 +138,9 @@ Card.propTypes = {
   redirection: T.object,
   getBook: T.func.isRequired,
   asideToggle: T.func.isRequired,
-  clearUrl: T.func.isRequired
+  clearUrl: T.func.isRequired,
+  getCategories: T.func.isRequired,
+  categories : T.arrayOf(React.PropTypes.object).isRequired,
 };
 
 Card.defaultProps = {
@@ -142,8 +154,16 @@ function mapStateToProps(appState) {
     open: appState.link.open,
     redirection: appState.link.redirection,
     book: appState.item,
+    categories: appState.collections,
     ...appState
   };
 }
 
-export default connect(mapStateToProps, { getBook, asideToggle, clearUrl, updateBook, toogleUpdate })(Card);
+export default connect(mapStateToProps, {
+  getBook,
+  asideToggle,
+  clearUrl,
+  updateBook,
+  toogleUpdate,
+  getCategories
+})(Card);
