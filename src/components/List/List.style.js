@@ -1,8 +1,11 @@
 import { primary2Color, accent1Color } from '../../color';
 
+// dynamiser le 50px qui viens de la hauteur de la bar
 export default {
   collection: {
-    overflow: "hidden",
+    position: "fixed",
+    overflowY:"auto",
+    height: "calc(100% - 50px)",
     margin: 0,
     padding: 0,
     marginLeft: "250px",
@@ -10,7 +13,8 @@ export default {
     item: {
       cursor: "pointer",
       listStyle: "none",
-      float: "left",
+      // float: "left",
+      display: "inline-flex",
       padding: "20px",
       color: accent1Color,
       image: {
@@ -28,7 +32,10 @@ export default {
     },
   },
   list: {
-    overflow: "hidden",
+    position: "fixed",
+    overflowY:"auto",
+    height: "calc(100% - 50px)",
+    display: 'block',
     margin: 0,
     padding: 0,
     marginLeft: "250px",

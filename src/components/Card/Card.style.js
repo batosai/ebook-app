@@ -3,9 +3,16 @@ import { primary3Color, accent1Color, accent2Color } from '../../color';
 const fontSize = "14px";
 const editor = {
   fontSize,
+  fontFamily: "sans-serif",
+  fontWeight: "bold",
+  display: "inline-block",
+  lineHeight: "18px",
   backgroundColor: "transparent",
-  border: "none",
+  border: "1px dashed " + primary3Color,
   color: accent1Color,
+  height: "18px",
+  padding: "0 2px",
+  margin: "0 4px",
 }
 
 export default {
@@ -14,10 +21,11 @@ export default {
     top: "50px",
     right: "-250px",
     width: "210px",
-    height: "calc(100% - 40px)",
+    height: "calc(100% - 90px)",
     backgroundColor: primary3Color,
     color: accent1Color,
     padding: "20px",
+    overflowY:"auto",
     fontSize
   },
   close: {
@@ -36,6 +44,14 @@ export default {
   },
   title: {
     fontSize: "22px",
+    lineHeight: "22px",
+    height: "22px",
+    padding: "0",
+    margin: "0",
+  },
+  static: {
+    fontSize,
+    color: accent1Color,
   },
   text: {
     width: "40px",
@@ -48,5 +64,6 @@ export default {
   description: {
     width: "210px",
     ...editor,
+    height: "30px",
   },
 };

@@ -12,14 +12,17 @@ class Field extends Component {
   }
 
   render () {
-    return this.state.editing
-      ? this.renderInput()
+    return this.state.editing ?
+        this.props.type === "textarea" ?
+          this.renderTextarea() : this.renderInput()
       : this.renderSpan();
   }
 
   renderSpan () {
     return (
-      <span style={ this.props.style } onClick={ () => this.setState({ editing: true }) }>
+      <span
+        style={ this.props.style }
+        onClick={ () => this.setState({ editing: true }) }>
         { this.props.defaultValue }
       </span>
     );
@@ -28,6 +31,15 @@ class Field extends Component {
   renderInput () {
     return (
       <input
+        style={ this.props.style }
+        onKeyPress={ e => this.onKeyPress(e) }
+        defaultValue={ this.props.defaultValue } />
+    );
+  }
+
+  renderTextarea () {
+    return (
+      <textarea
         style={ this.props.style }
         onKeyPress={ e => this.onKeyPress(e) }
         defaultValue={ this.props.defaultValue } />
@@ -56,6 +68,7 @@ class Field extends Component {
 
 Field.propTypes = {
   defaultValue: T.string,
+  type: T.string,
   style: T.object,
   onChange: T.func.isRequired,
 };
@@ -63,6 +76,7 @@ Field.propTypes = {
 Field.defaultProps = {
   defaultValue: '',
   style: {},
+  type: 'text',
 };
 
 export default Field;

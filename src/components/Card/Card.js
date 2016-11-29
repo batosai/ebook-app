@@ -70,6 +70,7 @@ class Card extends Component {
               }}>
 
             <span style={ styles.close }><AnimateLink to={ `/list/${this.props.params.slug}` }>x</AnimateLink></span>
+
             <img src={ this.props.book.image } width="210" alt="" />
             <h1>
               <Field
@@ -83,7 +84,6 @@ class Card extends Component {
                 style={ styles.text }
                 defaultValue={ this.props.book.pageNumber }
                 onChange={ text => this.onChange(text, 'pageNumber') } />
-
             </p>
 
             <p>Type : { this.props.book.type }</p>
@@ -99,7 +99,13 @@ class Card extends Component {
                   onChange={ text => this.onChange(text, 'tag') } />
             </p>
 
-            <p>Description : <textarea style={ styles.description } onChange={ e => this.onChange(e, 'description') } value={ this.props.book.description } /></p>
+            <p>Description :
+              <Field
+                  type="textarea"
+                  style={ styles.description }
+                  defaultValue={ this.props.book.description }
+                  onChange={ text => this.onChange(text, 'description') } />
+            </p>
           </aside>
         }
       </Motion>
