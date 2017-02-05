@@ -4,6 +4,7 @@ import thunkMiddleware from 'redux-thunk';
 import asideReducer from '../reducers/aside';
 // import booksReducer from '../reducers/books';
 import librariesReducer from '../reducers/libraries';
+import collectionsReducer from '../reducers/collections';
 
 import { routerReducer } from 'react-router-redux';
 
@@ -12,6 +13,7 @@ export default () => createStore(
     aside: asideReducer,
     routing: routerReducer,
     libraries: librariesReducer,
+    collections: collectionsReducer,
   }),
   compose(
     applyMiddleware(

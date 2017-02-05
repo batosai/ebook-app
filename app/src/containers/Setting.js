@@ -1,6 +1,6 @@
 import React, { Component, PropTypes as T } from 'react';
 import { connect } from 'react-redux';
-import { getLibraries } from '../actions/libraries';
+// import { getLibraries } from '../actions/libraries';
 // import * as Types from '../config/types';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import {List, ListItem} from 'material-ui/List';
@@ -18,15 +18,11 @@ class Setting extends Component {
 
   handleChange = (event, index, value) => this.setState({value});
 
-  // componentWillMount() {
-  //   this.props.getLibraries();
+  // componentDidUpdate (nextProps, nextState) {
+  //   if(nextProps.libraries !== this.props.libraries) {
+  //     this.props.getLibraries();
+  //   }
   // }
-
-  componentDidUpdate (nextProps, nextState) {
-    if(nextProps.libraries !== this.props.libraries) {
-      this.props.getLibraries();
-    }
-  }
 
   render() {
     return (
@@ -64,7 +60,7 @@ class Setting extends Component {
 Setting.propTypes = {
   // libraries: T.arrayOf(Types.library),
   libraries: T.array,
-  getLibraries: T.func.isRequired,
+  // getLibraries: T.func.isRequired,
 };
 
 Setting.defaultProps = {
@@ -79,4 +75,5 @@ function mapStateToProps(appState) {
   };
 }
 
-export default connect(mapStateToProps, { getLibraries })(Setting);
+// export default connect(mapStateToProps, { getLibraries })(Setting);
+export default connect(mapStateToProps, {})(Setting);

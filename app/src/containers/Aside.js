@@ -14,6 +14,7 @@ import { fullWhite } from 'material-ui/styles/colors';
 
 import { asideToggle } from '../actions/aside';
 import { getLibraries } from '../actions/libraries';
+import { getCollections } from '../actions/collections';
 
 const style = {
   root: {
@@ -27,57 +28,6 @@ const style = {
     overflowY: 'auto',
   },
 };
-
-const tilesData = [
-  {
-    id: 1,
-    img: 'http://www.material-ui.com/images/grid-list/00-52-29-429_640.jpg',
-    title: 'Breakfast',
-    author: 'jill111',
-  },
-  {
-    id: 2,
-    img: 'http://www.material-ui.com/images/grid-list/burger-827309_640.jpg',
-    title: 'Tasty burger',
-    author: 'pashminu',
-  },
-  {
-    id: 3,
-    img: 'http://www.material-ui.com/images/grid-list/camera-813814_640.jpg',
-    title: 'Camera',
-    author: 'Danson67',
-  },
-  {
-    id: 4,
-    img: 'http://www.material-ui.com/images/grid-list/morning-819362_640.jpg',
-    title: 'Morning',
-    author: 'fancycrave1',
-  },
-  {
-    id: 5,
-    img: 'http://www.material-ui.com/images/grid-list/hats-829509_640.jpg',
-    title: 'Hats',
-    author: 'Hans',
-  },
-  {
-    id: 6,
-    img: 'http://www.material-ui.com/images/grid-list/honey-823614_640.jpg',
-    title: 'Honey',
-    author: 'fancycravel',
-  },
-  {
-    id: 7,
-    img: 'http://www.material-ui.com/images/grid-list/vegetables-790022_640.jpg',
-    title: 'Vegetables',
-    author: 'jill111',
-  },
-  {
-    id: 8,
-    img: 'http://www.material-ui.com/images/grid-list/water-plant-821293_640.jpg',
-    title: 'Water plant',
-    author: 'BkrmadtyaKarki',
-  },
-];
 
 const Tools= (props) => (
   <Toolbar style={{backgroundColor: 'transparent', marginTop: '-4px', padding: 0}}>
@@ -101,7 +51,19 @@ class Aside extends Component {
   handleToggle = () => this.props.asideToggle();
 
   componentWillMount() {
+    // lancer à l'init, pendant le splashscreen ?
     this.props.getLibraries();
+    this.props.getCollections();
+  }
+
+  componentDidUpdate (nextProps, nextState) {
+    if(nextProps.libraries !== this.props.libraries) {
+      this.props.getLibraries();
+    }
+
+    if(nextProps.collections !== this.props.collections) {
+      this.props.getCollections();
+    }
   }
 
   render() {
@@ -115,7 +77,7 @@ class Aside extends Component {
 
         <Library
           style={style}
-          tiles={tilesData} />
+          tiles={this.props.collections} />
       </Drawer>
     );
   }
@@ -125,18 +87,22 @@ Aside.propTypes = {
   open: T.bool,
   asideToggle: T.func.isRequired,
   libraries: T.array,
+  collections: T.array,
   getLibraries: T.func.isRequired,
+  getCollections: T.func.isRequired,
 };
 
 Aside.defaultProps = {
-  libraries: []
+  libraries: [],
+  collections: []
 };
 
 function mapStateToProps(appState) {
   return {
     open: appState.aside.open,
     libraries: appState.libraries,
+    collections: appState.collections,
   };
 }
 
-export default connect(mapStateToProps, {asideToggle, getLibraries})(Aside);
+export default connect(mapStateToProps, {asideToggle, getLibraries, getCollections})(Aside);
