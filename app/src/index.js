@@ -9,10 +9,15 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import configureStore from './store/configureStore';
 
 import routes from './config/routes'
+import { init as initSockets } from './data/socket';
 
 import './index.css';
 
 const store = configureStore();
+
+////////////// INIT SOCKETS
+initSockets();
+//////////////
 
 injectTapEventPlugin();
 

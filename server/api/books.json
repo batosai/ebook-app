@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "img": "files/awaken-5-ki-oon.jpg",
+    "title": "Breakfast",
+    "author": "jill111",
+    "local": true
+  },
+  {
+    "id": 2,
+    "img": "files/gunnm-mars-chronicle-2-glenat.jpg",
+    "title": "Tasty burger",
+    "author": "pashminu",
+    "local": false
+  },
+  {
+    "id": 3,
+    "img": "files/1507-1.jpg",
+    "title": "Camera",
+    "author": "Danson67",
+    "local": true
+  },
+  {
+    "id": 4,
+    "img": "files/grendizer-giga-1-black-box.jpg",
+    "title": "Morning",
+    "author": "fancycrave1",
+    "local": true
+  },
+  {
+    "id": 5,
+    "img": "files/last-hero-inuyashiki-7-ki-oon.jpg",
+    "title": "Hats",
+    "author": "Hans",
+    "local": true
+  },
+  {
+    "id": 6,
+    "img": "files/overlord-1-taifu.jpg",
+    "title": "Honey",
+    "author": "fancycravel",
+    "local": true
+  },
+  {
+    "id": 7,
+    "img": "files/9tigres-01.jpg",
+    "title": "Vegetables",
+    "author": "jill111",
+    "local": true
+  },
+  {
+    "id": 8,
+    "img": "files/grendizer-giga-1-black-box.jpg",
+    "title": "Water plant",
+    "author": "BkrmadtyaKarki",
+    "local": true
+  }
+]

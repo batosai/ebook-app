@@ -1,4 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes as T } from 'react';
+import { connect } from 'react-redux';
+import { getLibraries } from '../actions/libraries';
+// import * as Types from '../config/types';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import {List, ListItem} from 'material-ui/List';
 import TextField from 'material-ui/TextField';
@@ -14,6 +17,16 @@ class Setting extends Component {
   };
 
   handleChange = (event, index, value) => this.setState({value});
+
+  // componentWillMount() {
+  //   this.props.getLibraries();
+  // }
+
+  componentDidUpdate (nextProps, nextState) {
+    if(nextProps.libraries !== this.props.libraries) {
+      this.props.getLibraries();
+    }
+  }
 
   render() {
     return (
@@ -37,10 +50,9 @@ class Setting extends Component {
         </Tab>
         <Tab label="Libraries">
           <List>
-            <ListItem primaryText="Bande dessinée" rightIcon={<DeleteIcon />} />
-            <ListItem primaryText="Manga" rightIcon={<DeleteIcon />} />
-            <ListItem primaryText="Comics" rightIcon={<DeleteIcon />} />
-            <ListItem primaryText="Romans" rightIcon={<DeleteIcon />} />
+            {this.props.libraries.map(library => (
+                <ListItem key={library.id} primaryText={library.name} rightIcon={<DeleteIcon />} />
+            ))}
           </List>
           <RaisedButton secondary={true} label="Add" fullWidth={true} />
         </Tab>
@@ -49,9 +61,22 @@ class Setting extends Component {
   }
 }
 
-// Setting.propTypes = {
-//   open: T.bool,
-//   asideToggle: T.func.isRequired,
-// };
+Setting.propTypes = {
+  // libraries: T.arrayOf(Types.library),
+  libraries: T.array,
+  getLibraries: T.func.isRequired,
+};
 
-export default Setting;
+Setting.defaultProps = {
+  libraries: []
+};
+
+// export default Setting;
+
+function mapStateToProps(appState) {
+  return {
+    libraries: appState.libraries
+  };
+}
+
+export default connect(mapStateToProps, { getLibraries })(Setting);

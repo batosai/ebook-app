@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Bande dessinée"
+  },
+  {
+    "id": 2,
+    "name": "Manga"
+  },
+  {
+    "id": 3,
+    "name": "Comics"
+  },
+  {
+    "id": 4,
+    "name": "Romans"
+  }
+]

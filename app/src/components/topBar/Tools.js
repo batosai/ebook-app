@@ -1,4 +1,4 @@
-import React, { Component, PropTypes as T } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Toolbar, ToolbarGroup, ToolbarSeparator } from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
@@ -42,8 +42,8 @@ class Tools extends Component {
   }
 }
 
-Tools.propTypes = {
-  asideToggle: T.func.isRequired,
-};
+// Tools.propTypes = {
+//   asideToggle: T.func.isRequired,
+// };
 
 export default Tools;

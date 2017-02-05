@@ -13,6 +13,7 @@ import Library from '../components/Library';
 import { fullWhite } from 'material-ui/styles/colors';
 
 import { asideToggle } from '../actions/aside';
+import { getLibraries } from '../actions/libraries';
 
 const style = {
   root: {
@@ -83,12 +84,12 @@ const Tools= (props) => (
     <ToolbarGroup>
       <ToolbarTitle text="Library" style={{color:fullWhite}} />
       <IconMenu
-        {...props}
         anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
         targetOrigin={{horizontal: 'right', vertical: 'bottom'}}
         iconButtonElement={<IconButton><NavigationExpandMoreIcon color={fullWhite} /></IconButton>} >
-        <MenuItem primaryText="Manga" />
-        <MenuItem primaryText="Comics" />
+        {props.libraries.map(library => (
+            <MenuItem key={library.id} primaryText={library.name} />
+        ))}
       </IconMenu>
       <ToolbarSeparator style={{margin: 0}} />
       <IconButton><AddIcon color={fullWhite} /></IconButton>
@@ -99,13 +100,17 @@ const Tools= (props) => (
 class Aside extends Component {
   handleToggle = () => this.props.asideToggle();
 
+  componentWillMount() {
+    this.props.getLibraries();
+  }
+
   render() {
     return (
       <Drawer open={this.props.open}>
         <AppBar
           onLeftIconButtonTouchTap={this.handleToggle}
           showMenuIconButton={true}
-          iconElementRight={<Tools />}
+          iconElementRight={<Tools libraries={this.props.libraries} />}
           iconElementLeft={<IconButton><NavigationClose /></IconButton>} />
 
         <Library
@@ -119,12 +124,19 @@ class Aside extends Component {
 Aside.propTypes = {
   open: T.bool,
   asideToggle: T.func.isRequired,
+  libraries: T.array,
+  getLibraries: T.func.isRequired,
+};
+
+Aside.defaultProps = {
+  libraries: []
 };
 
 function mapStateToProps(appState) {
   return {
     open: appState.aside.open,
+    libraries: appState.libraries,
   };
 }
 
-export default connect(mapStateToProps, {asideToggle})(Aside);
+export default connect(mapStateToProps, {asideToggle, getLibraries})(Aside);

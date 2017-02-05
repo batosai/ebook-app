@@ -1,0 +1,13 @@
+{
+  "name": "ebook-server",
+  "version": "0.0.1",
+  "private": true,
+  "description": "my first socket.io app",
+  "dependencies": {
+    "express": "^4.14.1",
+    "socket.io": "^1.7.2"
+  },
+  "scripts": {
+    "start": "node main.js"
+  }
+}
