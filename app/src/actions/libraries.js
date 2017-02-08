@@ -1,5 +1,5 @@
 import { createAction } from '../helpers';
-import { libraries } from '../data/socket';
+import { catchLibraries } from '../data/socket';
 
 export const LIBRARIES_REQUEST = 'libraries:request';
 export const LIBRARIES_SUCCESS = 'libraries:success';
@@ -10,7 +10,7 @@ const librariesSuccess = createAction(LIBRARIES_SUCCESS, (libraries) => ({ libra
 const librariesFailure = createAction(LIBRARIES_FAILURE, (error) => ({ error }));
 export const getLibraries = () => dispatch => {
   dispatch(librariesRequest());
-  libraries()
+  catchLibraries()
   .then(libraries => dispatch(librariesSuccess(libraries)))
   .catch(error => dispatch(librariesFailure(error)));
 };

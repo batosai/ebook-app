@@ -1,5 +1,5 @@
 import { createAction } from '../helpers';
-import { collections } from '../data/socket';
+import { catchCollections } from '../data/socket';
 
 export const COLLECTIONS_REQUEST = 'collections:request';
 export const COLLECTIONS_SUCCESS = 'collections:success';
@@ -11,7 +11,7 @@ const collectionsSuccess = createAction(COLLECTIONS_SUCCESS, (collections) => ({
 const collectionsFailure = createAction(COLLECTIONS_FAILURE, (error) => ({ error }));
 export const getCollections = () => dispatch => {
   dispatch(collectionsRequest());
-  collections()
+  catchCollections()
   .then(collections => dispatch(collectionsSuccess(collections)))
   .catch(error => dispatch(collectionsFailure(error)));
 };

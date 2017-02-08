@@ -11,7 +11,7 @@ class Library extends Component {
           cellHeight={180}
           style={this.props.style.gridList} >
           {this.props.tiles.map((tile) => (
-            <Link key={tile.id} to="/"><GridTile
+            <Link key={tile.id} to={`/collection/${tile.id}`}><GridTile
               title={tile.title}
               subtitle={<span>by <b>{tile.author}</b></span>} >
               <img src={tile.img} alt="" />

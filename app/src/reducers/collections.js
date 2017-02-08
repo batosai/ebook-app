@@ -22,7 +22,7 @@ const reducers = {
       });
     }
 
-    const items =  prevState.all.filter(collection => collection.library_id === id);
+    const items = prevState.all.filter(collection => collection.library_id === id);
 
     return Object.assign({}, prevState, {
       items

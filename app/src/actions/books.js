@@ -1,45 +1,45 @@
 import { createAction } from '../helpers';
-import { getItem, getItemsByCollection, changeCollection } from '../api';
+import { catchBook, catchBooksByCollection, modifyBook } from '../data/socket';
 
-export const ITEMS_REQUEST = 'list:items:request';
-export const ITEMS_SUCCESS = 'list:items:success';
-export const ITEMS_FAILURE = 'list:items:failure';
+export const BOOKS_REQUEST = 'books:request';
+export const BOOKS_SUCCESS = 'books:success';
+export const BOOKS_FAILURE = 'books:failure';
 
-const itemsRequest = createAction(ITEMS_REQUEST, () => null);
-const itemsSuccess = createAction(ITEMS_SUCCESS, (items) => ({ items }));
-const itemsFailure = createAction(ITEMS_FAILURE, (error) => ({ error }));
+const booksRequest = createAction(BOOKS_REQUEST, () => null);
+const booksSuccess = createAction(BOOKS_SUCCESS, (items) => ({ items }));
+const booksFailure = createAction(BOOKS_FAILURE, (error) => ({ error }));
 export const getBooks = slug => dispatch => {
-  dispatch(itemsRequest(slug));
-  getItemsByCollection(slug)
-  .then(items => dispatch(itemsSuccess(items)))
-  .catch(error => dispatch(itemsFailure(error)));
+  dispatch(booksRequest(slug));
+  catchBooksByCollection(slug)
+  .then(books => dispatch(booksSuccess(books)))
+  .catch(error => dispatch(booksFailure(error)));
 };
 
-export const ITEM_REQUEST = 'list:item:request';
-export const ITEM_SUCCESS = 'list:item:success';
-export const ITEM_FAILURE = 'list:item:failure';
+export const BOOK_REQUEST = 'book:request';
+export const BOOK_SUCCESS = 'book:success';
+export const BOOK_FAILURE = 'book:failure';
 
-const itemRequest = createAction(ITEM_REQUEST, (id) => ({ id }));
-const itemSuccess = createAction(ITEM_SUCCESS, (item) => ({ item }));
-const itemFailure = createAction(ITEM_FAILURE, (error) => ({ error }));
+const bookRequest = createAction(BOOK_REQUEST, (id) => ({ id }));
+const bookSuccess = createAction(BOOK_SUCCESS, (book) => ({ book }));
+const bookFailure = createAction(BOOK_FAILURE, (error) => ({ error }));
 export const getBook = text => dispatch => {
-  dispatch(itemRequest(text));
-  getItem(text)
-  .then(item => dispatch(itemSuccess(item)))
-  .catch(error => dispatch(itemFailure(error)));
+  dispatch(bookRequest(text));
+  catchBook(text)
+  .then(book => dispatch(bookSuccess(book)))
+  .catch(error => dispatch(bookFailure(error)));
 };
 
-export const ITEM_UPDATE  = 'list:item:update';
-export const ITEM_UPDATE_FAILURE = 'list:item:update:failure';
+export const BOOK_UPDATE  = 'book:update';
+export const BOOK_UPDATE_FAILURE = 'list:update:failure';
 
-const itemUpdateSuccess = createAction(ITEM_UPDATE, (item) => ({ item }));
-const itemUpdateFailure = createAction(ITEM_UPDATE_FAILURE, (error) => ({ error }));
+const bookUpdateSuccess = createAction(BOOK_UPDATE, (book) => ({ book }));
+const bookUpdateFailure = createAction(BOOK_UPDATE_FAILURE, (error) => ({ error }));
 
-export const updateBook = (item, success) => dispatch => {
-  changeCollection(item)
-  .then((item) => {
-    dispatch(itemUpdateSuccess(item));
+export const updateBook = (book, success) => dispatch => {
+  modifyBook(book)
+  .then((book) => {
+    dispatch(bookUpdateSuccess(book));
     success();
   })
-  .catch(error => dispatch(itemUpdateFailure(error)));
+  .catch(error => dispatch(bookUpdateFailure(error)));
 };

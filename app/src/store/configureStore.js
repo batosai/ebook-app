@@ -5,6 +5,7 @@ import asideReducer from '../reducers/aside';
 // import booksReducer from '../reducers/books';
 import librariesReducer from '../reducers/libraries';
 import collectionsReducer from '../reducers/collections';
+import booksReducer from '../reducers/books';
 
 import { routerReducer } from 'react-router-redux';
 
@@ -14,6 +15,7 @@ export default () => createStore(
     routing: routerReducer,
     libraries: librariesReducer,
     collections: collectionsReducer,
+    books: booksReducer,
   }),
   compose(
     applyMiddleware(
