@@ -14,9 +14,9 @@ app.get('/', function(req, res){
 io.on('connection', function(socket){
 
   socket.on('init', function(){
-    io.emit('libraries', libraries);
-    io.emit('collections', collections);
-
+    socket.emit('libraries', libraries);
+    socket.emit('collections', collections);
+    console.log('init');
     // if(libraries.length > 4) libraries.pop();
 
     // setTimeout(function(){
@@ -29,12 +29,25 @@ io.on('connection', function(socket){
   });
 
   socket.on('books', function(collection_id){
+    console.log('books');
     if(collection_id !== undefined) {
       const b = books.filter(book => book.collection_id === collection_id);
-      io.emit('books', b);
+      socket.emit('books', b);
     }
     else {
-      io.emit('books', book);
+      socket.emit('books', book);
+    }
+  });
+
+  socket.on('book:delete', function(book_id){
+    console.log('book:delete');
+    if(book_id !== undefined) {
+      const index = books.findIndex(book => book.id === book_id);
+
+      if(index > -1) {
+          books.splice(index, 1);
+          socket.emit('books', books);
+      }
     }
   });
 

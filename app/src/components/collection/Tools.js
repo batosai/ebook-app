@@ -1,4 +1,5 @@
 import React, { Component, PropTypes as T } from 'react';
+import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -13,6 +14,8 @@ import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import VisibilityIcon from 'material-ui/svg-icons/action/visibility';
 import { fullWhite } from 'material-ui/styles/colors';
 
+import { deleteBook } from '../../actions/books';
+
 class Tools extends Component {
   state = {
     open: false,
@@ -26,6 +29,11 @@ class Tools extends Component {
     this.setState({open: false});
   };
 
+  removeBook = () => {
+    this.props.deleteBook(this.props.tile);
+    this.setState({open: false});
+  };
+
   render() {
     const actions = [
         <FlatButton
@@ -36,7 +44,7 @@ class Tools extends Component {
         <FlatButton
           label="Ok"
           primary={true}
-          onTouchTap={this.handleClose}
+          onTouchTap={this.removeBook}
         />,
       ];
 
@@ -75,7 +83,8 @@ class Tools extends Component {
 }
 
 Tools.propTypes = {
-  tile: T.object.isRequired
+  tile: T.object.isRequired,
+  deleteBook: T.func.isRequired,
 };
 
-export default Tools;
+export default connect(null, {deleteBook})(Tools);

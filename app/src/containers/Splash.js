@@ -12,7 +12,7 @@ class Splash extends Component {
     this.props.getCollections();
   }
 
-  componentDidUpdate (nextProps, nextState) {
+  componentDidUpdate (prevProps, prevState) {
     if(this.props.collections.length) {
       browserHistory.push(`/collection/${this.props.collections[0].id}/`);
     }

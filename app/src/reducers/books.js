@@ -1,4 +1,4 @@
-import { BOOKS_SUCCESS } from '../actions/books';
+import { BOOKS_REQUEST, BOOKS_SUCCESS } from '../actions/books';
 
 import { createReducer } from '../helpers';
 

@@ -6,6 +6,7 @@ export const INIT_SOCKET        = 'init';
 export const LIBRARIES_SOCKET   = 'libraries';
 export const COLLECTIONS_SOCKET = 'collections';
 export const BOOKS_SOCKET       = 'books';
+export const BOOK_DELETE_SOCKET = 'book:delete';
 
 export const init = () => {
   socket.emit(INIT_SOCKET);
@@ -37,3 +38,5 @@ export const catchBooksByCollection = id => {
     })
   );
 };
+
+export const removeBook = id => socket.emit(BOOK_DELETE_SOCKET, id);

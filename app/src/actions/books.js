@@ -1,5 +1,5 @@
 import { createAction } from '../helpers';
-import { catchBook, catchBooksByCollection, modifyBook } from '../data/socket';
+import { catchBook, catchBooksByCollection, modifyBook, removeBook } from '../data/socket';
 
 export const BOOKS_REQUEST = 'books:request';
 export const BOOKS_SUCCESS = 'books:success';
@@ -42,4 +42,22 @@ export const updateBook = (book, success) => dispatch => {
     success();
   })
   .catch(error => dispatch(bookUpdateFailure(error)));
+};
+
+// export const BOOK_DELETE  = 'book:delete';
+// export const BOOK_DELETE_FAILURE = 'list:delete:failure';
+
+// const bookDeleteSuccess = createAction(BOOK_DELETE, (id) => ({ id }));
+// const bookDeleteFailure = createAction(BOOK_DELETE_FAILURE, (error) => ({ error }));
+
+export const deleteBook = book => dispatch => {
+  removeBook(book.id);
+  // .then((id) => {
+  //   dispatch(bookDeleteSuccess(id));
+  // })
+  // .catch(error => dispatch(bookDeleteFailure(error)));
+  catchBooksByCollection(book.collection_id)
+  .then(books => dispatch(booksSuccess(books)))
+  .catch(error => dispatch(booksFailure(error)));
+
 };

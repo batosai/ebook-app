@@ -19,14 +19,19 @@ const style = {
 };
 
 class Collection extends Component {
+
   componentWillMount() {
     this.props.getBooks(parseInt(this.props.params.id));
   }
 
-  componentDidUpdate (nextProps, nextState) {
-    if(nextProps.params.id !== this.props.params.id) {
+  componentDidUpdate (prevProps, prevState) {
+    // TODO utiliser booksRequest pour déffinir un état d'upload (bool) dans les props. Si true ne pas mettre à jour car MAJ en court.
       this.props.getBooks(parseInt(this.props.params.id));
-    }
+
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return !(nextProps.params.id === this.props.params.id && nextProps.books.length === this.props.books.length)
   }
 
   render() {

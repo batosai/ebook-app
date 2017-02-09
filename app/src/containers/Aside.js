@@ -34,8 +34,8 @@ class Aside extends Component {
     this.props.getCollections();
   }
 
-  componentDidUpdate (nextProps, nextState) {
-    if(nextProps.collections !== this.props.collections) {
+  componentDidUpdate (prevProps, prevState) {
+    if(prevProps.collections !== this.props.collections) {
       this.props.getCollections();
     }
   }
