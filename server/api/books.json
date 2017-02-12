@@ -70,5 +70,13 @@
     "author": "BkrmadtyaKarki",
     "collection_id": 8,
     "local": true
+  },
+  {
+    "id": 9,
+    "img": "http://localhost:3001/files/grendizer-giga-1-black-box.jpg",
+    "title": "Water plant",
+    "author": "BkrmadtyaKarki",
+    "collection_id": 1,
+    "local": true
   }
 ]

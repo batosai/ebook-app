@@ -15,7 +15,8 @@ export const init = () => {
 
 export const catchLibraries = () =>
   new Promise(resolve =>
-    socket.on(LIBRARIES_SOCKET, data => {
+    socket.off(LIBRARIES_SOCKET)
+    .on(LIBRARIES_SOCKET, data => {
       console.log(LIBRARIES_SOCKET);
       resolve(data);
     })
@@ -23,7 +24,8 @@ export const catchLibraries = () =>
 
 export const catchCollections = () =>
   new Promise(resolve =>
-    socket.on(COLLECTIONS_SOCKET, data => {
+    socket.off(COLLECTIONS_SOCKET)
+    .on(COLLECTIONS_SOCKET, data => {
       console.log(COLLECTIONS_SOCKET);
       resolve(data);
     })
@@ -32,7 +34,8 @@ export const catchCollections = () =>
 export const catchBooksByCollection = id => {
   socket.emit(BOOKS_SOCKET, id);
   return new Promise(resolve =>
-    socket.on(BOOKS_SOCKET, data => {
+    socket.off(BOOKS_SOCKET)
+    .on(BOOKS_SOCKET, data => {
       console.log(BOOKS_SOCKET);
       resolve(data);
     })

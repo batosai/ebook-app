@@ -7,7 +7,12 @@ import librariesReducer from '../reducers/libraries';
 import collectionsReducer from '../reducers/collections';
 import booksReducer from '../reducers/books';
 
+import { socketIoMiddleware } from '../helpers';
+
 import { routerReducer } from 'react-router-redux';
+
+import io from 'socket.io-client';
+const socket = io('http://localhost:3001');
 
 export default () => createStore(
   combineReducers({
@@ -22,7 +27,8 @@ export default () => createStore(
       store => next => action => {
         next(action);
       },
-      thunkMiddleware
+      thunkMiddleware,
+      socketIoMiddleware(socket)
     ),
     window.devToolsExtension
       ? window.devToolsExtension()

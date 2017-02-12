@@ -13,6 +13,36 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
 
+  socket.on("action", function (action) {
+    console.log(action.type);
+    let b;
+      switch (action.type) {
+        case "books:request":
+          if(action.payload.id !== undefined) {
+            b = books.filter(book => book.collection_id === action.payload.id);
+            socket.emit('action', {
+                type: "books:success",
+                payload: {books: b}
+            });
+          }
+      }
+
+      // setTimeout(function(){
+      //   b.push({
+      //     "id": 2345,
+      //     "img": "http://localhost:3001/files/9tigres-01.jpg",
+      //     "title": "Vegetables",
+      //     "author": "jill111",
+      //     "collection_id": 1,
+      //     "local": true
+      //   });
+      //   io.emit('action', {
+      //       type: "books:success",
+      //       payload: {books: b}
+      //   });
+      // }, 5000);
+    })
+
   socket.on('init', function(){
     socket.emit('libraries', libraries);
     socket.emit('collections', collections);
@@ -37,6 +67,18 @@ io.on('connection', function(socket){
     else {
       socket.emit('books', book);
     }
+
+    // setTimeout(function(){
+    //   books.push({
+    //     "id": 2345,
+    //     "img": "http://localhost:3001/files/9tigres-01.jpg",
+    //     "title": "Vegetables",
+    //     "author": "jill111",
+    //     "collection_id": 1,
+    //     "local": true
+    //   });
+    //   io.emit('books', books);
+    // }, 5000);
   });
 
   socket.on('book:delete', function(book_id){
