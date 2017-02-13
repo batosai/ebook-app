@@ -1,4 +1,4 @@
-import { LIBRARIES_SUCCESS } from '../actions/libraries';
+import { LIBRARIES_SUCCESS } from '../types';
 
 import { createReducer } from '../helpers';
 

@@ -1,7 +1,5 @@
 import { createAction } from '../helpers';
-
-export const ASIDE_TOGGLE = 'aside:toggle';
-export const ASIDE_OPEN   = 'aside:open';
+import { ASIDE_TOGGLE } from '../types';
 
 const toggle = createAction(ASIDE_TOGGLE, () => null);
 export const asideToggle = text => dispatch => {

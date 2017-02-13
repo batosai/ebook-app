@@ -1,10 +1,6 @@
 import { createAction } from '../helpers';
 import { catchCollections } from '../data/socket';
-
-export const COLLECTIONS_REQUEST = 'collections:request';
-export const COLLECTIONS_SUCCESS = 'collections:success';
-export const COLLECTIONS_FAILURE = 'collections:failure';
-export const COLLECTIONS_FILTER  = 'collections:filter';
+import { COLLECTIONS_REQUEST, COLLECTIONS_SUCCESS, COLLECTIONS_FAILURE, COLLECTIONS_FILTER } from '../types';
 
 const collectionsRequest = createAction(COLLECTIONS_REQUEST, () => null);
 const collectionsSuccess = createAction(COLLECTIONS_SUCCESS, (collections) => ({ collections }));

@@ -1,9 +1,6 @@
 import { createAction } from '../helpers';
 import { catchLibraries } from '../data/socket';
-
-export const LIBRARIES_REQUEST = 'libraries:request';
-export const LIBRARIES_SUCCESS = 'libraries:success';
-export const LIBRARIES_FAILURE = 'libraries:failure';
+import { LIBRARIES_REQUEST, LIBRARIES_SUCCESS, LIBRARIES_FAILURE } from '../types';
 
 const librariesRequest = createAction(LIBRARIES_REQUEST, () => null);
 const librariesSuccess = createAction(LIBRARIES_SUCCESS, (libraries) => ({ libraries }));

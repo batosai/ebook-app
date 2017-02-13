@@ -1,4 +1,4 @@
-import { COLLECTIONS_SUCCESS, COLLECTIONS_FILTER } from '../actions/collections';
+import { COLLECTIONS_SUCCESS, COLLECTIONS_FILTER } from '../types';
 
 import { createReducer } from '../helpers';
 

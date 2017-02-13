@@ -1,4 +1,4 @@
-import { ASIDE_TOGGLE, ASIDE_OPEN } from '../actions/aside';
+import { ASIDE_TOGGLE, ASIDE_OPEN } from '../types';
 
 import { createReducer } from '../helpers';
 

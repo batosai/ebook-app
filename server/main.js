@@ -7,6 +7,8 @@ const libraries   = require('./api/libraries.json');
 const books       = require('./api/books.json');
 const collections = require('./api/collections.json');
 
+// const types = require('./types');
+
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
@@ -25,22 +27,23 @@ io.on('connection', function(socket){
                 payload: {books: b}
             });
           }
+          //TODO create function
       }
 
-      // setTimeout(function(){
-      //   b.push({
-      //     "id": 2345,
-      //     "img": "http://localhost:3001/files/9tigres-01.jpg",
-      //     "title": "Vegetables",
-      //     "author": "jill111",
-      //     "collection_id": 1,
-      //     "local": true
-      //   });
-      //   io.emit('action', {
-      //       type: "books:success",
-      //       payload: {books: b}
-      //   });
-      // }, 5000);
+      setTimeout(function(){
+        b.push({
+          "id": 2345,
+          "img": "http://localhost:3001/files/9tigres-01.jpg",
+          "title": "Vegetables",
+          "author": "jill111",
+          "collection_id": 1,
+          "local": true
+        });
+        io.emit('action', {
+            type: "books:success",
+            payload: {books: b}
+        });
+      }, 5000);
     })
 
   socket.on('init', function(){
