@@ -1,15 +1,16 @@
 
-export const BOOKS_REQUEST = 'books:request';
-export const BOOKS_SUCCESS = 'books:success';
-export const BOOKS_FAILURE = 'books:failure';
-
-export const ASIDE_TOGGLE = 'aside:toggle';
-
-export const COLLECTIONS_REQUEST = 'collections:request';
-export const COLLECTIONS_SUCCESS = 'collections:success';
-export const COLLECTIONS_FAILURE = 'collections:failure';
-export const COLLECTIONS_FILTER  = 'collections:filter';
-
-export const LIBRARIES_REQUEST = 'libraries:request';
-export const LIBRARIES_SUCCESS = 'libraries:success';
-export const LIBRARIES_FAILURE = 'libraries:failure';
+module.exports = {
+  'ACTION': 'action',
+  'BOOKS_REQUEST': 'books:request',
+  'BOOKS_SUCCESS': 'books:success',
+  'BOOKS_FAILURE': 'books:failure',
+  'BOOK_DELETE_REQUEST' : 'book:delete',
+  'BOOK_DELETE_SUCCESS' : 'book:delete:success',
+  'ASIDE_TOGGLE': 'books:failure',
+  'COLLECTIONS_REQUEST': 'collections:request',
+  'COLLECTIONS_SUCCESS': 'collections:success',
+  'COLLECTIONS_FAILURE': 'collections:failure',
+  'LIBRARIES_REQUEST': 'libraries:request',
+  'LIBRARIES_SUCCESS': 'libraries:success',
+  'LIBRARIES_FAILURE': 'libraries:failure'
+};

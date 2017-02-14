@@ -8,8 +8,8 @@ import { getCollections } from '../actions/collections';
 class Splash extends Component {
 
   componentWillMount() {
-    this.props.getLibraries();
-    this.props.getCollections();
+    // this.props.getLibraries();
+    // this.props.getCollections();
   }
 
   componentDidUpdate (prevProps, prevState) {

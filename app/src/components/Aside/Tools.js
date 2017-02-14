@@ -8,8 +8,7 @@ import MenuItem from 'material-ui/MenuItem';
 import IconMenu from 'material-ui/IconMenu';
 import { fullWhite } from 'material-ui/styles/colors';
 
-import { getLibraries } from '../../actions/libraries';
-import { getCollectionByLibrary } from '../../actions/collections';
+import { findCollectionByLibrary } from '../../actions/collections';
 
 class Tools extends Component {
   state = {
@@ -17,7 +16,7 @@ class Tools extends Component {
   };
 
   collectionToggle(id){
-    this.props.getCollectionByLibrary(id);
+    this.props.findCollectionByLibrary(id);
   }
 
   touchTap(library) {
@@ -37,7 +36,7 @@ class Tools extends Component {
 
   componentDidUpdate (nextProps, nextState) {
     if(nextProps.libraries !== this.props.libraries) {
-      this.props.getLibraries();
+      // this.props.getLibraries();
     }
   }
 
@@ -65,8 +64,7 @@ class Tools extends Component {
 
 Tools.propTypes = {
   libraries: T.array,
-  getLibraries: T.func.isRequired,
-  getCollectionByLibrary: T.func.isRequired,
+  findCollectionByLibrary: T.func.isRequired,
 };
 
 Tools.defaultProps = {
@@ -79,4 +77,4 @@ function mapStateToProps(appState) {
   };
 }
 
-export default connect(mapStateToProps, {getLibraries, getCollectionByLibrary})(Tools);
+export default connect(mapStateToProps, {findCollectionByLibrary})(Tools);

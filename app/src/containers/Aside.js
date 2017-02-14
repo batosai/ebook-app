@@ -8,8 +8,8 @@ import Library from '../components/Library';
 import Tools from '../components/Aside/Tools';
 
 import { asideToggle } from '../actions/aside';
-import { getLibraries } from '../actions/libraries';
-import { getCollections } from '../actions/collections';
+import { findLibraries } from '../actions/libraries';
+import { findCollections } from '../actions/collections';
 
 const style = {
   root: {
@@ -29,16 +29,21 @@ class Aside extends Component {
   handleToggle = () => this.props.asideToggle();
 
   componentWillMount() {
+    console.log('ici');
     // TODO lancer à l'init, pendant le splashscreen
-    this.props.getLibraries();
-    this.props.getCollections();
+    this.props.findLibraries();
+    this.props.findCollections();
   }
 
-  componentDidUpdate (prevProps, prevState) {
-    if(prevProps.collections !== this.props.collections) {
-      this.props.getCollections();
-    }
-  }
+  // componentDidUpdate (prevProps, prevState) {
+  //   if(prevProps.collections !== this.props.collections) {
+  //     this.props.getCollections();
+  //   }
+  // }
+
+  // shouldComponentUpdate (nextProps, nextState) {
+  //   return false;
+  // }
 
   render() {
     return (
@@ -61,8 +66,8 @@ Aside.propTypes = {
   open: T.bool,
   asideToggle: T.func.isRequired,
   collections: T.array,
-  getLibraries: T.func.isRequired,
-  getCollections: T.func.isRequired,
+  findLibraries: T.func.isRequired,
+  findCollections: T.func.isRequired,
 };
 
 Aside.defaultProps = {
@@ -76,4 +81,4 @@ function mapStateToProps(appState) {
   };
 }
 
-export default connect(mapStateToProps, {asideToggle, getLibraries, getCollections})(Aside);
+export default connect(mapStateToProps, {asideToggle, findLibraries, findCollections})(Aside);
