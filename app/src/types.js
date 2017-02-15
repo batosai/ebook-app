@@ -16,3 +16,6 @@ export const COLLECTIONS_FILTER  = 'collections:filter';
 export const LIBRARIES_REQUEST = 'libraries:request';
 export const LIBRARIES_SUCCESS = 'libraries:success';
 export const LIBRARIES_FAILURE = 'libraries:failure';
+
+export const LIBRARY_ADD_REQUEST    = 'library:add:request';
+export const LIBRARY_DELETE_REQUEST = 'library:delete:request';

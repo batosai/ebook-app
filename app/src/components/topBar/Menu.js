@@ -30,7 +30,7 @@ class Menu extends Component {
         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
         targetOrigin={{horizontal: 'right', vertical: 'top'}}
       >
-        <Link to={'setting'}><MenuItem primaryText="Settings" leftIcon={<SettingsIcon />} /></Link>
+        <Link to={'/setting'}><MenuItem primaryText="Settings" leftIcon={<SettingsIcon />} /></Link>
         <MenuItem primaryText="Help" leftIcon={<HelpIcon />} />
       </IconMenu>
     );

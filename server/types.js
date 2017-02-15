@@ -12,5 +12,7 @@ module.exports = {
   'COLLECTIONS_FAILURE': 'collections:failure',
   'LIBRARIES_REQUEST': 'libraries:request',
   'LIBRARIES_SUCCESS': 'libraries:success',
-  'LIBRARIES_FAILURE': 'libraries:failure'
+  'LIBRARIES_FAILURE': 'libraries:failure',
+  'LIBRARY_ADD_REQUEST': 'library:add:request',
+  'LIBRARY_DELETE_REQUEST': 'library:delete:request',
 };

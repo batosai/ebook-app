@@ -21,8 +21,8 @@ class Tools extends Component {
     return (
       <Toolbar style={styles.toolbar}>
         <ToolbarGroup>
-          <Link to={'setting'}><IconButton><CloudOffIcon color={fullWhite} /></IconButton></Link>
-          <Link to={'task'}>
+          <Link to={'/setting'}><IconButton><CloudOffIcon color={fullWhite} /></IconButton></Link>
+          <Link to={'/task'}>
             <Badge
             badgeContent={4}
             secondary={true}

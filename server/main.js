@@ -3,9 +3,9 @@ const app     = express();
 const http    = require('http').Server(app);
 const io      = require('socket.io')(http);
 
-const libraries   = require('./api/libraries.json');
-const books       = require('./api/books.json');
-const collections = require('./api/collections.json');
+let libraries   = require('./api/libraries.json');
+let books       = require('./api/books.json');
+let collections = require('./api/collections.json');
 
 const types = require('./types');
 
@@ -44,6 +44,29 @@ io.on('connection', function(socket){
     console.log(action.type);
       switch (action.type) {
         case types.LIBRARIES_REQUEST:
+          socket.emit('action', {
+              type: types.LIBRARIES_SUCCESS,
+              payload: {libraries}
+          });
+          break;
+        case types.LIBRARY_ADD_REQUEST:
+          libraries.push({
+            id: libraries.length+1,
+            name: action.payload.name
+          });
+          socket.emit('action', {
+              type: types.LIBRARIES_SUCCESS,
+              payload: {libraries}
+          });
+          break;
+        case types.LIBRARY_DELETE_REQUEST:
+          if(action.payload.id !== undefined) {
+            const index = libraries.findIndex(library => library.id === action.payload.id);
+
+            if(index > -1) {
+                libraries.splice(index, 1);
+            }
+          }
           socket.emit('action', {
               type: types.LIBRARIES_SUCCESS,
               payload: {libraries}

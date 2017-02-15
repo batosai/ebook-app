@@ -29,7 +29,6 @@ class Aside extends Component {
   handleToggle = () => this.props.asideToggle();
 
   componentWillMount() {
-    console.log('ici');
     // TODO lancer à l'init, pendant le splashscreen
     this.props.findLibraries();
     this.props.findCollections();
