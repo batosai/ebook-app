@@ -2,12 +2,12 @@ import React, { Component, PropTypes as T } from 'react';
 import { connect } from 'react-redux';
 import { List, ListItem } from 'material-ui/List';
 import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 
 import { deleteLibrary } from '../../actions/libraries';
 
-import AddLibrary from './AddLibrary';
+import ModalLibrary from './ModalLibrary';
+import modalActions from './modalActions';
 
 class TabLibraries extends Component {
   state = {
@@ -23,42 +23,42 @@ class TabLibraries extends Component {
     this.setState({open: false});
   };
 
+  handleEdit = (library) => {
+    this.setState({
+      edit: !this.state.edit,
+      library
+    });
+  };
+
   delete = () => {
     this.props.deleteLibrary(this.state.id);
     this.setState({open: false});
   };
 
   render() {
-    const actions = [
-        <FlatButton
-          label="Cancel"
-          primary={true}
-          onTouchTap={this.handleClose}
-        />,
-        <FlatButton
-          label="Ok"
-          primary={true}
-          onTouchTap={this.delete}
-        />,
-      ];
+    const actions = modalActions(this.handleClose, this.delete);
 
     return (
       <div>
         <Dialog
-          title="Add library"
+          title="Library"
           actions={actions}
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
-          Delete book?
+          Delete library?
         </Dialog>
         <List>
           {this.props.libraries.map(library => (
-              <ListItem key={library.id} primaryText={library.name} rightIcon={<DeleteIcon onTouchTap={() => this.handleOpen(library.id)} />} />
+              <ListItem
+                key={library.id}
+                primaryText={library.name}
+                onTouchTap={e => this.handleEdit(library)}
+                rightIcon={<DeleteIcon onTouchTap={() => this.handleOpen(library.id)} />} />
           ))}
         </List>
-        <AddLibrary />
+        <ModalLibrary edit={this.state.edit} library={this.state.library} />
       </div>
     );
   }

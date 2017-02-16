@@ -10,9 +10,13 @@ module.exports = {
   'COLLECTIONS_REQUEST': 'collections:request',
   'COLLECTIONS_SUCCESS': 'collections:success',
   'COLLECTIONS_FAILURE': 'collections:failure',
+  'COLLECTION_ADD_REQUEST': 'collection:add:request',
+  'COLLECTION_EDIT_REQUEST': 'collection:edit:request',
+  'COLLECTION_DELETE_REQUEST': 'collection:delete:request',
   'LIBRARIES_REQUEST': 'libraries:request',
   'LIBRARIES_SUCCESS': 'libraries:success',
   'LIBRARIES_FAILURE': 'libraries:failure',
   'LIBRARY_ADD_REQUEST': 'library:add:request',
+  'LIBRARY_EDIT_REQUEST': 'library:edit:request',
   'LIBRARY_DELETE_REQUEST': 'library:delete:request',
 };

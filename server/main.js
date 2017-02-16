@@ -59,6 +59,16 @@ io.on('connection', function(socket){
               payload: {libraries}
           });
           break;
+        case types.LIBRARY_EDIT_REQUEST:
+          const i = libraries.findIndex(library => library.id === action.payload.id);
+          libraries[i] = Object.assign({}, libraries[i], {
+            name: action.payload.name
+          });
+          socket.emit('action', {
+              type: types.LIBRARIES_SUCCESS,
+              payload: {libraries}
+          });
+          break;
         case types.LIBRARY_DELETE_REQUEST:
           if(action.payload.id !== undefined) {
             const index = libraries.findIndex(library => library.id === action.payload.id);
@@ -73,6 +83,42 @@ io.on('connection', function(socket){
           });
           break;
         case types.COLLECTIONS_REQUEST:
+          socket.emit('action', {
+              type: types.COLLECTIONS_SUCCESS,
+              payload: {collections}
+          });
+          break;
+        case types.COLLECTION_ADD_REQUEST:
+          collections.push({
+            id: collections.length+1,
+            title: action.payload.title,
+            library_id: action.payload.library_id,
+            author: ''
+          });
+          socket.emit('action', {
+              type: types.COLLECTIONS_SUCCESS,
+              payload: {collections}
+          });
+          break;
+        case types.COLLECTION_EDIT_REQUEST:
+          const index = collections.findIndex(collection => collection.id === action.payload.id);
+          collections[index] = Object.assign({}, collections[index], {
+            title: action.payload.title,
+            library_id: action.payload.library_id,
+          });
+          socket.emit('action', {
+              type: types.COLLECTIONS_SUCCESS,
+              payload: {collections}
+          });
+          break;
+        case types.COLLECTION_DELETE_REQUEST:
+          if(action.payload.id !== undefined) {
+            const index = collections.findIndex(collection => collection.id === action.payload.id);
+
+            if(index > -1) {
+                collections.splice(index, 1);
+            }
+          }
           socket.emit('action', {
               type: types.COLLECTIONS_SUCCESS,
               payload: {collections}
