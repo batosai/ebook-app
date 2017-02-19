@@ -34,16 +34,6 @@ class Aside extends Component {
     this.props.findCollections();
   }
 
-  // componentDidUpdate (prevProps, prevState) {
-  //   if(prevProps.collections !== this.props.collections) {
-  //     this.props.getCollections();
-  //   }
-  // }
-
-  // shouldComponentUpdate (nextProps, nextState) {
-  //   return false;
-  // }
-
   render() {
     return (
       <Drawer open={this.props.open}>

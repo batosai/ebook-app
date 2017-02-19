@@ -1,4 +1,4 @@
-import { ASIDE_TOGGLE, ASIDE_OPEN } from '../types';
+import { ASIDE_TOGGLE } from '../types';
 
 import { createReducer } from '../helpers';
 
@@ -10,9 +10,6 @@ const reducers = {
 
   [ASIDE_TOGGLE]: (prevState, payload) =>
     Object.assign({}, prevState, {open: !prevState.open}),
-
-  [ASIDE_OPEN]: (prevState, payload) =>
-    prevState.open,
 
 }
 

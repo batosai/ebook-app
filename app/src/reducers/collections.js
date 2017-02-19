@@ -13,7 +13,6 @@ const reducers = {
     all: payload.collections,
     items: payload.collections,
   }),
-    // payload.collections,
 
   [COLLECTIONS_FILTER]: (prevState, id) => {
     if(id === undefined) {

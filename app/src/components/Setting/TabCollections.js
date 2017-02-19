@@ -1,66 +1,61 @@
 import React, { Component, PropTypes as T } from 'react';
 import { connect } from 'react-redux';
 import { List, ListItem } from 'material-ui/List';
-import Dialog from 'material-ui/Dialog';
-import DeleteIcon from 'material-ui/svg-icons/action/delete';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import { deleteCollection } from '../../actions/collections';
+import { modalCollectionToggle, modalDeleteToggle } from '../../actions/modals';
 
 import ModalCollection from './ModalCollection';
-import modalActions from './modalActions';
+import ModalDelete from './ModalDelete';
+
+import toolsActions from './toolsActions';
 
 class TabCollections extends Component {
   state = {
-    open: false,
-    edit: false,
-    collection:{},
-    id: 0
+    id: 0,
+    collection:{}
   };
 
-  handleOpen = (id) => {
-    this.setState({open: true, id});
-  };
-
-  handleClose = () => {
-    this.setState({open: false});
+  handleCreate = () => {
+    this.props.modalCollectionToggle();
   };
 
   handleEdit = (collection) => {
     this.setState({
-      edit: !this.state.edit,
       collection
     });
+    this.props.modalCollectionToggle();
   };
 
-  delete = () => {
+  handleDelete = () => {
     this.props.deleteCollection(this.state.id);
-    this.setState({open: false});
+    this.props.modalDeleteToggle();
+  };
+
+  confirmDelete = (id) => {
+    this.setState({id});
+    this.props.modalDeleteToggle();
   };
 
   render() {
-    const actions = modalActions(this.handleClose, this.delete);
-
     return (
       <div>
-        <Dialog
-          title="Collection"
-          actions={actions}
-          modal={false}
-          open={this.state.open}
-          onRequestClose={this.handleClose}
-        >
-          Delete collection?
-        </Dialog>
         <List>
           {this.props.collections.map(collection => (
               <ListItem
                 key={collection.id}
                 primaryText={collection.title}
-                onTouchTap={e => this.handleEdit(collection)}
-                rightIcon={<DeleteIcon onTouchTap={() => this.handleOpen(collection.id)} />} />
+                rightIcon={toolsActions(
+                  () => this.handleEdit(collection),
+                  () => this.confirmDelete(collection.id)
+                )} />
           ))}
         </List>
-        <ModalCollection edit={this.state.edit} collection={this.state.collection} />
+        <RaisedButton secondary={true} onTouchTap={this.handleCreate} label="Add" fullWidth={true} />
+
+        <ModalDelete type="collection" title="Collection" onDelete={this.handleDelete}>Delete collection?</ModalDelete>
+        <ModalCollection collection={this.state.collection} />
       </div>
     );
   }
@@ -68,11 +63,8 @@ class TabCollections extends Component {
 
 TabCollections.propTypes = {
   collections: T.array,
+  modalCollectionToggle: T.func.isRequired,
   deleteCollection: T.func.isRequired
-};
-
-TabCollections.defaultProps = {
-  collections: []
 };
 
 function mapStateToProps(appState) {
@@ -80,7 +72,5 @@ function mapStateToProps(appState) {
     collections: appState.collections.all
   };
 }
-//TODO probleme state.edit no change state... second clic for edit not found
-//TODO DELETE launch edit 
 
-export default connect(mapStateToProps, {deleteCollection})(TabCollections);
+export default connect(mapStateToProps, {modalCollectionToggle, modalDeleteToggle, deleteCollection})(TabCollections);

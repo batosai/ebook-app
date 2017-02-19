@@ -6,6 +6,7 @@ import asideReducer from '../reducers/aside';
 import librariesReducer from '../reducers/libraries';
 import collectionsReducer from '../reducers/collections';
 import booksReducer from '../reducers/books';
+import modalsReducer from '../reducers/modals';
 
 import { socketIoMiddleware } from '../helpers';
 
@@ -21,6 +22,7 @@ export default () => createStore(
     libraries: librariesReducer,
     collections: collectionsReducer,
     books: booksReducer,
+    modals: modalsReducer,
   }),
   compose(
     applyMiddleware(
