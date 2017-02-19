@@ -9,14 +9,6 @@ import modalActions from './modalActions';
 
 class ModalDelete extends Component {
 
-  componentDidUpdate (prevProps, prevState) {
-    if(prevProps.type !== this.props.type) {
-      //TODO PB
-      console.log(this.props.type);
-      this.props.modalDeleteType(this.props.type);
-    }
-  }
-
   handleClose = () => {
     this.props.modalDeleteToggle();
   };

@@ -30,12 +30,12 @@ class TabCollections extends Component {
 
   handleDelete = () => {
     this.props.deleteCollection(this.state.id);
-    this.props.modalDeleteToggle();
+    this.props.modalDeleteToggle('collection');
   };
 
   confirmDelete = (id) => {
     this.setState({id});
-    this.props.modalDeleteToggle();
+    this.props.modalDeleteToggle('collection');
   };
 
   render() {

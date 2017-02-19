@@ -17,7 +17,7 @@ const reducers = {
     Object.assign({}, prevState, {library: {open: !prevState.library.open}}),
 
   [MODAL_DELETE_TOGGLE]: (prevState, payload) =>
-    Object.assign({}, prevState, {delete: {open: !prevState.delete.open}}),
+    Object.assign({}, prevState, {delete: {open: !prevState.delete.open, type: payload}}),
 
   [MODAL_DELETE_TYPE]: (prevState, payload) =>
     Object.assign({}, prevState, {delete: {type: prevState.delete.type}}),

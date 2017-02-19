@@ -30,12 +30,12 @@ class TabLibraries extends Component {
 
   handleDelete = () => {
     this.props.deleteLibrary(this.state.id);
-    this.props.modalDeleteToggle();
+    this.props.modalDeleteToggle('library');
   };
 
   confirmDelete = (id) => {
     this.setState({id});
-    this.props.modalDeleteToggle();
+    this.props.modalDeleteToggle('library');
   };
 
   render() {

@@ -11,8 +11,9 @@ export const modalLibraryToggle = text => dispatch => {
   dispatch(libraryAction(text));
 };
 
-const deleteAction = createAction(MODAL_DELETE_TOGGLE, () => null);
+const deleteAction = createAction(MODAL_DELETE_TOGGLE, type => (type));
 export const modalDeleteToggle = text => dispatch => {
+  console.log(text);
   dispatch(deleteAction(text));
 };
 
