@@ -63,6 +63,23 @@ class Book extends Component {
 
   handleChange = (event, index, value) => this.setState({value});
 
+  renderFormats () {
+    if(this.props.book.formats)
+    {
+      return (
+        <div style={styles.wrapper}>
+          {this.props.book.formats.map(format => (
+            <Chip key={format} style={styles.chip}>{format}</Chip>
+          ))}
+          <Chip
+            onRequestDelete={handleRequestDelete}
+            onTouchTap={handleTouchTap}
+            style={styles.chip} >EPUB</Chip>
+        </div>
+      );
+    }
+  }
+
   render() {
     const actions = [
         <FlatButton
@@ -83,15 +100,8 @@ class Book extends Component {
         <Subheader>Subheader</Subheader>
         <img src={this.props.book.img ? this.props.book.img : tile.img} alt="" />
         <h1>{this.props.book.title ? this.props.book.title : tile.title}</h1>
-        <div style={styles.wrapper}>
-          {this.props.book.formats.map(format => (
-            <Chip key={format} style={styles.chip}>{format}</Chip>
-          ))}
-          <Chip
-            onRequestDelete={handleRequestDelete}
-            onTouchTap={handleTouchTap}
-            style={styles.chip} >EPUB</Chip>
-        </div>
+
+        {this.renderFormats()}
         <p>{this.props.book.number_pages} pages</p>
         <p>{this.props.book.editor}</p>
         <p>{this.props.book.read ? 'Lu' : 'Non lu'}</p>
