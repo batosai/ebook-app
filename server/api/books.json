@@ -3,7 +3,6 @@
     "id": 1,
     "img": "http://localhost:3001/files/awaken-5-ki-oon.jpg",
     "title": "Breakfast",
-    "author": "jill111",
     "collection_id": 1,
     "local": true
   },
@@ -11,7 +10,6 @@
     "id": 23,
     "img": "http://localhost:3001/files/awaken-5-ki-oon.jpg",
     "title": "Breakfast 2",
-    "author": "jill111 4",
     "collection_id": 1,
     "local": true
   },
@@ -19,7 +17,6 @@
     "id": 2,
     "img": "http://localhost:3001/files/gunnm-mars-chronicle-2-glenat.jpg",
     "title": "Tasty burger",
-    "author": "pashminu",
     "collection_id": 2,
     "local": false
   },
@@ -27,7 +24,6 @@
     "id": 3,
     "img": "http://localhost:3001/files/1507-1.jpg",
     "title": "Camera",
-    "author": "Danson67",
     "collection_id": 3,
     "local": true
   },
@@ -35,7 +31,6 @@
     "id": 4,
     "img": "http://localhost:3001/files/grendizer-giga-1-black-box.jpg",
     "title": "Morning",
-    "author": "fancycrave1",
     "collection_id": 4,
     "local": true
   },
@@ -43,7 +38,6 @@
     "id": 5,
     "img": "http://localhost:3001/files/last-hero-inuyashiki-7-ki-oon.jpg",
     "title": "Hats",
-    "author": "Hans",
     "collection_id": 5,
     "local": true
   },
@@ -51,7 +45,6 @@
     "id": 6,
     "img": "http://localhost:3001/files/overlord-1-taifu.jpg",
     "title": "Honey",
-    "author": "fancycravel",
     "collection_id": 6,
     "local": true
   },
@@ -59,7 +52,6 @@
     "id": 7,
     "img": "http://localhost:3001/files/9tigres-01.jpg",
     "title": "Vegetables",
-    "author": "jill111",
     "collection_id": 7,
     "local": true
   },
@@ -67,7 +59,6 @@
     "id": 8,
     "img": "http://localhost:3001/files/grendizer-giga-1-black-box.jpg",
     "title": "Water plant",
-    "author": "BkrmadtyaKarki",
     "collection_id": 8,
     "local": true
   },
@@ -75,7 +66,6 @@
     "id": 9,
     "img": "http://localhost:3001/files/grendizer-giga-1-black-box.jpg",
     "title": "Water plant",
-    "author": "BkrmadtyaKarki",
     "collection_id": 1,
     "local": true
   }

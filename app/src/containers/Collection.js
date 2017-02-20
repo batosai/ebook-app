@@ -1,9 +1,8 @@
 import React, { Component, PropTypes as T } from 'react';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 import Tiles from '../components/collection/Tiles';
 
-import { findBooksByCollection } from '../actions/books';
+import { findBooksByCollectionId } from '../actions/books';
 
 const style = {
   root: {
@@ -22,13 +21,12 @@ const style = {
 class Collection extends Component {
 
   componentWillMount() {
-    console.log('init id: ' + this.props.params.id);
-    this.props.findBooksByCollection(parseInt(this.props.params.id, 10));
+    this.props.findBooksByCollectionId(parseInt(this.props.params.id, 10));
   }
 
   componentDidUpdate (prevProps, prevState) {
       if(prevProps.params.id !== this.props.params.id)
-        this.props.findBooksByCollection(parseInt(this.props.params.id, 10));
+        this.props.findBooksByCollectionId(parseInt(this.props.params.id, 10));
   }
 
   render() {
@@ -42,7 +40,7 @@ class Collection extends Component {
 
 Collection.propTypes = {
   books: T.array.isRequired,
-  findBooksByCollection: T.func.isRequired,
+  findBooksByCollectionId: T.func.isRequired,
 };
 
 // Collection.defaultProps = {
@@ -57,4 +55,4 @@ function mapStateToProps(appState) {
   };
 }
 
-export default connect(mapStateToProps, {findBooksByCollection})(Collection);
+export default connect(mapStateToProps, {findBooksByCollectionId})(Collection);

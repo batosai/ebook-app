@@ -5,6 +5,7 @@ const io      = require('socket.io')(http);
 
 let libraries   = require('./api/libraries.json');
 let books       = require('./api/books.json');
+let book        = require('./api/book.json');
 let collections = require('./api/collections.json');
 
 const types = require('./types');
@@ -19,6 +20,16 @@ const Book = {
       b = books.filter(book => book.collection_id === id);
       socket.emit('action', {
           type: types.BOOKS_SUCCESS,
+          payload: {books: b}
+      });
+    }
+    return b;
+  },
+  findById: (socket, id) => {
+    if(id !== undefined) {
+      b = book.filter(book => book.id === id);
+      socket.emit('action', {
+          type: types.BOOK_SUCCESS,
           payload: {books: b}
       });
     }
@@ -127,6 +138,9 @@ io.on('connection', function(socket){
         case types.BOOKS_REQUEST:
           collection_id = action.payload.id;
           Book.findByCollectionId(socket, collection_id);
+          break;
+        case types.BOOK_REQUEST:
+          Book.findById(socket, action.payload.id);
           break;
         case types.BOOK_DELETE_REQUEST:
           Book.delete(socket, action.payload.id);

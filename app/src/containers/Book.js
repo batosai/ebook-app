@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes as T } from 'react';
+import { connect } from 'react-redux';
 import Chip from 'material-ui/Chip';
 import Dialog from 'material-ui/Dialog';
 import Subheader from 'material-ui/Subheader';
@@ -8,6 +9,8 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import img1 from '../files/awaken-5-ki-oon.jpg';
+
+import { findBookById } from '../actions/books';
 
 const tile = {
   id: 1,
@@ -41,6 +44,15 @@ class Book extends Component {
     value: 1,
   };
 
+  componentWillMount() {
+    this.props.findBookById(parseInt(this.props.params.id, 10));
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+      if(prevProps.params.id !== this.props.params.id)
+        this.props.findBookById(parseInt(this.props.params.id, 10));
+  }
+
   handleOpen = () => {
     this.setState({open: true});
   };
@@ -69,22 +81,27 @@ class Book extends Component {
     return (
       <div>
         <Subheader>Subheader</Subheader>
-        <img src={tile.img} alt="" />
-        <h1>{tile.title}</h1>
+        <img src={this.props.book.img ? this.props.book.img : tile.img} alt="" />
+        <h1>{this.props.book.title ? this.props.book.title : tile.title}</h1>
         <div style={styles.wrapper}>
-          <Chip style={styles.chip}>CBZ</Chip>
-          <Chip style={styles.chip}>PDF</Chip>
+          {this.props.book.formats.map(format => (
+            <Chip key={format} style={styles.chip}>{format}</Chip>
+          ))}
           <Chip
             onRequestDelete={handleRequestDelete}
             onTouchTap={handleTouchTap}
             style={styles.chip} >EPUB</Chip>
         </div>
-        <p>22 pages</p>
-        <p>Glénat</p>
-        <p>Lu</p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <p>{this.props.book.number_pages} pages</p>
+        <p>{this.props.book.editor}</p>
+        <p>{this.props.book.read ? 'Lu' : 'Non lu'}</p>
+        <p>{this.props.book.description}</p>
         <RaisedButton label="Modify" secondary={true} style={{margin: 12}} onTouchTap={this.handleOpen} />
 
+        // TODO
+        // title, author, format, nb pages, editor, lu/non lu, description, nombre de volumes, Année, Mot clés
+        // collection
+        // onglet 2 : couverture
         <Dialog
             title={`Edit ${tile.title}`}
             actions={actions}
@@ -118,9 +135,16 @@ class Book extends Component {
   }
 }
 
-// Book.propTypes = {
-//   open: T.bool,
-//   asideToggle: T.func.isRequired,
-// };
+Book.propTypes = {
+  book: T.object.isRequired,
+  findBookById: T.func.isRequired,
+};
 
-export default Book;
+function mapStateToProps(appState) {
+  return {
+    book: appState.books.length ? appState.books[0] : {formats:[]},
+    ...appState
+  };
+}
+
+export default connect(mapStateToProps, {findBookById})(Book);

@@ -64,6 +64,7 @@ class ModalLibrary extends Component {
         onRequestClose={this.handleClose}
       >
         <TextField
+          autoFocus
           hintText="Name"
           floatingLabelText="Name"
           errorText="This name is required"
