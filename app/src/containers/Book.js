@@ -5,6 +5,7 @@ import Dialog from 'material-ui/Dialog';
 import Subheader from 'material-ui/Subheader';
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
+import Toggle from 'material-ui/Toggle';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
@@ -119,9 +120,32 @@ class Book extends Component {
             open={this.state.open}
             onRequestClose={this.handleClose}
             autoScrollBodyContent={true}
+            contentStyle={{width: "100%", height: "100%", padding: 0}}
           >
+            <TextField
+              floatingLabelText="Title" style={{width: "48%"}} />
+            <div style={{marginLeft: "4%", paddingTop: "60px", width: "48%", height: "12px", display: "inline-block"}}>
+              <Toggle
+                label="Read"
+                style={{width: "30%", float: "right"}}
+              />
+              </div>
+            <br />
+            <TextField
+              floatingLabelText="Author" style={{width: "48%"}} />
+            <TextField
+              floatingLabelText="Editor" style={{marginLeft: "4%", width: "48%"}} />
+            <br />
+            <TextField
+              floatingLabelText="Nb pages" type="number" style={{width: "30%"}} />
+            <TextField
+              floatingLabelText="Nb vol." type="number" style={{marginLeft: "5%", width: "30%"}} />
+            <TextField
+              floatingLabelText="Year" type="number" style={{marginLeft: "5%", width: "30%"}} /><br />
+
             <SelectField
-              floatingLabelText="Frequency"
+              fullWidth={true}
+              floatingLabelText="Collection"
               value={this.state.value}
               onChange={this.handleChange}
             >
@@ -130,14 +154,11 @@ class Book extends Component {
               <MenuItem value={3} primaryText="Weeknights" />
               <MenuItem value={4} primaryText="Weekends" />
               <MenuItem value={5} primaryText="Weekly" />
-            </SelectField><br />
-            <TextField
-              hintText="Hint Text"
-            /><br />
-            <br />
+            </SelectField>
             <TextField fullWidth={true}
-              hintText="The hint text can be as long as you want, it will wrap."
-            /><br />
+              multiLine={true}
+              floatingLabelText="Description"
+            />
 
           </Dialog>
       </div>
