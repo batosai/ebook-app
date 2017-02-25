@@ -6,6 +6,8 @@ module.exports = {
   'BOOKS_FAILURE': 'books:failure',
   'BOOK_REQUEST' : 'book:request',
   'BOOK_SUCCESS' : 'book:success',
+  'BOOK_EDIT_REQUEST' : 'book:edit:request',
+  'BOOK_EDIT_SUCCESS' : 'book:edit:success',
   'BOOK_DELETE_REQUEST' : 'book:delete:request',
   'BOOK_DELETE_SUCCESS' : 'book:delete:success',
   'ASIDE_TOGGLE': 'books:failure',

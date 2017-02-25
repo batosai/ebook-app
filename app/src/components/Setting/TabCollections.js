@@ -4,39 +4,67 @@ import { List, ListItem } from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import { deleteCollection } from '../../actions/collections';
-import { modalCollectionToggle, modalDeleteToggle } from '../../actions/modals';
 
-import ModalCollection from './ModalCollection';
-import ModalDelete from './ModalDelete';
+import ModalCollection from '../Modal/Collection';
+import ModalDelete from '../Modal/Delete';
 
 import toolsActions from './toolsActions';
 
 class TabCollections extends Component {
   state = {
     id: 0,
-    collection:{}
+    collection:{},
+    modal: {
+      delete: { open:false },
+      collection: { open:false }
+    }
+  };
+
+  modalToggle = (type) => {
+    let modal = this.state.modal;
+    modal[type].open = !modal[type].open;
+    this.setState({
+      modal
+    });
   };
 
   handleCreate = () => {
-    this.props.modalCollectionToggle();
+    this.modalToggle('collection');
   };
 
   handleEdit = (collection) => {
     this.setState({
       collection
     });
-    this.props.modalCollectionToggle();
+    this.modalToggle('collection');
   };
 
   handleDelete = () => {
     this.props.deleteCollection(this.state.id);
-    this.props.modalDeleteToggle('collection');
+    this.modalToggle('delete');
   };
 
   confirmDelete = (id) => {
     this.setState({id});
-    this.props.modalDeleteToggle('collection');
+    this.modalToggle('delete');
   };
+
+  renderModalDelete = () => (
+    <ModalDelete
+      title="Collection"
+      open={this.state.modal.delete.open}
+      onRequestClose={()=>this.modalToggle('delete')}
+      onRequestDelete={this.handleDelete}>
+      Delete collection?
+    </ModalDelete>
+  );
+
+  renderModalCollection = () => (
+    <ModalCollection
+      open={this.state.modal.collection.open}
+      onRequestClose={()=>this.modalToggle('collection')}
+      collection={this.state.collection} />
+  );
 
   render() {
     return (
@@ -54,8 +82,8 @@ class TabCollections extends Component {
         </List>
         <RaisedButton secondary={true} onTouchTap={this.handleCreate} label="Add" fullWidth={true} />
 
-        <ModalDelete type="collection" title="Collection" onDelete={this.handleDelete}>Delete collection?</ModalDelete>
-        <ModalCollection collection={this.state.collection} />
+        {this.renderModalDelete()}
+        {this.renderModalCollection()}
       </div>
     );
   }
@@ -63,7 +91,6 @@ class TabCollections extends Component {
 
 TabCollections.propTypes = {
   collections: T.array,
-  modalCollectionToggle: T.func.isRequired,
   deleteCollection: T.func.isRequired
 };
 
@@ -73,4 +100,4 @@ function mapStateToProps(appState) {
   };
 }
 
-export default connect(mapStateToProps, {modalCollectionToggle, modalDeleteToggle, deleteCollection})(TabCollections);
+export default connect(mapStateToProps, {deleteCollection})(TabCollections);

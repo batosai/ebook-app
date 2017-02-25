@@ -6,7 +6,6 @@ import Dialog from 'material-ui/Dialog';
 import modalActions from './modalActions';
 
 import { createLibrary, editLibrary } from '../../actions/libraries';
-import { modalLibraryToggle } from '../../actions/modals';
 
 class ModalLibrary extends Component {
   state = {
@@ -28,7 +27,7 @@ class ModalLibrary extends Component {
       id:null,
       name:''
     });
-    this.props.modalLibraryToggle();
+    this.props.onRequestClose();
   };
 
   handleChange = (event) => {
@@ -45,7 +44,7 @@ class ModalLibrary extends Component {
       this.props.createLibrary(this.state.name);
     }
 
-    this.props.modalLibraryToggle();
+    this.props.onRequestClose();
     this.setState({
       id:null,
       name:''
@@ -60,7 +59,7 @@ class ModalLibrary extends Component {
         title={this.state.id ? "Edit library" : "Add library"}
         actions={actions}
         modal={false}
-        open={this.props.modals.library.open}
+        open={this.props.open}
         onRequestClose={this.handleClose}
       >
         <TextField
@@ -77,17 +76,10 @@ class ModalLibrary extends Component {
 }
 
 ModalLibrary.propTypes = {
-  modals: T.object.isRequired,
-  modalLibraryToggle: T.func.isRequired,
+  open: T.bool.isRequired,
   createLibrary: T.func.isRequired,
   editLibrary: T.func.isRequired,
   library: T.object
 };
 
-function mapStateToProps(appState) {
-  return {
-    modals: appState.modals,
-  };
-}
-
-export default connect(mapStateToProps, {modalLibraryToggle, createLibrary, editLibrary})(ModalLibrary);
+export default connect(null, {createLibrary, editLibrary})(ModalLibrary);

@@ -5,8 +5,11 @@ export const BOOKS_FAILURE = 'books:failure';
 
 export const BOOK_REQUEST = 'book:request';
 export const BOOK_SUCCESS = 'book:success';
+export const BOOK_EDIT_REQUEST = 'book:edit:request';
+export const BOOK_EDIT_SUCCESS = 'book:edit:success';
 export const BOOK_DELETE_REQUEST = 'book:delete:request';
 export const BOOK_DELETE_SUCCESS = 'book:delete:success';
+
 
 export const ASIDE_TOGGLE = 'aside:toggle';
 
@@ -26,8 +29,3 @@ export const LIBRARIES_FAILURE = 'libraries:failure';
 export const LIBRARY_ADD_REQUEST    = 'library:add:request';
 export const LIBRARY_EDIT_REQUEST   = 'library:edit:request';
 export const LIBRARY_DELETE_REQUEST = 'library:delete:request';
-
-export const MODAL_COLLECTION_TOGGLE = 'popin:collection:toggle';
-export const MODAL_LIBRARY_TOGGLE    = 'popin:library:toggle';
-export const MODAL_DELETE_TOGGLE     = 'popin:delete:toggle';
-export const MODAL_DELETE_TYPE       = 'popin:delete:type';

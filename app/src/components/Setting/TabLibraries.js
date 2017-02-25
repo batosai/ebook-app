@@ -4,39 +4,67 @@ import { List, ListItem } from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import { deleteLibrary } from '../../actions/libraries';
-import { modalLibraryToggle, modalDeleteToggle } from '../../actions/modals';
 
-import ModalLibrary from './ModalLibrary';
-import ModalDelete from './ModalDelete';
+import ModalLibrary from '../Modal/Library';
+import ModalDelete from '../Modal/Delete';
 
 import toolsActions from './toolsActions';
 
 class TabLibraries extends Component {
   state = {
     id: 0,
-    library: {}
+    library: {},
+    modal: {
+      delete: { open:false },
+      library: { open:false }
+    }
+  };
+
+  modalToggle = (type) => {
+    let modal = this.state.modal;
+    modal[type].open = !modal[type].open;
+    this.setState({
+      modal
+    });
   };
 
   handleCreate = () => {
-    this.props.modalLibraryToggle();
+    this.modalToggle('library');
   };
 
   handleEdit = (library) => {
     this.setState({
       library
     });
-    this.props.modalLibraryToggle();
+    this.modalToggle('library');
   };
 
   handleDelete = () => {
     this.props.deleteLibrary(this.state.id);
-    this.props.modalDeleteToggle('library');
+    this.modalToggle('delete');
   };
 
   confirmDelete = (id) => {
     this.setState({id});
-    this.props.modalDeleteToggle('library');
+    this.modalToggle('delete');
   };
+
+  renderModalDelete = () => (
+    <ModalDelete
+      title="Library"
+      open={this.state.modal.delete.open}
+      onRequestClose={()=>this.modalToggle('delete')}
+      onRequestDelete={this.handleDelete}>
+      Delete library?
+    </ModalDelete>
+  );
+
+  renderModalLibrary = () => (
+    <ModalLibrary
+      open={this.state.modal.library.open}
+      onRequestClose={()=>this.modalToggle('library')}
+      library={this.state.library} />
+  );
 
   render() {
     return (
@@ -54,8 +82,8 @@ class TabLibraries extends Component {
         </List>
         <RaisedButton secondary={true} onTouchTap={this.handleCreate} label="Add" fullWidth={true} />
 
-        <ModalDelete type="library" title="Library" onDelete={this.handleDelete}>Delete library?</ModalDelete>
-        <ModalLibrary library={this.state.library} />
+        {this.renderModalDelete()}
+        {this.renderModalLibrary()}
       </div>
     );
   }
@@ -64,7 +92,6 @@ class TabLibraries extends Component {
 TabLibraries.propTypes = {
   libraries: T.array,
   deleteLibrary: T.func.isRequired,
-  modalLibraryToggle: T.func.isRequired,
 };
 
 function mapStateToProps(appState) {
@@ -73,4 +100,4 @@ function mapStateToProps(appState) {
   };
 }
 
-export default connect(mapStateToProps, {modalLibraryToggle, modalDeleteToggle,  deleteLibrary})(TabLibraries);
+export default connect(mapStateToProps, {deleteLibrary})(TabLibraries);

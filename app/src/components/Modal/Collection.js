@@ -8,7 +8,6 @@ import Dialog from 'material-ui/Dialog';
 import modalActions from './modalActions';
 
 import {createCollection, editCollection } from '../../actions/collections';
-import { modalCollectionToggle } from '../../actions/modals';
 
 class ModalCollection extends Component {
   state = {
@@ -33,7 +32,7 @@ class ModalCollection extends Component {
       title:'',
       library_id:null
     });
-    this.props.modalCollectionToggle();
+    this.props.onRequestClose();
   };
 
   handleChangeTextField = (event) => {
@@ -64,7 +63,7 @@ class ModalCollection extends Component {
       title:'',
       library_id:null
     });
-    this.props.modalCollectionToggle();
+    this.props.onRequestClose();
   };
 
   render() {
@@ -75,7 +74,7 @@ class ModalCollection extends Component {
         title={this.state.id ? "Edit collection" : "Add collection"}
         actions={actions}
         modal={false}
-        open={this.props.modals.collection.open}
+        open={this.props.open}
         onRequestClose={this.handleClose}
       >
         <TextField
@@ -103,9 +102,8 @@ class ModalCollection extends Component {
 }
 
 ModalCollection.propTypes = {
-  modals: T.object.isRequired,
+  open: T.bool.isRequired,
   libraries: T.array,
-  modalCollectionToggle: T.func.isRequired,
   editCollection: T.func.isRequired,
   createCollection: T.func.isRequired,
   collection: T.object
@@ -117,9 +115,8 @@ ModalCollection.defaultProps = {
 
 function mapStateToProps(appState) {
   return {
-    modals: appState.modals,
     libraries: appState.libraries
   };
 }
 
-export default connect(mapStateToProps, {modalCollectionToggle, createCollection, editCollection})(ModalCollection);
+export default connect(mapStateToProps, {createCollection, editCollection})(ModalCollection);

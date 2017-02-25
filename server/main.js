@@ -28,9 +28,10 @@ const Book = {
   findById: (socket, id) => {
     if(id !== undefined) {
       b = book.filter(book => book.id === id);
+
       socket.emit('action', {
           type: types.BOOK_SUCCESS,
-          payload: {books: b}
+          payload: {book: b.shift()}
       });
     }
     return b;
@@ -41,6 +42,17 @@ const Book = {
 
       if(index > -1) {
           books.splice(index, 1);
+      }
+    }
+  },
+  edit: (socket, data) => {
+    if(data !== undefined) {
+      const index = books.findIndex(b => b.id === data.id);
+      const i = book.findIndex(b => b.id === data.id);
+
+      if(index > -1) {
+          books[index] = Object.assign({}, books[index], data);
+          book[i] = Object.assign({}, book[i], data);
       }
     }
   }
@@ -144,6 +156,10 @@ io.on('connection', function(socket){
           break;
         case types.BOOK_DELETE_REQUEST:
           Book.delete(socket, action.payload.id);
+          Book.findByCollectionId(socket, collection_id);
+          break;
+        case types.BOOK_EDIT_REQUEST:
+          Book.edit(socket, action.payload.book);
           Book.findByCollectionId(socket, collection_id);
           break;
       }
