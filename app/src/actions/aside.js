@@ -1,7 +1,7 @@
 import { createAction } from '../helpers';
-import { ASIDE_TOGGLE } from '../types';
+import * as types from '../types';
 
-const toggle = createAction(ASIDE_TOGGLE, () => null);
+const toggle = createAction(types.ASIDE_TOGGLE, () => null);
 export const asideToggle = text => dispatch => {
   dispatch(toggle(text));
 };

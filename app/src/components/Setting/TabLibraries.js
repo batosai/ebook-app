@@ -5,8 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import { deleteLibrary } from '../../actions/libraries';
 
-import ModalLibrary from '../Modal/Library';
-import ModalDelete from '../Modal/Delete';
+import * as Modal from '../Modal';
 
 import toolsActions from './toolsActions';
 
@@ -50,17 +49,17 @@ class TabLibraries extends Component {
   };
 
   renderModalDelete = () => (
-    <ModalDelete
+    <Modal.Delete
       title="Library"
       open={this.state.modal.delete.open}
       onRequestClose={()=>this.modalToggle('delete')}
       onRequestDelete={this.handleDelete}>
       Delete library?
-    </ModalDelete>
+    </Modal.Delete>
   );
 
   renderModalLibrary = () => (
-    <ModalLibrary
+    <Modal.Library
       open={this.state.modal.library.open}
       onRequestClose={()=>this.modalToggle('library')}
       library={this.state.library} />

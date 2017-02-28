@@ -1,6 +1,6 @@
 import React, { Component, PropTypes as T } from 'react';
-import { GridTile } from 'material-ui/GridList';
 import { browserHistory } from 'react-router';
+import { GridTile } from 'material-ui/GridList';
 
 import Action from './Action';
 

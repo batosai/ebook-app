@@ -1,4 +1,4 @@
-import { BOOK_SUCCESS, } from '../types';
+import * as types from '../types';
 
 import { createReducer } from '../helpers';
 
@@ -6,7 +6,7 @@ const initialState = { /* {id, img, title, collection_id, author, editor, format
 
 const reducers = {
 
-  [BOOK_SUCCESS]: (prevState, payload) =>
+  [types.BOOK_SUCCESS]: (prevState, payload) =>
     payload.book,
 
 }

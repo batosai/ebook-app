@@ -1,7 +1,7 @@
 import { createAction } from '../helpers';
-import { BOOKS_REQUEST } from '../types';
+import * as types from '../types';
 
-const booksRequest = createAction(BOOKS_REQUEST, (id) => ({ id }), {emit:true});
+const booksRequest = createAction(types.BOOKS_REQUEST, (id) => ({ id }), {emit:true});
 export const findBooksByCollectionId = slug => dispatch => {
   dispatch(booksRequest(slug));
 };

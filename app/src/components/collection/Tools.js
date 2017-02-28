@@ -13,8 +13,7 @@ import EditIcon from 'material-ui/svg-icons/editor/mode-edit';
 import VisibilityIcon from 'material-ui/svg-icons/action/visibility';
 import { fullWhite } from 'material-ui/styles/colors';
 
-import ModalDelete from '../Modal/Delete';
-import ModalBook from '../Modal/Book';
+import * as Modal from '../Modal';
 
 import { deleteBook } from '../../actions/book';
 
@@ -50,19 +49,19 @@ class Tools extends Component {
   };
 
   renderModalBook = () => (
-    <ModalBook
+    <Modal.Book
       open={this.state.modal.book.open}
       onRequestClose={()=>this.modalToggle('book')}
       id={this.props.tile.id} />
   );
 
   renderModalDelete = () => (
-    <ModalDelete
+    <Modal.Delete
       open={this.state.modal.delete.open}
       onRequestClose={()=>this.modalToggle('delete')}
       onRequestDelete={this.handleDelete}>
       Delete book?
-    </ModalDelete>
+    </Modal.Delete>
   );
 
   render() {

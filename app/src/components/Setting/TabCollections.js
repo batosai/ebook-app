@@ -5,8 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import { deleteCollection } from '../../actions/collections';
 
-import ModalCollection from '../Modal/Collection';
-import ModalDelete from '../Modal/Delete';
+import * as Modal from '../Modal';
 
 import toolsActions from './toolsActions';
 
@@ -50,17 +49,17 @@ class TabCollections extends Component {
   };
 
   renderModalDelete = () => (
-    <ModalDelete
+    <Modal.Delete
       title="Collection"
       open={this.state.modal.delete.open}
       onRequestClose={()=>this.modalToggle('delete')}
       onRequestDelete={this.handleDelete}>
       Delete collection?
-    </ModalDelete>
+    </Modal.Delete>
   );
 
   renderModalCollection = () => (
-    <ModalCollection
+    <Modal.Collection
       open={this.state.modal.collection.open}
       onRequestClose={()=>this.modalToggle('collection')}
       collection={this.state.collection} />

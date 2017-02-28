@@ -1,6 +1,6 @@
 import React, { Component, PropTypes as T } from 'react';
 import { connect } from 'react-redux';
-import Tiles from '../components/collection/Tiles';
+import Tiles from '../components/Collection/Tiles';
 
 import { findBooksByCollectionId } from '../actions/books';
 

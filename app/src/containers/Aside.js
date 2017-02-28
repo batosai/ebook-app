@@ -7,9 +7,7 @@ import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import Library from '../components/Library';
 import Tools from '../components/Aside/Tools';
 
-import { asideToggle } from '../actions/aside';
-import { findLibraries } from '../actions/libraries';
-import { findCollections } from '../actions/collections';
+import { asideToggle, findLibraries, findCollections } from '../actions';
 
 const style = {
   root: {

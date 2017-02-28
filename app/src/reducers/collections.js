@@ -1,4 +1,4 @@
-import { COLLECTIONS_SUCCESS, COLLECTIONS_FILTER } from '../types';
+import * as types from '../types';
 
 import { createReducer } from '../helpers';
 
@@ -9,12 +9,12 @@ const initialState = {
 
 const reducers = {
 
-  [COLLECTIONS_SUCCESS]: (prevState, payload) => Object.assign({}, prevState, {
+  [types.COLLECTIONS_SUCCESS]: (prevState, payload) => Object.assign({}, prevState, {
     all: payload.collections,
     items: payload.collections,
   }),
 
-  [COLLECTIONS_FILTER]: (prevState, id) => {
+  [types.COLLECTIONS_FILTER]: (prevState, id) => {
     if(id === undefined) {
       return Object.assign({}, prevState, {
         items: prevState.all

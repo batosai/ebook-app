@@ -10,7 +10,6 @@ module.exports = {
   'BOOK_EDIT_SUCCESS' : 'book:edit:success',
   'BOOK_DELETE_REQUEST' : 'book:delete:request',
   'BOOK_DELETE_SUCCESS' : 'book:delete:success',
-  'ASIDE_TOGGLE': 'books:failure',
   'COLLECTIONS_REQUEST': 'collections:request',
   'COLLECTIONS_SUCCESS': 'collections:success',
   'COLLECTIONS_FAILURE': 'collections:failure',

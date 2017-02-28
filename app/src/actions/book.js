@@ -1,17 +1,17 @@
 import { createAction } from '../helpers';
-import { BOOK_REQUEST, BOOK_DELETE_REQUEST, BOOK_EDIT_REQUEST } from '../types';
+import * as types from '../types';
 
-const bookRequest = createAction(BOOK_REQUEST, (id) => ({ id }), {emit:true});
+const bookRequest = createAction(types.BOOK_REQUEST, (id) => ({ id }), {emit:true});
 export const findBookById = id => dispatch => {
   dispatch(bookRequest(id));
 };
 
-const bookDeleteRequest = createAction(BOOK_DELETE_REQUEST, (id) => ({ id }), {emit:true});
+const bookDeleteRequest = createAction(types.BOOK_DELETE_REQUEST, (id) => ({ id }), {emit:true});
 export const deleteBook = book => dispatch => {
   dispatch(bookDeleteRequest(book.id));
 };
 
-const bookEditRequest = createAction(BOOK_EDIT_REQUEST, (book) => ({book}), {emit:true});
+const bookEditRequest = createAction(types.BOOK_EDIT_REQUEST, (book) => ({book}), {emit:true});
 export const editBook = book => dispatch => {
   dispatch(bookEditRequest(book));
 };

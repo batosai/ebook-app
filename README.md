@@ -1,11 +1,10 @@
 TODO
 
-- re-organiser le code server
-- revoir tous les fichiers de l'app
-  - syntaxe, espace ou pas entre {}
-  - arbo
-  - nommage
-  - appel des types
+* re-organiser le code server
+* revoir tous les fichiers de l'app
+  * syntaxe, espace ou pas entre {}
+  * arbo
+  * appel des types
 - drag and drop
 - skyn
 -

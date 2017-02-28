@@ -1,4 +1,3 @@
-
 export const BOOKS_REQUEST = 'books:request';
 export const BOOKS_SUCCESS = 'books:success';
 export const BOOKS_FAILURE = 'books:failure';
@@ -9,7 +8,6 @@ export const BOOK_EDIT_REQUEST = 'book:edit:request';
 export const BOOK_EDIT_SUCCESS = 'book:edit:success';
 export const BOOK_DELETE_REQUEST = 'book:delete:request';
 export const BOOK_DELETE_SUCCESS = 'book:delete:success';
-
 
 export const ASIDE_TOGGLE = 'aside:toggle';
 

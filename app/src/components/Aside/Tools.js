@@ -34,12 +34,6 @@ class Tools extends Component {
     }
   }
 
-  componentDidUpdate (nextProps, nextState) {
-    if(nextProps.libraries !== this.props.libraries) {
-      // this.props.getLibraries();
-    }
-  }
-
   render() {
     return (
       <Toolbar style={{backgroundColor: 'transparent', marginTop: '-4px', padding: 0}}>

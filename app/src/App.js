@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import TopBar from './components/topBar/Bar';
+import TopBar from './components/TopBar';
 import Aside from './containers/Aside';
 
 class App extends Component {
