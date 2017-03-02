@@ -1,13 +1,10 @@
 import React, { Component, PropTypes as T } from 'react';
-import { connect } from 'react-redux';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import Library from '../components/Library';
-import Tools from '../components/Aside/Tools';
-
-import { asideToggle, findLibraries, findCollections } from '../actions';
+import Library from '../Library';
+import Tools from '../../containers/Aside/Tools';
 
 const style = {
   root: {
@@ -61,11 +58,4 @@ Aside.defaultProps = {
   collections: []
 };
 
-function mapStateToProps(appState) {
-  return {
-    open: appState.aside.open,
-    collections: appState.collections.items,
-  };
-}
-
-export default connect(mapStateToProps, {asideToggle, findLibraries, findCollections})(Aside);
+export default Aside;

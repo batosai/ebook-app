@@ -1,5 +1,4 @@
 import React, { Component, PropTypes as T } from 'react';
-import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import MenuItem from 'material-ui/MenuItem';
 import IconMenu from 'material-ui/IconMenu';
@@ -14,8 +13,6 @@ import VisibilityIcon from 'material-ui/svg-icons/action/visibility';
 import { fullWhite } from 'material-ui/styles/colors';
 
 import * as Modal from '../Modal';
-
-import { deleteBook } from '../../actions/book';
 
 class Tools extends Component {
 
@@ -100,10 +97,4 @@ Tools.propTypes = {
   deleteBook: T.func.isRequired,
 };
 
-function mapStateToProps(appState) {
-  return {
-    modals: appState.modals,
-  };
-}
-
-export default connect(mapStateToProps, {deleteBook})(Tools);
+export default Tools;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Progress from '../components/Progress';
+import Progress from './Progress';
 
 class Task extends Component {
 

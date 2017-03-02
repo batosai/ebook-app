@@ -1,8 +1,5 @@
 import React, { Component, PropTypes as T } from 'react';
-import { connect } from 'react-redux';
-import Tiles from '../components/Collection/Tiles';
-
-import { findBooksByCollectionId } from '../actions/books';
+import Tiles from './Tiles';
 
 const style = {
   root: {
@@ -43,16 +40,4 @@ Collection.propTypes = {
   findBooksByCollectionId: T.func.isRequired,
 };
 
-// Collection.defaultProps = {
-//   books: []
-// };
-
-
-function mapStateToProps(appState) {
-  return {
-    books: appState.books,
-    ...appState
-  };
-}
-
-export default connect(mapStateToProps, {findBooksByCollectionId})(Collection);
+export default Collection;

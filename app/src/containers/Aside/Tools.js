@@ -1,20 +1,19 @@
 import { connect } from 'react-redux';
-import Splash from '../components/Splash';
+import Tools from '../../components/Aside/Tools';
 
-import { getLibraries, getCollections } from '../actions';
+import { findCollectionByLibrary } from '../../actions';
 
 const mapStateToProps = (appState) => {
   return {
-    collections: appState.collections.items,
+    libraries: appState.libraries,
   };
 };
 
 const mapDispatchToProps = {
-  getLibraries,
-  getCollections
+  findCollectionByLibrary
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Splash);
+)(Tools);

@@ -1,20 +1,22 @@
 import { connect } from 'react-redux';
-import Splash from '../components/Splash';
+import Aside from '../../components/Aside';
 
-import { getLibraries, getCollections } from '../actions';
+import { asideToggle, findLibraries, findCollections } from '../../actions';
 
 const mapStateToProps = (appState) => {
   return {
+    open: appState.aside.open,
     collections: appState.collections.items,
   };
 };
 
 const mapDispatchToProps = {
-  getLibraries,
-  getCollections
+  asideToggle,
+  findLibraries,
+  findCollections
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Splash);
+)(Aside);

@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "0.8.4"
+    "react-scripts": "0.8.4",
+    "redux-mock-store": "^1.2.2"
   },
   "dependencies": {
     "material-ui": "^0.16.6",

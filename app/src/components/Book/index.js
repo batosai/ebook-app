@@ -1,12 +1,9 @@
 import React, { Component, PropTypes as T } from 'react';
-import { connect } from 'react-redux';
 import Chip from 'material-ui/Chip';
 import Subheader from 'material-ui/Subheader';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import { findBookById } from '../actions/book';
-
-import ModalBook from '../components/Modal/Book';
+import ModalBook from '../../containers/Modal/Book';
 
 const styles = {
   chip: {
@@ -105,11 +102,4 @@ Book.propTypes = {
   findBookById: T.func.isRequired,
 };
 
-function mapStateToProps(appState) {
-  return {
-    book: appState.book,
-    ...appState
-  };
-}
-
-export default connect(mapStateToProps, {findBookById})(Book);
+export default Book;

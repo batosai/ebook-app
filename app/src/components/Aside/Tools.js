@@ -1,5 +1,4 @@
 import React, { Component, PropTypes as T } from 'react';
-import { connect } from 'react-redux';
 import IconButton from 'material-ui/IconButton';
 import { Toolbar, ToolbarGroup, ToolbarTitle, ToolbarSeparator } from 'material-ui/Toolbar';
 import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
@@ -7,8 +6,6 @@ import AddIcon from 'material-ui/svg-icons/content/add';
 import MenuItem from 'material-ui/MenuItem';
 import IconMenu from 'material-ui/IconMenu';
 import { fullWhite } from 'material-ui/styles/colors';
-
-import { findCollectionByLibrary } from '../../actions/collections';
 
 class Tools extends Component {
   state = {
@@ -65,10 +62,4 @@ Tools.defaultProps = {
   libraries: [],
 };
 
-function mapStateToProps(appState) {
-  return {
-    libraries: appState.libraries,
-  };
-}
-
-export default connect(mapStateToProps, {findCollectionByLibrary})(Tools);
+export default Tools;

@@ -1,9 +1,6 @@
 import React, { Component, PropTypes as T } from 'react';
-import { connect } from 'react-redux';
 import { List, ListItem } from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton';
-
-import { deleteCollection } from '../../actions/collections';
 
 import * as Modal from '../Modal';
 
@@ -93,10 +90,4 @@ TabCollections.propTypes = {
   deleteCollection: T.func.isRequired
 };
 
-function mapStateToProps(appState) {
-  return {
-    collections: appState.collections.all
-  };
-}
-
-export default connect(mapStateToProps, {deleteCollection})(TabCollections);
+export default TabCollections;

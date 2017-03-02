@@ -1,13 +1,10 @@
 import React, { Component, PropTypes as T } from 'react';
-import { connect } from 'react-redux';
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import Dialog from 'material-ui/Dialog';
 
 import modalActions from './modalActions';
-
-import {createCollection, editCollection } from '../../actions/collections';
 
 class ModalCollection extends Component {
   state = {
@@ -113,10 +110,4 @@ ModalCollection.defaultProps = {
   libraries: []
 };
 
-function mapStateToProps(appState) {
-  return {
-    libraries: appState.libraries
-  };
-}
-
-export default connect(mapStateToProps, {createCollection, editCollection})(ModalCollection);
+export default ModalCollection;

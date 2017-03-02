@@ -5,7 +5,7 @@ import CloudDownloadIcon from 'material-ui/svg-icons/file/cloud-download';
 import CloudQueueIcon from 'material-ui/svg-icons/file/cloud-queue';
 import { fullWhite } from 'material-ui/styles/colors';
 
-import Tools from './Tools';
+import Tools from '../../containers/Collection/Tools';
 
 class Action extends Component {
 

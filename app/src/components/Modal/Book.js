@@ -1,12 +1,9 @@
 import React, { Component, PropTypes as T } from 'react';
-import { connect } from 'react-redux';
 import Dialog from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import Toggle from 'material-ui/Toggle';
 import MenuItem from 'material-ui/MenuItem';
-
-import { findBookById, editBook } from '../../actions/book';
 
 import modalActions from './modalActions';
 
@@ -191,11 +188,4 @@ ModalBook.propTypes = {
   findBookById: T.func.isRequired,
 };
 
-function mapStateToProps(appState) {
-  return {
-    collections: appState.collections.items,
-    book: appState.book,
-  };
-}
-
-export default connect(mapStateToProps, {findBookById, editBook})(ModalBook);
+export default ModalBook;

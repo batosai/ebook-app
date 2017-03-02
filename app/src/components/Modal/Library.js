@@ -1,11 +1,8 @@
 import React, { Component, PropTypes as T } from 'react';
-import { connect } from 'react-redux';
 import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
 
 import modalActions from './modalActions';
-
-import { createLibrary, editLibrary } from '../../actions/libraries';
 
 class ModalLibrary extends Component {
   state = {
@@ -82,4 +79,4 @@ ModalLibrary.propTypes = {
   library: T.object
 };
 
-export default connect(null, {createLibrary, editLibrary})(ModalLibrary);
+export default ModalLibrary;

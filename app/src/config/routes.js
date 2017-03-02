@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import Splash from '../containers/Splash';
-import Task from '../containers/Task';
-import Setting from '../containers/Setting';
+import Task from '../components/Task';
+import Setting from '../components/Setting';
 import Collection from '../containers/Collection';
 import Book from '../containers/Book';
-import NotFound from '../containers/NotFound';
+import NotFound from '../components/NotFound';
 
 import App from '../App';
 

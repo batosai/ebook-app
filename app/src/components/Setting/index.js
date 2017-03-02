@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Tabs, Tab } from 'material-ui/Tabs';
 
-import TabLibraries from '../components/Setting/TabLibraries';
-import TabCollections from '../components/Setting/TabCollections';
-import TabGeneral from '../components/Setting/TabGeneral';
+import TabLibraries from '../../containers/Setting/TabLibraries';
+import TabCollections from '../../containers/Setting/TabCollections';
+import TabGeneral from './TabGeneral';
 
 class Setting extends Component {
 
