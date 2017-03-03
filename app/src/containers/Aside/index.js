@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Aside from '../../components/Aside';
 
-import { asideToggle, findLibraries, findCollections } from '../../actions';
+import { toggleAside, findLibraries, findCollections } from '../../actions';
 
 const mapStateToProps = (appState) => {
   return {
@@ -11,7 +11,7 @@ const mapStateToProps = (appState) => {
 };
 
 const mapDispatchToProps = {
-  asideToggle,
+  toggleAside,
   findLibraries,
   findCollections
 };

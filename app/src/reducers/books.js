@@ -2,7 +2,7 @@ import * as types from '../types';
 
 import { createReducer } from '../helpers';
 
-const initialState = [ /* {id, name, image, pageNumber, type, read, collection} */ ];
+const initialState = [ /* {id, title, img, collection_id} */ ];
 
 const reducers = {
 

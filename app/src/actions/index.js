@@ -1,5 +1,5 @@
-import { asideToggle } from './aside';
-export { asideToggle };
+import { toggleAside } from './aside';
+export { toggleAside };
 
 import { findBooksByCollectionId } from './books';
 export { findBooksByCollectionId };
