@@ -1,0 +1,43 @@
+exports[`Action to add libraries 1`] = `
+Object {
+  "meta": Object {
+    "emit": true,
+  },
+  "payload": Object {
+    "name": undefined,
+  },
+  "type": "library:add:request",
+}
+`;
+
+exports[`Action to delete libraries 1`] = `
+Object {
+  "meta": Object {
+    "emit": true,
+  },
+  "payload": Object {
+    "id": undefined,
+  },
+  "type": "library:delete:request",
+}
+`;
+
+exports[`Action to edit libraries 1`] = `
+Object {
+  "meta": Object {
+    "emit": true,
+  },
+  "payload": Object {},
+  "type": "library:edit:request",
+}
+`;
+
+exports[`Action to request libraries 1`] = `
+Object {
+  "meta": Object {
+    "emit": true,
+  },
+  "payload": null,
+  "type": "libraries:request",
+}
+`;

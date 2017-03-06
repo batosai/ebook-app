@@ -1,0 +1,9 @@
+exports[`Action to toggle aside 1`] = `
+Object {
+  "meta": Object {
+    "emit": false,
+  },
+  "payload": null,
+  "type": "aside:toggle",
+}
+`;

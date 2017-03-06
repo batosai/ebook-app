@@ -1,6 +1,8 @@
 import reducer from '../../reducers/book';
 import * as types from '../../types';
 
+const initialState = { /* {id, img, title, collection_id, author, editor, formats, number_pages, number_volumes, year, read, keyword, description} */ };
+
 describe('Book reducer', () => {
   it('should return the initial state', () => {
     expect(
@@ -21,11 +23,11 @@ describe('Book reducer', () => {
     };
 
     expect(
-      reducer({}, data)
+      reducer(initialState, data)
     ).toEqual({});
 
     expect(
-      reducer({}, data)
+      reducer(initialState, data)
     ).toMatchSnapshot();
 
     ////////////
@@ -52,7 +54,7 @@ describe('Book reducer', () => {
 
     expect(
       reducer(
-        {},
+        initialState,
         data
       )
     ).toEqual({
@@ -60,7 +62,7 @@ describe('Book reducer', () => {
     });
 
     expect(
-      reducer({}, data)
+      reducer(initialState, data)
     ).toMatchSnapshot();
   });
 });

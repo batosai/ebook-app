@@ -1,9 +1,9 @@
-import reducer from '../../reducers/books';
+import reducer from '../../reducers/libraries';
 import * as types from '../../types';
 
-const initialState = [ /* {id, title, img, collection_id} */ ];
+const initialState = [ /* {id, name} */ ];
 
-describe('Books reducer', () => {
+describe('Libraries reducer', () => {
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {})
@@ -14,11 +14,11 @@ describe('Books reducer', () => {
     ).toMatchSnapshot();
   });
 
-  it('should handle BOOKS_SUCCESS', () => {
+  it('should handle LIBRARIES_SUCCESS', () => {
     let data = {
-      type: types.BOOKS_SUCCESS,
+      type: types.LIBRARIES_SUCCESS,
       payload: {
-        books: []
+        libraries: []
       }
     };
 
@@ -32,13 +32,11 @@ describe('Books reducer', () => {
 
     ////////////
     data = {
-      type: types.BOOKS_SUCCESS,
+      type: types.LIBRARIES_SUCCESS,
       payload: {
-        books: [{
-          id: 1,
-          img: '',
-          title: 'run test',
-          collection_id: 2
+        libraries: [{
+          "id": 1,
+          "name": "Bande dessinée"
         }]
       }
     };
@@ -49,7 +47,7 @@ describe('Books reducer', () => {
         data
       )
     ).toEqual([
-      ...data.payload.books
+      ...data.payload.libraries
     ]);
 
     expect(

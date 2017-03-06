@@ -1,0 +1,12 @@
+exports[`Libraries reducer should handle LIBRARIES_SUCCESS 1`] = `Array []`;
+
+exports[`Libraries reducer should handle LIBRARIES_SUCCESS 2`] = `
+Array [
+  Object {
+    "id": 1,
+    "name": "Bande dessinée",
+  },
+]
+`;
+
+exports[`Libraries reducer should return the initial state 1`] = `Array []`;

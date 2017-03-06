@@ -6,14 +6,14 @@ import AppsIcon from 'material-ui/svg-icons/navigation/apps';
 
 import Tools from './Tools';
 
-import { asideToggle } from '../../actions/aside';
+import { toggleAside } from '../../actions/aside';
 
 const styles = {
   position: 'fixed'
 };
 
 class Bar extends Component {
-  handleToggle = () => this.props.asideToggle();
+  handleToggle = () => this.props.toggleAside();
 
   render() {
     return (
@@ -28,7 +28,7 @@ class Bar extends Component {
 }
 
 Bar.propTypes = {
-  asideToggle: T.func.isRequired,
+  toggleAside: T.func.isRequired,
 };
 
-export default connect(null, {asideToggle})(Bar);
+export default connect(null, {toggleAside})(Bar);

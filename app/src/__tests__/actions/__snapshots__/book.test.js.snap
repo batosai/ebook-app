@@ -1,0 +1,35 @@
+exports[`Action to create book 1`] = `
+Object {
+  "meta": Object {
+    "emit": true,
+  },
+  "payload": Object {
+    "book": undefined,
+  },
+  "type": "book:edit:request",
+}
+`;
+
+exports[`Action to delete book 1`] = `
+Object {
+  "meta": Object {
+    "emit": true,
+  },
+  "payload": Object {
+    "id": undefined,
+  },
+  "type": "book:delete:request",
+}
+`;
+
+exports[`Action to request book 1`] = `
+Object {
+  "meta": Object {
+    "emit": true,
+  },
+  "payload": Object {
+    "id": undefined,
+  },
+  "type": "book:request",
+}
+`;

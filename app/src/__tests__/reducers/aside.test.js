@@ -1,6 +1,10 @@
 import reducer from '../../reducers/aside';
 import * as types from '../../types';
 
+const initialState = {
+  open: false,
+};
+
 describe('Aside reducer', () => {
   it('should return the initial state', () => {
     expect(
@@ -16,7 +20,7 @@ describe('Aside reducer', () => {
 
   it('should handle ASIDE_TOGGLE', () => {
     expect(
-      reducer({}, {
+      reducer(initialState, {
         type: types.ASIDE_TOGGLE,
       })
     ).toEqual({
@@ -24,7 +28,7 @@ describe('Aside reducer', () => {
     });
 
     expect(
-      reducer({}, {
+      reducer(initialState, {
         type: types.ASIDE_TOGGLE,
       })
     ).toMatchSnapshot();

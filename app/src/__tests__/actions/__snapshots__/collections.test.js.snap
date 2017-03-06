@@ -1,0 +1,51 @@
+exports[`Action to add collections 1`] = `
+Object {
+  "meta": Object {
+    "emit": true,
+  },
+  "payload": Object {},
+  "type": "collection:add:request",
+}
+`;
+
+exports[`Action to delete collections 1`] = `
+Object {
+  "meta": Object {
+    "emit": true,
+  },
+  "payload": Object {
+    "id": undefined,
+  },
+  "type": "collection:delete:request",
+}
+`;
+
+exports[`Action to edit collections 1`] = `
+Object {
+  "meta": Object {
+    "emit": true,
+  },
+  "payload": Object {},
+  "type": "collection:edit:request",
+}
+`;
+
+exports[`Action to filter collections 1`] = `
+Object {
+  "meta": Object {
+    "emit": false,
+  },
+  "payload": undefined,
+  "type": "collections:filter",
+}
+`;
+
+exports[`Action to request collections 1`] = `
+Object {
+  "meta": Object {
+    "emit": true,
+  },
+  "payload": null,
+  "type": "collections:request",
+}
+`;

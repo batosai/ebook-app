@@ -1,0 +1,80 @@
+exports[`Collections reducer should handle COLLECTIONS_FILTER 1`] = `
+Object {
+  "all": Array [
+    Object {
+      "author": "jeremy",
+      "id": 1,
+      "img": "",
+      "library_id": 1,
+      "title": "run test",
+    },
+    Object {
+      "author": "jeremy",
+      "id": 2,
+      "img": "",
+      "library_id": 2,
+      "title": "run test 2",
+    },
+  ],
+  "items": Array [
+    Object {
+      "author": "jeremy",
+      "id": 2,
+      "img": "",
+      "library_id": 2,
+      "title": "run test 2",
+    },
+  ],
+}
+`;
+
+exports[`Collections reducer should handle COLLECTIONS_SUCCESS 1`] = `
+Object {
+  "all": Array [],
+  "items": Array [],
+}
+`;
+
+exports[`Collections reducer should handle COLLECTIONS_SUCCESS 2`] = `
+Object {
+  "all": Array [
+    Object {
+      "author": "jeremy",
+      "id": 1,
+      "img": "",
+      "library_id": 1,
+      "title": "run test",
+    },
+    Object {
+      "author": "jeremy",
+      "id": 2,
+      "img": "",
+      "library_id": 2,
+      "title": "run test 2",
+    },
+  ],
+  "items": Array [
+    Object {
+      "author": "jeremy",
+      "id": 1,
+      "img": "",
+      "library_id": 1,
+      "title": "run test",
+    },
+    Object {
+      "author": "jeremy",
+      "id": 2,
+      "img": "",
+      "library_id": 2,
+      "title": "run test 2",
+    },
+  ],
+}
+`;
+
+exports[`Collections reducer should return the initial state 1`] = `
+Object {
+  "all": Array [],
+  "items": Array [],
+}
+`;

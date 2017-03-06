@@ -21,7 +21,7 @@ const style = {
 
 
 class Aside extends Component {
-  handleToggle = () => this.props.asideToggle();
+  handleToggle = () => this.props.toggleAside();
 
   componentWillMount() {
     // TODO lancer à l'init, pendant le splashscreen
@@ -48,7 +48,7 @@ class Aside extends Component {
 
 Aside.propTypes = {
   open: T.bool,
-  asideToggle: T.func.isRequired,
+  toggleAside: T.func.isRequired,
   collections: T.array,
   findLibraries: T.func.isRequired,
   findCollections: T.func.isRequired,
