@@ -1,11 +1,3 @@
-export function createAction (type, payloadCreator, meta={emit:false}) {
-  return (...args) => ({
-    type,
-    meta,
-    payload: payloadCreator(...args)
-  })
-};
-
 export function createReducer (initialState, reducers) {
   return (state = initialState, { type, payload }) => {
     const reducer = reducers[type];
@@ -17,7 +9,7 @@ export function socketIoMiddleware(socket, channelName = "action") { return stor
   socket.on(channelName, store.dispatch);
 
   return next => action => {
-    if (action.meta && action.meta.emit) {
+    if (action.emit) {
       socket.emit(channelName, action);
     }
     return next(action);

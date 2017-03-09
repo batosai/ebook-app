@@ -1,14 +1,14 @@
-import { toggleAside } from './aside';
-export { toggleAside };
+import { toggleAsideAction } from './aside';
+export { toggleAsideAction };
 
-import { findBooksByCollectionId } from './books';
-export { findBooksByCollectionId };
+import { booksRequestAction } from './books';
+export { booksRequestAction };
 
-import { findBookById, deleteBook, editBook } from './book';
-export { findBookById, deleteBook, editBook };
+import { bookRequestAction, bookEditRequestAction, bookDeleteRequestAction } from './book';
+export { bookRequestAction, bookEditRequestAction, bookDeleteRequestAction };
 
-import { findCollections, findCollectionByLibrary, createCollection, editCollection, deleteCollection } from './collections';
-export { findCollections, findCollectionByLibrary, createCollection, editCollection, deleteCollection };
+import { collectionsRequestAction, collectionByLibraryAction, collectionAddRequestAction, collectionEditRequestAction, collectionDeleteRequestAction } from './collections';
+export { collectionsRequestAction, collectionByLibraryAction, collectionAddRequestAction, collectionEditRequestAction, collectionDeleteRequestAction };
 
-import { findLibraries, createLibrary, editLibrary, deleteLibrary } from './libraries';
-export { findLibraries, createLibrary, editLibrary, deleteLibrary };
+import { librariesRequestAction, libraryAddRequestAction, libraryEditRequestAction, libraryDeleteRequestAction } from './libraries';
+export { librariesRequestAction, libraryAddRequestAction, libraryEditRequestAction, libraryDeleteRequestAction };

@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import Bar from '../../components/TopBar/Bar';
 
-import { toggleAside } from '../../action';
+import { toggleAsideAction } from '../../actions';
 
-const mapDispatchToProps = {
-  toggleAside
-};
+const mapDispatchToProps = dispatch => ({
+  toggleAside: () => dispatch(toggleAsideAction())
+});
 
 export default connect(
   null,

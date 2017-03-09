@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Splash from '../components/Splash';
 
-import { getLibraries, getCollections } from '../actions';
+// import { getLibraries, getCollections } from '../actions';
 
 const mapStateToProps = (appState) => {
   return {
@@ -9,12 +9,12 @@ const mapStateToProps = (appState) => {
   };
 };
 
-const mapDispatchToProps = {
-  getLibraries,
-  getCollections
-};
+// const mapDispatchToProps = {
+//   getLibraries,
+//   getCollections
+// };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(Splash);

@@ -6,35 +6,35 @@ describe('Action', () => {
   it('to request collections', () => {
     const expectedAction = createAction(types.COLLECTIONS_REQUEST, () => null, {emit:true});
 
-    expect(actions.collectionsRequest()).toEqual(expectedAction());
-    expect(actions.collectionsRequest()).toMatchSnapshot();
+    expect(actions.collectionsRequestAction()).toEqual(expectedAction());
+    expect(actions.collectionsRequestAction()).toMatchSnapshot();
   });
 
   it('to filter collections', () => {
     const expectedAction = createAction(types.COLLECTIONS_FILTER, (id) => (id));
 
-    expect(actions.collectionByLibrary()).toEqual(expectedAction());
-    expect(actions.collectionByLibrary()).toMatchSnapshot();
+    expect(actions.collectionByLibraryAction()).toEqual(expectedAction());
+    expect(actions.collectionByLibraryAction()).toMatchSnapshot();
   });
 
   it('to add collections', () => {
     const expectedAction = createAction(types.COLLECTION_ADD_REQUEST, (data) => ({...data}), {emit:true});
 
-    expect(actions.collectionAddRequest()).toEqual(expectedAction());
-    expect(actions.collectionAddRequest()).toMatchSnapshot();
+    expect(actions.collectionAddRequestAction()).toEqual(expectedAction());
+    expect(actions.collectionAddRequestAction()).toMatchSnapshot();
   });
 
   it('to edit collections', () => {
     const expectedAction = createAction(types.COLLECTION_EDIT_REQUEST, (data) => ({...data}), {emit:true});
 
-    expect(actions.collectionEditRequest()).toEqual(expectedAction());
-    expect(actions.collectionEditRequest()).toMatchSnapshot();
+    expect(actions.collectionEditRequestAction()).toEqual(expectedAction());
+    expect(actions.collectionEditRequestAction()).toMatchSnapshot();
   });
 
   it('to delete collections', () => {
     const expectedAction = createAction(types.COLLECTION_DELETE_REQUEST, (id) => ({id}), {emit:true});
 
-    expect(actions.collectionDeleteRequest()).toEqual(expectedAction());
-    expect(actions.collectionDeleteRequest()).toMatchSnapshot();
+    expect(actions.collectionDeleteRequestAction()).toEqual(expectedAction());
+    expect(actions.collectionDeleteRequestAction()).toMatchSnapshot();
   });
 });

@@ -6,21 +6,21 @@ describe('Action', () => {
   it('to request book', () => {
     const expectedAction = createAction(types.BOOK_REQUEST, (id) => ({ id }), {emit:true});
 
-    expect(actions.bookRequest()).toEqual(expectedAction());
-    expect(actions.bookRequest()).toMatchSnapshot();
+    expect(actions.bookRequestAction()).toEqual(expectedAction());
+    expect(actions.bookRequestAction()).toMatchSnapshot();
   });
 
   it('to create book', () => {
     const expectedAction = createAction(types.BOOK_EDIT_REQUEST, (book) => ({book}), {emit:true});
 
-    expect(actions.bookEditRequest()).toEqual(expectedAction());
-    expect(actions.bookEditRequest()).toMatchSnapshot();
+    expect(actions.bookEditRequestAction()).toEqual(expectedAction());
+    expect(actions.bookEditRequestAction()).toMatchSnapshot();
   });
 
   it('to delete book', () => {
     const expectedAction = createAction(types.BOOK_DELETE_REQUEST, (id) => ({ id }), {emit:true});
 
-    expect(actions.bookDeleteRequest()).toEqual(expectedAction());
-    expect(actions.bookDeleteRequest()).toMatchSnapshot();
+    expect(actions.bookDeleteRequestAction()).toEqual(expectedAction());
+    expect(actions.bookDeleteRequestAction()).toMatchSnapshot();
   });
 });

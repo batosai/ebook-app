@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Aside from '../../components/Aside';
 
-import { toggleAside, findLibraries, findCollections } from '../../actions';
+import { toggleAsideAction, librariesRequestAction, collectionsRequestAction } from '../../actions';
 
 const mapStateToProps = (appState) => {
   return {
@@ -10,11 +10,11 @@ const mapStateToProps = (appState) => {
   };
 };
 
-const mapDispatchToProps = {
-  toggleAside,
-  findLibraries,
-  findCollections
-};
+const mapDispatchToProps = dispatch => ({
+  toggleAside: () => dispatch(toggleAsideAction()),
+  findLibraries: () => dispatch(librariesRequestAction()),
+  findCollections: () => dispatch(collectionsRequestAction())
+});
 
 export default connect(
   mapStateToProps,

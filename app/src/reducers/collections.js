@@ -1,33 +1,33 @@
 import * as types from '../types';
 
-import { createReducer } from '../helpers';
-
 const initialState = {
   all: [ /* {id, img, title, author} */ ],
   items: [ /* {id, img, title, author} */ ],
 };
 
-const reducers = {
-
-  [types.COLLECTIONS_SUCCESS]: (prevState, payload) => Object.assign({}, prevState, {
-    all: payload.collections,
-    items: payload.collections,
-  }),
-
-  [types.COLLECTIONS_FILTER]: (prevState, id) => {
-    if(id === undefined) {
-      return Object.assign({}, prevState, {
-        items: prevState.all
+const reducers = (state=initialState, {type, payload}) => {
+  switch (type) {
+    case types.COLLECTIONS_SUCCESS:
+    console.log(payload.collections);
+      return Object.assign({}, state, {
+        all: payload.collections,
+        items: payload.collections,
       });
-    }
+    case types.COLLECTIONS_FILTER:
+      if(payload === undefined) {
+        return Object.assign({}, state, {
+          items: state.all
+        });
+      }
 
-    const items = prevState.all.filter(collection => collection.library_id === id);
+      const items = state.all.filter(collection => collection.library_id === payload);
 
-    return Object.assign({}, prevState, {
-      items
-    });
-  },
-
+      return Object.assign({}, state, {
+        items
+      });
+    default:
+      return state;
+  }
 }
 
-export default createReducer(initialState, reducers);
+export default reducers;

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Tools from '../../components/Collection/Tools';
 
-import { deleteBook } from '../../actions';
+import { bookDeleteRequestAction } from '../../actions';
 
 const mapStateToProps = (appState) => {
   return {
@@ -9,9 +9,9 @@ const mapStateToProps = (appState) => {
   };
 };
 
-const mapDispatchToProps = {
-  deleteBook,
-};
+const mapDispatchToProps = dispatch => ({
+  deleteBook: id => dispatch(bookDeleteRequestAction(id)),
+});
 
 export default connect(
   mapStateToProps,

@@ -6,28 +6,28 @@ describe('Action', () => {
   it('to request libraries', () => {
     const expectedAction = createAction(types.LIBRARIES_REQUEST, () => null, {emit:true});
 
-    expect(actions.librariesRequest()).toEqual(expectedAction());
-    expect(actions.librariesRequest()).toMatchSnapshot();
+    expect(actions.librariesRequestAction()).toEqual(expectedAction());
+    expect(actions.librariesRequestAction()).toMatchSnapshot();
   });
 
   it('to add libraries', () => {
     const expectedAction = createAction(types.LIBRARY_ADD_REQUEST, (name) => ({name}), {emit:true});
 
-    expect(actions.libraryAddRequest()).toEqual(expectedAction());
-    expect(actions.libraryAddRequest()).toMatchSnapshot();
+    expect(actions.libraryAddRequestAction()).toEqual(expectedAction());
+    expect(actions.libraryAddRequestAction()).toMatchSnapshot();
   });
 
   it('to edit libraries', () => {
     const expectedAction = createAction(types.LIBRARY_EDIT_REQUEST, (data) => ({...data}), {emit:true});
 
-    expect(actions.libraryEditRequest()).toEqual(expectedAction());
-    expect(actions.libraryEditRequest()).toMatchSnapshot();
+    expect(actions.libraryEditRequestAction()).toEqual(expectedAction());
+    expect(actions.libraryEditRequestAction()).toMatchSnapshot();
   });
 
   it('to delete libraries', () => {
     const expectedAction = createAction(types.LIBRARY_DELETE_REQUEST, (id) => ({id}), {emit:true});
 
-    expect(actions.libraryDeleteRequest()).toEqual(expectedAction());
-    expect(actions.libraryDeleteRequest()).toMatchSnapshot();
+    expect(actions.libraryDeleteRequestAction()).toEqual(expectedAction());
+    expect(actions.libraryDeleteRequestAction()).toMatchSnapshot();
   });
 });

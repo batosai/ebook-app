@@ -1,14 +1,14 @@
 import * as types from '../types';
 
-import { createReducer } from '../helpers';
-
 const initialState = [ /* {id, name} */ ];
 
-const reducers = {
-
-  [types.LIBRARIES_SUCCESS]: (prevState, payload) =>
-    payload.libraries,
-
+const reducers = (state=initialState, {type, payload}) => {
+  switch (type) {
+    case types.LIBRARIES_SUCCESS:
+      return payload.libraries;
+    default:
+      return state;
+  }
 }
 
-export default createReducer(initialState, reducers);
+export default reducers;

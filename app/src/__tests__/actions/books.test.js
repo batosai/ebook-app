@@ -6,7 +6,7 @@ describe('Action', () => {
   it('to request books', () => {
     const expectedAction = createAction(types.BOOKS_REQUEST, (id) => ({ id }), {emit:true});
 
-    expect(actions.booksRequest()).toEqual(expectedAction());
-    expect(actions.booksRequest()).toMatchSnapshot();
+    expect(actions.booksRequestAction()).toEqual(expectedAction());
+    expect(actions.booksRequestAction()).toMatchSnapshot();
   });
 });

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Book from '../../components/Book';
 
-import { findBookById } from '../../actions';
+import { bookRequestAction } from '../../actions';
 
 const mapStateToProps = (appState) => {
   return {
@@ -10,9 +10,9 @@ const mapStateToProps = (appState) => {
   };
 };
 
-const mapDispatchToProps = {
-  findBookById
-};
+const mapDispatchToProps = dispatch => ({
+  findBookById: id => dispatch(bookRequestAction(id)),
+});
 
 export default connect(
   mapStateToProps,

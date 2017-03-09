@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import TabLibraries from '../../components/Setting/TabLibraries';
 
-import { deleteLibrary } from '../../actions';
+import { libraryDeleteRequestAction } from '../../actions';
 
 const mapStateToProps = (appState) => {
   return {
@@ -9,9 +9,9 @@ const mapStateToProps = (appState) => {
   };
 };
 
-const mapDispatchToProps = {
-  deleteLibrary
-};
+const mapDispatchToProps = dispatch => ({
+  deleteLibrary: library => dispatch(libraryDeleteRequestAction(library))
+});
 
 export default connect(
   mapStateToProps,

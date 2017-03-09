@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Collection from '../../components/Collection';
 
-import { findBooksByCollectionId } from '../../actions/books';
+import { booksRequestAction } from '../../actions';
 
 const mapStateToProps = (appState) => {
   return {
@@ -10,9 +10,9 @@ const mapStateToProps = (appState) => {
   };
 };
 
-const mapDispatchToProps = {
-  findBooksByCollectionId,
-};
+const mapDispatchToProps = dispatch => ({
+  findBooksByCollectionId: collection_id => dispatch(booksRequestAction(collection_id)),
+});
 
 export default connect(
   mapStateToProps,

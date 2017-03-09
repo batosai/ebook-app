@@ -36,7 +36,7 @@ class Tools extends Component {
   };
 
   handleDelete = () => {
-    this.props.deleteBook(this.props.tile);
+    this.props.deleteBook(this.props.tile.id);
     this.modalToggle('delete');
   };
 

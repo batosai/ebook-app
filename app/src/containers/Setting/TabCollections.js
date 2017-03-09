@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import TabCollections from '../../components/Setting/TabCollections';
 
-import { deleteCollection } from '../../actions';
+import { collectionDeleteRequestAction } from '../../actions';
 
 const mapStateToProps = (appState) => {
   return {
@@ -9,9 +9,9 @@ const mapStateToProps = (appState) => {
   };
 };
 
-const mapDispatchToProps = {
-  deleteCollection
-};
+const mapDispatchToProps = dispatch => ({
+  deleteCollection: collection => dispatch(collectionDeleteRequestAction(collection))
+});
 
 export default connect(
   mapStateToProps,

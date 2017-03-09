@@ -1,17 +1,19 @@
-import { createAction } from '../helpers';
 import * as types from '../types';
 
-export const bookRequest = createAction(types.BOOK_REQUEST, (id) => ({ id }), {emit:true});
-export const findBookById = id => dispatch => {
-  dispatch(bookRequest(id));
-};
+export const bookRequestAction = id => ({
+  type: types.BOOK_REQUEST,
+  emit:true,
+  payload: { id }
+});
 
-export const bookDeleteRequest = createAction(types.BOOK_DELETE_REQUEST, (id) => ({ id }), {emit:true});
-export const deleteBook = book => dispatch => {
-  dispatch(bookDeleteRequest(book.id));
-};
+export const bookDeleteRequestAction = id => ({
+  type: types.BOOK_DELETE_REQUEST,
+  emit:true,
+  payload: { id }
+});
 
-export const bookEditRequest = createAction(types.BOOK_EDIT_REQUEST, (book) => ({book}), {emit:true});
-export const editBook = book => dispatch => {
-  dispatch(bookEditRequest(book));
-};
+export const bookEditRequestAction = book => ({
+  type: types.BOOK_EDIT_REQUEST,
+  emit:true,
+  payload: { book }
+});

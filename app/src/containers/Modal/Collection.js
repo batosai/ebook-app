@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Collection from '../../components/Modal/Collection';
 
-import {createCollection, editCollection } from '../../actions';
+import {collectionAddRequestAction, collectionEditRequestAction } from '../../actions';
 
 const mapStateToProps = (appState) => {
   return {
@@ -9,10 +9,10 @@ const mapStateToProps = (appState) => {
   };
 };
 
-const mapDispatchToProps = {
-  createCollection,
-  editCollection
-};
+const mapDispatchToProps = dispatch => ({
+  createCollection: collection => dispatch(collectionAddRequestAction(collection)),
+  editCollection: collection => dispatch(collectionEditRequestAction(collection)),
+});
 
 export default connect(
   mapStateToProps,

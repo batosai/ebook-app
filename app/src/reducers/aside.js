@@ -1,16 +1,16 @@
 import * as types from '../types';
 
-import { createReducer } from '../helpers';
-
 const initialState = {
   open: false,
 };
 
-const reducers = {
-
-  [types.ASIDE_TOGGLE]: (prevState, payload) =>
-    Object.assign({}, prevState, {open: !prevState.open}),
-
+const reducers = (state=initialState, {type, payload}) => {
+  switch (type) {
+    case types.ASIDE_TOGGLE:
+      return Object.assign({}, state, {open: !state.open});
+    default:
+      return state;
+  }
 }
 
-export default createReducer(initialState, reducers);
+export default reducers;
