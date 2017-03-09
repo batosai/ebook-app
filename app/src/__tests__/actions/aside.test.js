@@ -1,9 +1,8 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import * as actions from '../../actions/aside'
-import * as types from '../../types'
-import { createAction } from '../../helpers';
+import * as actions from '../../actions/aside';
+import * as types from '../../types';
 
 const middlewares = [ thunk ];
 const mockStore = configureMockStore(middlewares);
@@ -17,10 +16,13 @@ describe('Action', () => {
       }
     });
 
-    const expectedAction = createAction(types.ASIDE_TOGGLE, () => null);
+    const expectedAction = {
+      type: types.ASIDE_TOGGLE
+    };
 
-    expect(actions.toggleAsideAction()).toEqual(expectedAction());
+    expect(actions.toggleAsideAction()).toEqual(expectedAction);
     expect(actions.toggleAsideAction()).toMatchSnapshot();
+
 
     // return store.dispatch(actions.asideToggle())
     //   .then(() => { // return of async actions
@@ -30,8 +32,8 @@ describe('Action', () => {
 });
 
 // TODO TESTS A FAIRE
-// actions
-// reducers
+// actions -> ok
+// reducers -> ok
 // components
 // containers ?
 // dispatchers ?

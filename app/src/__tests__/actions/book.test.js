@@ -1,26 +1,47 @@
-import * as actions from '../../actions/book'
-import * as types from '../../types'
-import { createAction } from '../../helpers';
+import * as actions from '../../actions/book';
+import * as types from '../../types';
 
 describe('Action', () => {
   it('to request book', () => {
-    const expectedAction = createAction(types.BOOK_REQUEST, (id) => ({ id }), {emit:true});
+    const expectedAction = {
+      type: types.BOOK_REQUEST,
+      emit:true,
+      payload: { id: 1 }
+    };
 
-    expect(actions.bookRequestAction()).toEqual(expectedAction());
-    expect(actions.bookRequestAction()).toMatchSnapshot();
+    expect(actions.bookRequestAction(1)).toEqual(expectedAction);
+    expect(actions.bookRequestAction(1)).toMatchSnapshot();
   });
 
-  it('to create book', () => {
-    const expectedAction = createAction(types.BOOK_EDIT_REQUEST, (book) => ({book}), {emit:true});
+  it('to edit book', () => {
+    const expectedAction = {
+      type: types.BOOK_EDIT_REQUEST,
+      emit:true,
+      payload: { book: {
+        title: 'my title',
+        read: false,
+        author: 'jeremy',
+        editor: 'glénat',
+        number_pages: 22,
+        number_volumes: 4,
+        year: 2010,
+        collection_id: 2,
+        description: '',
+      }}
+    };
 
-    expect(actions.bookEditRequestAction()).toEqual(expectedAction());
-    expect(actions.bookEditRequestAction()).toMatchSnapshot();
+    expect(actions.bookEditRequestAction(expectedAction.payload.book)).toEqual(expectedAction);
+    expect(actions.bookEditRequestAction(expectedAction.payload.book)).toMatchSnapshot();
   });
 
   it('to delete book', () => {
-    const expectedAction = createAction(types.BOOK_DELETE_REQUEST, (id) => ({ id }), {emit:true});
+    const expectedAction = {
+      type: types.BOOK_DELETE_REQUEST,
+      emit:true,
+      payload: { id: 1 }
+    };
 
-    expect(actions.bookDeleteRequestAction()).toEqual(expectedAction());
-    expect(actions.bookDeleteRequestAction()).toMatchSnapshot();
+    expect(actions.bookDeleteRequestAction(1)).toEqual(expectedAction);
+    expect(actions.bookDeleteRequestAction(1)).toMatchSnapshot();
   });
 });

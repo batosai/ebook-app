@@ -6,14 +6,14 @@ export const bookRequestAction = id => ({
   payload: { id }
 });
 
-export const bookDeleteRequestAction = id => ({
-  type: types.BOOK_DELETE_REQUEST,
-  emit:true,
-  payload: { id }
-});
-
 export const bookEditRequestAction = book => ({
   type: types.BOOK_EDIT_REQUEST,
   emit:true,
   payload: { book }
+});
+
+export const bookDeleteRequestAction = id => ({
+  type: types.BOOK_DELETE_REQUEST,
+  emit:true,
+  payload: { id }
 });

@@ -4,7 +4,7 @@ import thunkMiddleware from 'redux-thunk';
 import io from 'socket.io-client';
 
 import * as reducers from '../reducers';
-import { socketIoMiddleware } from '../helpers';
+import { socketIoMiddleware } from './middlewares';
 
 const socket = io('http://localhost:3001');
 

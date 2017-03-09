@@ -1,10 +1,8 @@
 exports[`Action to request books 1`] = `
 Object {
-  "meta": Object {
-    "emit": true,
-  },
+  "emit": true,
   "payload": Object {
-    "id": undefined,
+    "id": 1,
   },
   "type": "books:request",
 }

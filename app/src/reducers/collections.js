@@ -8,7 +8,7 @@ const initialState = {
 const reducers = (state=initialState, {type, payload}) => {
   switch (type) {
     case types.COLLECTIONS_SUCCESS:
-    console.log(payload.collections);
+  
       return Object.assign({}, state, {
         all: payload.collections,
         items: payload.collections,
