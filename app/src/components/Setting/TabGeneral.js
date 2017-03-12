@@ -12,7 +12,7 @@ class TabGeneral extends Component {
 
   handleChange = (event, index, value) => this.setState({value});
 
-  render() {
+  render = () => {
     return (
       <div style={{padding: 20}}>
         <TextField hintText="http://localhost/flux" disabled={true} fullWidth={true} />

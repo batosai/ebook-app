@@ -15,11 +15,11 @@ const styles = {
   },
 };
 
-function handleRequestDelete() {
+const handleRequestDelete = () => {
   alert('You clicked the delete button.');
 }
 
-function handleTouchTap() {
+const handleTouchTap = () => {
   alert('You clicked the Chip.');
 }
 
@@ -40,11 +40,11 @@ class Book extends Component {
     });
   };
 
-  componentWillMount() {
+  componentWillMount = () => {
     this.props.findBookById(parseInt(this.props.params.id, 10));
   }
 
-  componentDidUpdate (prevProps, prevState) {
+  componentDidUpdate = (prevProps, prevState) => {
       if(prevProps.params.id !== this.props.params.id)
         this.props.findBookById(parseInt(this.props.params.id, 10));
   }
@@ -53,7 +53,7 @@ class Book extends Component {
     this.modalToggle('book');
   };
 
-  renderFormats () {
+  renderFormats = () => {
     if(this.props.book.formats)
     {
       return (
@@ -77,7 +77,7 @@ class Book extends Component {
       id={parseInt(this.props.params.id, 10)} />
   );
 
-  render() {
+  render = () => {
     return (
       <div>
         <Subheader>Subheader</Subheader>

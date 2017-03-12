@@ -12,11 +12,11 @@ class Tools extends Component {
     title: "Library",
   };
 
-  collectionToggle(id){
+  collectionToggle = (id) => {
     this.props.findCollectionByLibrary(id);
   }
 
-  touchTap(library) {
+  touchTap = (library) => {
     if(library !== undefined) {
       this.setState({
         title: library.name
@@ -31,7 +31,7 @@ class Tools extends Component {
     }
   }
 
-  render() {
+  render = () => {
     return (
       <Toolbar style={{backgroundColor: 'transparent', marginTop: '-4px', padding: 0}}>
         <ToolbarGroup>

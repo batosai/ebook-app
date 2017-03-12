@@ -4,7 +4,7 @@ import Progress from './Progress';
 
 class Task extends Component {
 
-  render() {
+  render = () => {
     return (
       <div>
         <Progress>Adferdgfgf.pdf</Progress>

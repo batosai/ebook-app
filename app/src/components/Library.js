@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 class Library extends Component {
 
-  render() {
+  render = () => {
     return (
       <div style={this.props.style.root}>
         <GridList

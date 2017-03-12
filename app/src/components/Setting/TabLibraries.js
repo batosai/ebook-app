@@ -62,7 +62,7 @@ class TabLibraries extends Component {
       library={this.state.library} />
   );
 
-  render() {
+  render = () => {
     return (
       <div>
         <List>

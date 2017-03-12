@@ -23,13 +23,13 @@ const style = {
 class Aside extends Component {
   handleToggle = () => this.props.toggleAside();
 
-  componentWillMount() {
+  componentWillMount = () => {
     // TODO lancer à l'init, pendant le splashscreen
     this.props.findLibraries();
     this.props.findCollections();
   }
 
-  render() {
+  render = () => {
     return (
       <Drawer open={this.props.open}>
         <AppBar

@@ -13,7 +13,7 @@ class ModalCollection extends Component {
     library_id: null,
   };
 
-  componentDidUpdate (prevProps, prevState) {
+  componentDidUpdate = (prevProps, prevState) => {
     if(prevProps.collection !== this.props.collection) {
       this.setState({
         id:this.props.collection.id,
@@ -63,7 +63,7 @@ class ModalCollection extends Component {
     this.props.onRequestClose();
   };
 
-  render() {
+  render = () => {
     const actions = modalActions(this.handleClose, this.save);
 
     return (

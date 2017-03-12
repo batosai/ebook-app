@@ -9,7 +9,7 @@ class App extends Component {
       <div>
         <TopBar />
 
-        <div style={{paddingTop: 64}}>
+        <div style={{paddingTop: 64, height: "100%"}}>
           { this.props.children }
         </div>
 

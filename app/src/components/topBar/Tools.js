@@ -17,7 +17,7 @@ const styles = {
 };
 
 class Tools extends Component {
-  render() {
+  render = () => {
     return (
       <Toolbar style={styles.toolbar}>
         <ToolbarGroup>

@@ -10,7 +10,7 @@ class ModalLibrary extends Component {
     name: ''
   };
 
-  componentDidUpdate (prevProps, prevState) {
+  componentDidUpdate = (prevProps, prevState) => {
     if(prevProps.library !== this.props.library) {
       this.setState({
         id:this.props.library.id,
@@ -48,7 +48,7 @@ class ModalLibrary extends Component {
     });
   };
 
-  render() {
+  render = () => {
     const actions = modalActions(this.handleClose, this.save);
 
     return (

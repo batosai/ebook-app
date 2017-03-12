@@ -5,7 +5,7 @@ import modalActions from './modalActions';
 
 class ModalDelete extends Component {
 
-  render() {
+  render = () => {
     const actions = modalActions(this.props.onRequestClose, this.props.onRequestDelete);
 
     return (

@@ -3,18 +3,18 @@ import { browserHistory } from 'react-router';
 
 class Splash extends Component {
 
-  componentWillMount() {
+  componentWillMount = () => {
     // this.props.getLibraries();
     // this.props.getCollections();
   }
 
-  componentDidUpdate (prevProps, prevState) {
+  componentDidUpdate = (prevProps, prevState) => {
     if(this.props.collections.length) {
       browserHistory.push(`/collection/${this.props.collections[0].id}/`);
     }
   }
 
-  render() {
+  render = () => {
     return (
       <div>
         Splash / Le chargement getLibraries/getCollections ne doivent pas être ici mais en amont de toutes les routes. / Une fois fit retirer les appel du aside

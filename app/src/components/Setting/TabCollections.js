@@ -62,7 +62,7 @@ class TabCollections extends Component {
       collection={this.state.collection} />
   );
 
-  render() {
+  render = () => {
     return (
       <div>
         <List>

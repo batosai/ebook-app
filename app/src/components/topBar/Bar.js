@@ -12,7 +12,7 @@ const styles = {
 class Bar extends Component {
   handleToggle = () => this.props.toggleAside();
 
-  render() {
+  render = () => {
     return (
       <AppBar
         onLeftIconButtonTouchTap={this.handleToggle}

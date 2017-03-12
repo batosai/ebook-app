@@ -17,7 +17,7 @@ class Action extends Component {
     this.setState({download: !this.state.download});
   };
 
-  render() {
+  render = () => {
     return (
       <div>
         {this.props.tile.local ?

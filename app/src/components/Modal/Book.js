@@ -52,10 +52,10 @@ class ModalBook extends Component {
     }
   };
 
-  componentWillMount() {
+  componentWillMount = () => {
     this.props.findBookById(parseInt(this.props.id, 10));
   }
-  componentDidUpdate (prevProps, prevState) {
+  componentDidUpdate = (prevProps, prevState) => {
     if(prevProps.book !== this.props.book) {
       this.setState({
         book:this.props.book
@@ -95,7 +95,7 @@ class ModalBook extends Component {
     this.props.onRequestClose();
   };
 
-  render() {
+  render = () => {
     const actions = modalActions(this.props.onRequestClose, this.handleSave);
 
     return (

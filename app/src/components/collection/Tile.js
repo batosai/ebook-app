@@ -6,7 +6,7 @@ import Action from './Action';
 
 class Tile extends Component {
 
-  render() {
+  render = () => {
     return (
       <GridTile
         title={this.props.tile.title}

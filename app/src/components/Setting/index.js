@@ -7,7 +7,7 @@ import TabGeneral from './TabGeneral';
 
 class Setting extends Component {
 
-  render() {
+  render = () => {
     return (
       <Tabs>
         <Tab label="General">

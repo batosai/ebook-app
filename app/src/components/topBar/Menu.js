@@ -9,7 +9,7 @@ import HelpIcon from 'material-ui/svg-icons/action/help';
 import { fullWhite } from 'material-ui/styles/colors';
 
 class Menu extends Component {
-  render() {
+  render = () => {
     return (
       <IconMenu
         iconButtonElement={<IconButton><MoreHorizIcon color={fullWhite} /></IconButton>}

@@ -61,7 +61,7 @@ class Tools extends Component {
     </Modal.Delete>
   );
 
-  render() {
+  render = () => {
     return (
       <div>
         {this.state.modal.book.open ? this.renderModalBook() : ''}

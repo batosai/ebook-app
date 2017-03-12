@@ -21,7 +21,7 @@ class Collection extends Component {
     this.setState({download: !this.state.download});
   };
 
-  render() {
+  render = () => {
     return (
       <div style={this.props.style.root}>
         <GridList

@@ -4,7 +4,7 @@ import { Card, CardHeader, CardActions } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
 class Progress extends Component {
-  renderLinearProgress () {
+  renderLinearProgress = () => {
     if(this.props.value)
     {
       return (
@@ -16,7 +16,7 @@ class Progress extends Component {
     );
   }
 
-  render() {
+  render = () => {
     return (
       <Card style={{margin: 22}}>
 
