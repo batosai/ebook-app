@@ -113,6 +113,7 @@ ShallowWrapper {
       "_hostParent": null,
       "_instance": Aside {
         "_reactInternalInstance": [Circular],
+        "componentWillMount": [Function],
         "context": Object {},
         "handleToggle": [Function],
         "props": Object {
@@ -123,6 +124,7 @@ ShallowWrapper {
           "toggleAside": [Function],
         },
         "refs": Object {},
+        "render": [Function],
         "state": null,
         "updater": Object {
           "enqueueCallback": [Function],

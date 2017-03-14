@@ -226,6 +226,7 @@ ShallowWrapper {
           ],
         },
         "refs": Object {},
+        "render": [Function],
         "state": null,
         "updater": Object {
           "enqueueCallback": [Function],

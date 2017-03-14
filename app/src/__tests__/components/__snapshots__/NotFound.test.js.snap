@@ -29,6 +29,7 @@ ShallowWrapper {
         "context": Object {},
         "props": Object {},
         "refs": Object {},
+        "render": [Function],
         "state": null,
         "updater": Object {
           "enqueueCallback": [Function],
