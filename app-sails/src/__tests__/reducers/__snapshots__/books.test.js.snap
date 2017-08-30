@@ -1,0 +1,14 @@
+exports[`Books reducer should handle BOOKS_SUCCESS 1`] = `Array []`;
+
+exports[`Books reducer should handle BOOKS_SUCCESS 2`] = `
+Array [
+  Object {
+    "collection_id": 2,
+    "id": 1,
+    "img": "",
+    "title": "run test",
+  },
+]
+`;
+
+exports[`Books reducer should return the initial state 1`] = `Array []`;

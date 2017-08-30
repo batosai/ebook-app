@@ -1,4 +1,4 @@
-import * as types from '../types';
+import { collection } from '../actions';
 
 const initialState = {
   all: [ /* {id, img, title, author} */ ],
@@ -7,13 +7,14 @@ const initialState = {
 
 const reducers = (state=initialState, {type, payload}) => {
   switch (type) {
-    case types.COLLECTIONS_SUCCESS:
+    case collection.fetchAll.types.SUCCESS:
 
       return Object.assign({}, state, {
-        all: payload.collections,
-        items: payload.collections,
+        all: payload.body,
+        items: payload.body,
       });
-    case types.COLLECTIONS_FILTER:
+    // TODO -> convert
+    case collection.fetchAll.types.COLLECTIONS_FILTER:
       if(payload === undefined) {
         return Object.assign({}, state, {
           items: state.all

@@ -1,0 +1,39 @@
+exports[`Action to delete book 1`] = `
+Object {
+  "emit": true,
+  "payload": Object {
+    "id": 1,
+  },
+  "type": "book:delete:request",
+}
+`;
+
+exports[`Action to edit book 1`] = `
+Object {
+  "emit": true,
+  "payload": Object {
+    "book": Object {
+      "author": "jeremy",
+      "collection_id": 2,
+      "description": "",
+      "editor": "glénat",
+      "number_pages": 22,
+      "number_volumes": 4,
+      "read": false,
+      "title": "my title",
+      "year": 2010,
+    },
+  },
+  "type": "book:edit:request",
+}
+`;
+
+exports[`Action to request book 1`] = `
+Object {
+  "emit": true,
+  "payload": Object {
+    "id": 1,
+  },
+  "type": "book:request",
+}
+`;

@@ -1,0 +1,23 @@
+exports[`Book reducer should handle BOOK_SUCCESS 1`] = `Object {}`;
+
+exports[`Book reducer should handle BOOK_SUCCESS 2`] = `
+Object {
+  "author": "jeremy",
+  "collection_id": 2,
+  "description": "Lorem ipsum",
+  "editor": "glenat",
+  "formats": "pdf",
+  "id": 1,
+  "img": "",
+  "keyword": Array [
+    "manga",
+  ],
+  "number_pages": 18,
+  "number_volumes": 4,
+  "read": true,
+  "title": "run test",
+  "year": 2005,
+}
+`;
+
+exports[`Book reducer should return the initial state 1`] = `Object {}`;

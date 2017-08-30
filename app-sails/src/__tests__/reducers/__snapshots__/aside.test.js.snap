@@ -1,0 +1,17 @@
+exports[`Aside reducer should handle ASIDE_TOGGLE 1`] = `
+Object {
+  "open": true,
+}
+`;
+
+exports[`Aside reducer should handle ASIDE_TOGGLE 2`] = `
+Object {
+  "open": false,
+}
+`;
+
+exports[`Aside reducer should return the initial state 1`] = `
+Object {
+  "open": false,
+}
+`;

@@ -1,0 +1,254 @@
+exports[`Components Aside 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <Drawer
+    disableSwipeToOpen={false}
+    docked={true}
+    open={true}
+    openSecondary={false}
+    swipeAreaWidth={30}
+    width={null}
+    zDepth={2}>
+    <AppBar
+        iconElementLeft={
+            <IconButton
+                disableTouchRipple={false}
+                disabled={false}
+                iconStyle={Object {}}
+                tooltipPosition="bottom-center"
+                touch={false}>
+                <NavigationClose />
+            </IconButton>
+        }
+        iconElementRight={
+            <Connect(Tools)
+                libraries={undefined} />
+        }
+        onLeftIconButtonTouchTap={[Function]}
+        showMenuIconButton={true}
+        title=""
+        zDepth={1} />
+    <Library
+        style={
+            Object {
+                "gridList": Object {
+                  "height": "100%",
+                  "overflowY": "auto",
+                  "width": "100%",
+                },
+                "root": Object {
+                  "display": "flex",
+                  "flexWrap": "wrap",
+                  "justifyContent": "space-around",
+                },
+              }
+        }
+        tiles={Array []} />
+</Drawer>,
+  "nodes": Array [
+    <Drawer
+      disableSwipeToOpen={false}
+      docked={true}
+      open={true}
+      openSecondary={false}
+      swipeAreaWidth={30}
+      width={null}
+      zDepth={2}>
+      <AppBar
+            iconElementLeft={
+                  <IconButton
+                        disableTouchRipple={false}
+                        disabled={false}
+                        iconStyle={Object {}}
+                        tooltipPosition="bottom-center"
+                        touch={false}>
+                        <NavigationClose />
+                  </IconButton>
+            }
+            iconElementRight={
+                  <Connect(Tools)
+                        libraries={undefined} />
+            }
+            onLeftIconButtonTouchTap={[Function]}
+            showMenuIconButton={true}
+            title=""
+            zDepth={1} />
+      <Library
+            style={
+                  Object {
+                        "gridList": Object {
+                          "height": "100%",
+                          "overflowY": "auto",
+                          "width": "100%",
+                        },
+                        "root": Object {
+                          "display": "flex",
+                          "flexWrap": "wrap",
+                          "justifyContent": "space-around",
+                        },
+                      }
+            }
+            tiles={Array []} />
+</Drawer>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <Aside
+        collections={Array []}
+        findCollections={[Function]}
+        findLibraries={[Function]}
+        open={true}
+        toggleAside={[Function]} />,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": Aside {
+        "_reactInternalInstance": [Circular],
+        "componentWillMount": [Function],
+        "context": Object {},
+        "handleToggle": [Function],
+        "props": Object {
+          "collections": Array [],
+          "findCollections": [Function],
+          "findLibraries": [Function],
+          "open": true,
+          "toggleAside": [Function],
+        },
+        "refs": Object {},
+        "render": [Function],
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <Drawer
+          disableSwipeToOpen={false}
+          docked={true}
+          open={true}
+          openSecondary={false}
+          swipeAreaWidth={30}
+          width={null}
+          zDepth={2}>
+          <AppBar
+                    iconElementLeft={
+                              <IconButton
+                                        disableTouchRipple={false}
+                                        disabled={false}
+                                        iconStyle={Object {}}
+                                        tooltipPosition="bottom-center"
+                                        touch={false}>
+                                        <NavigationClose />
+                              </IconButton>
+                    }
+                    iconElementRight={
+                              <Connect(Tools)
+                                        libraries={undefined} />
+                    }
+                    onLeftIconButtonTouchTap={[Function]}
+                    showMenuIconButton={true}
+                    title=""
+                    zDepth={1} />
+          <Library
+                    style={
+                              Object {
+                                        "gridList": Object {
+                                          "height": "100%",
+                                          "overflowY": "auto",
+                                          "width": "100%",
+                                        },
+                                        "root": Object {
+                                          "display": "flex",
+                                          "flexWrap": "wrap",
+                                          "justifyContent": "space-around",
+                                        },
+                                      }
+                    }
+                    tiles={Array []} />
+</Drawer>,
+        "_debugID": 2,
+        "_renderedOutput": <Drawer
+          disableSwipeToOpen={false}
+          docked={true}
+          open={true}
+          openSecondary={false}
+          swipeAreaWidth={30}
+          width={null}
+          zDepth={2}>
+          <AppBar
+                    iconElementLeft={
+                              <IconButton
+                                        disableTouchRipple={false}
+                                        disabled={false}
+                                        iconStyle={Object {}}
+                                        tooltipPosition="bottom-center"
+                                        touch={false}>
+                                        <NavigationClose />
+                              </IconButton>
+                    }
+                    iconElementRight={
+                              <Connect(Tools)
+                                        libraries={undefined} />
+                    }
+                    onLeftIconButtonTouchTap={[Function]}
+                    showMenuIconButton={true}
+                    title=""
+                    zDepth={1} />
+          <Library
+                    style={
+                              Object {
+                                        "gridList": Object {
+                                          "height": "100%",
+                                          "overflowY": "auto",
+                                          "width": "100%",
+                                        },
+                                        "root": Object {
+                                          "display": "flex",
+                                          "flexWrap": "wrap",
+                                          "justifyContent": "space-around",
+                                        },
+                                      }
+                    }
+                    tiles={Array []} />
+</Drawer>,
+      },
+      "_renderedNodeType": 1,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Aside
+    collections={Array []}
+    findCollections={[Function]}
+    findLibraries={[Function]}
+    open={true}
+    toggleAside={[Function]} />,
+}
+`;

@@ -1,0 +1,5 @@
+exports[`Action to toggle aside 1`] = `
+Object {
+  "type": "aside:toggle",
+}
+`;

@@ -1,0 +1,9 @@
+exports[`Action to request books 1`] = `
+Object {
+  "emit": true,
+  "payload": Object {
+    "id": 1,
+  },
+  "type": "books:request",
+}
+`;
