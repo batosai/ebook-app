@@ -10,12 +10,16 @@ class TabGeneral extends Component {
     value: 1,
   };
 
-  handleChange = (event, index, value) => this.setState({value});
+  handleChange = (event, index, value) => this.setState({ value });
 
   render = () => {
     return (
-      <div style={{padding: 20}}>
-        <TextField hintText="http://localhost/flux" disabled={true} fullWidth={true} />
+      <div style={{ padding: 20 }}>
+        <TextField
+          hintText="http://localhost/flux"
+          disabled={true}
+          fullWidth={true}
+        />
         <SelectField
           floatingLabelText="Thème"
           value={this.state.value}
@@ -26,12 +30,16 @@ class TabGeneral extends Component {
           <MenuItem value={3} primaryText="Dark" />
         </SelectField>
         <br />
-        <br /><Divider /><br />
-        gh234HGf&234HGFhgfH45FHG4sfsdf98834gghjjkl<RaisedButton label="API Key" primary={true} />
+        <br />
+        <Divider />
+        <br />
+        gh234HGf&234HGFhgfH45FHG4sfsdf98834gghjjkl<RaisedButton
+          label="API Key"
+          primary={true}
+        />
       </div>
     );
-  }
-
+  };
 }
 
 export default TabGeneral;

@@ -10,10 +10,10 @@ import { fullWhite } from 'material-ui/styles/colors';
 import Menu from './Menu';
 
 const styles = {
-  toolbar: {backgroundColor: 'transparent', marginTop: '-4px', padding: 0},
-  containerBadge: {marginTop: -10},
-  badge: {top: 24, right: 20},
-  separator: {margin: 0}
+  toolbar: { backgroundColor: 'transparent', marginTop: '-4px', padding: 0 },
+  containerBadge: { marginTop: -10 },
+  badge: { top: 24, right: 20 },
+  separator: { margin: 0 },
 };
 
 class Tools extends Component {
@@ -21,13 +21,17 @@ class Tools extends Component {
     return (
       <Toolbar style={styles.toolbar}>
         <ToolbarGroup>
-          <Link to={'/setting'}><IconButton><CloudOffIcon color={fullWhite} /></IconButton></Link>
+          <Link to={'/setting'}>
+            <IconButton>
+              <CloudOffIcon color={fullWhite} />
+            </IconButton>
+          </Link>
           <Link to={'/task'}>
             <Badge
-            badgeContent={4}
-            secondary={true}
-            style={styles.containerBadge}
-            badgeStyle={styles.badge}
+              badgeContent={4}
+              secondary={true}
+              style={styles.containerBadge}
+              badgeStyle={styles.badge}
             >
               <IconButton>
                 <FileDownloadIcon color={fullWhite} />
@@ -39,7 +43,7 @@ class Tools extends Component {
         </ToolbarGroup>
       </Toolbar>
     );
-  }
+  };
 }
 
 // Tools.propTypes = {

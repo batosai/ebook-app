@@ -10,29 +10,31 @@ class ModalCollection extends Component {
   state = {
     id: null,
     title: '',
-    library_id: null,
+    library: null,
   };
 
   componentDidUpdate = (prevProps, prevState) => {
-    if(prevProps.collection !== this.props.collection) {
+    if (prevProps.collection !== this.props.collection) {
       this.setState({
-        id:this.props.collection.id,
+        id: this.props.collection.id,
         title: this.props.collection.title,
-        library_id: this.props.collection.library_id,
+        library: this.props.collection.library
+          ? this.props.collection.library.id
+          : null,
       });
     }
-  }
+  };
 
   handleClose = () => {
     this.setState({
-      id:null,
-      title:'',
-      library_id:null
+      id: null,
+      title: '',
+      library: null,
     });
     this.props.onRequestClose();
   };
 
-  handleChangeTextField = (event) => {
+  handleChangeTextField = event => {
     this.setState({
       title: event.target.value,
     });
@@ -40,25 +42,25 @@ class ModalCollection extends Component {
 
   handleChangeSelectField = (event, index, value) => {
     this.setState({
-      library_id: parseInt(value, 10),
+      library: parseInt(value, 10),
     });
   };
 
   save = () => {
-    if(this.state.id) {
+    if (this.state.id) {
       this.props.editCollection(this.state);
-    }
-    else {
+    } else {
+      console.log(this.state);
       this.props.createCollection({
-        title:this.state.title,
-        library_id:this.state.library_id
+        title: this.state.title,
+        library: this.state.library,
       });
     }
 
     this.setState({
-      id:null,
-      title:'',
-      library_id:null
+      id: null,
+      title: '',
+      library: null,
     });
     this.props.onRequestClose();
   };
@@ -68,7 +70,7 @@ class ModalCollection extends Component {
 
     return (
       <Dialog
-        title={this.state.id ? "Edit collection" : "Add collection"}
+        title={this.state.id ? 'Edit collection' : 'Add collection'}
         actions={actions}
         modal={false}
         open={this.props.open}
@@ -81,21 +83,26 @@ class ModalCollection extends Component {
           errorText="This name is required"
           fullWidth={true}
           value={this.state.title}
-          onChange={this.handleChangeTextField} />
+          onChange={this.handleChangeTextField}
+        />
 
         <SelectField
           floatingLabelText="Library"
           fullWidth={true}
-          value={this.state.library_id}
+          value={this.state.library}
           onChange={this.handleChangeSelectField}
         >
           {this.props.libraries.map(library => (
-              <MenuItem key={library.id} value={library.id} primaryText={library.name} />
+            <MenuItem
+              key={library.id}
+              value={library.id}
+              primaryText={library.name}
+            />
           ))}
         </SelectField>
       </Dialog>
     );
-  }
+  };
 }
 
 ModalCollection.propTypes = {
@@ -103,11 +110,11 @@ ModalCollection.propTypes = {
   libraries: T.array,
   editCollection: T.func.isRequired,
   createCollection: T.func.isRequired,
-  collection: T.object
+  collection: T.object,
 };
 
 ModalCollection.defaultProps = {
-  libraries: []
+  libraries: [],
 };
 
 export default ModalCollection;

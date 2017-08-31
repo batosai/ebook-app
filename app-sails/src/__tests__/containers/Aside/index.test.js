@@ -9,10 +9,10 @@ import { createMockStore } from 'redux-test-utils';
 describe('Containers', () => {
   it('Aside', () => {
     const expectedState = {
-      open: false
+      open: false,
     };
 
-    const mapStateToProps = (state) => ({
+    const mapStateToProps = state => ({
       open,
     });
 
@@ -20,7 +20,7 @@ describe('Containers', () => {
       type: 'type',
     };
 
-    const mapDispatchToProps = (dispatch) => ({
+    const mapDispatchToProps = dispatch => ({
       dispatchProp() {
         dispatch(action);
       },
@@ -28,7 +28,9 @@ describe('Containers', () => {
 
     const store = createMockStore(expectedState);
 
-    const ConnectedComponent = connect(mapStateToProps, mapDispatchToProps)(Aside);
+    const ConnectedComponent = connect(mapStateToProps, mapDispatchToProps)(
+      Aside,
+    );
     const component = shallowWithStore(<ConnectedComponent />, store);
 
     component.props().dispatchProp();

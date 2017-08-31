@@ -5,32 +5,26 @@ import FlatButton from 'material-ui/FlatButton';
 
 class Progress extends Component {
   renderLinearProgress = () => {
-    if(this.props.value)
-    {
-      return (
-        <LinearProgress mode="determinate" value={this.props.value} />
-      );
+    if (this.props.value) {
+      return <LinearProgress mode="determinate" value={this.props.value} />;
     }
-    return (
-      <LinearProgress mode="indeterminate" />
-    );
-  }
+    return <LinearProgress mode="indeterminate" />;
+  };
 
   render = () => {
     return (
-      <Card style={{margin: 22}}>
-
+      <Card style={{ margin: 22 }}>
         <CardHeader
           title={this.props.children}
           subtitle="Téléchargement en cours"
         />
-        <CardActions style={{float: 'right'}}>
+        <CardActions style={{ float: 'right' }}>
           <FlatButton label="Cancel" />
         </CardActions>
         {this.renderLinearProgress()}
       </Card>
     );
-  }
+  };
 }
 
 Progress.propTypes = {

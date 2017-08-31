@@ -3,7 +3,7 @@ import { GridList } from 'material-ui/GridList';
 
 import Tile from './Tile';
 
-const mq = window.matchMedia( "(max-width: 1024px)" );
+const mq = window.matchMedia('(max-width: 1024px)');
 
 if (mq.matches) {
   // window width is at least 500px
@@ -12,13 +12,12 @@ if (mq.matches) {
 }
 
 class Collection extends Component {
-
   state = {
     download: false,
   };
 
   handleToggle = () => {
-    this.setState({download: !this.state.download});
+    this.setState({ download: !this.state.download });
   };
 
   render = () => {
@@ -28,16 +27,13 @@ class Collection extends Component {
           cellHeight={280}
           cols={mq.matches ? 4 : 6}
           padding={5}
-          style={this.props.style.gridList} >
-          {this.props.tiles.map((tile) => (
-            <Tile
-              key={tile.id}
-              tile={tile}  />
-          ))}
+          style={this.props.style.gridList}
+        >
+          {this.props.tiles.map(tile => <Tile key={tile.id} tile={tile} />)}
         </GridList>
       </div>
     );
-  }
+  };
 }
 
 Collection.propTypes = {

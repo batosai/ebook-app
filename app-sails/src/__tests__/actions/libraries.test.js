@@ -5,7 +5,7 @@ describe('Action', () => {
   it('to request libraries', () => {
     const expectedAction = {
       type: types.LIBRARIES_REQUEST,
-      emit:true
+      emit: true,
     };
 
     expect(actions.librariesRequestAction()).toEqual(expectedAction);
@@ -15,33 +15,41 @@ describe('Action', () => {
   it('to add libraries', () => {
     const expectedAction = {
       type: types.LIBRARY_ADD_REQUEST,
-      emit:true,
-      payload: { name: 'my library' }
+      emit: true,
+      payload: { name: 'my library' },
     };
 
-    expect(actions.libraryAddRequestAction(expectedAction.payload.name)).toEqual(expectedAction);
-    expect(actions.libraryAddRequestAction(expectedAction.payload.name)).toMatchSnapshot();
+    expect(
+      actions.libraryAddRequestAction(expectedAction.payload.name),
+    ).toEqual(expectedAction);
+    expect(
+      actions.libraryAddRequestAction(expectedAction.payload.name),
+    ).toMatchSnapshot();
   });
 
   it('to edit libraries', () => {
     const expectedAction = {
       type: types.LIBRARY_EDIT_REQUEST,
-      emit:true,
+      emit: true,
       payload: {
         id: 1,
-        name: 'my library'
-      }
+        name: 'my library',
+      },
     };
 
-    expect(actions.libraryEditRequestAction(expectedAction.payload)).toEqual(expectedAction);
-    expect(actions.libraryEditRequestAction(expectedAction.payload)).toMatchSnapshot();
+    expect(actions.libraryEditRequestAction(expectedAction.payload)).toEqual(
+      expectedAction,
+    );
+    expect(
+      actions.libraryEditRequestAction(expectedAction.payload),
+    ).toMatchSnapshot();
   });
 
   it('to delete libraries', () => {
     const expectedAction = {
       type: types.LIBRARY_DELETE_REQUEST,
-      emit:true,
-      payload: { id: 1 }
+      emit: true,
+      payload: { id: 1 },
     };
 
     expect(actions.libraryDeleteRequestAction(1)).toEqual(expectedAction);

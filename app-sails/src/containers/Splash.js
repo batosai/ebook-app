@@ -3,7 +3,7 @@ import Splash from '../components/Splash';
 
 // import { getLibraries, getCollections } from '../actions';
 
-const mapStateToProps = (appState) => {
+const mapStateToProps = appState => {
   return {
     collections: appState.collections.items,
   };
@@ -14,7 +14,4 @@ const mapStateToProps = (appState) => {
 //   getCollections
 // };
 
-export default connect(
-  mapStateToProps,
-  null
-)(Splash);
+export default connect(mapStateToProps, null)(Splash);

@@ -6,6 +6,7 @@
     "case-sensitive-paths-webpack-plugin": "^1.1.4",
     "enzyme": "^2.7.1",
     "enzyme-redux": "^0.1.6",
+    "prettier": "^1.6.1",
     "react-addons-test-utils": "^15.4.2",
     "react-scripts": "0.8.4",
     "redux-mock-store": "^1.2.2",
@@ -31,6 +32,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettify": "prettier --single-quote --trailing-comma all --write '{src,__{tests,mocks}__}/**/*.js'"
   }
 }

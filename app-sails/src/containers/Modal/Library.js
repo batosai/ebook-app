@@ -8,7 +8,4 @@ const mapDispatchToProps = {
   editLibrary: library.update.dispatch,
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Library);
+export default connect(null, mapDispatchToProps)(Library);

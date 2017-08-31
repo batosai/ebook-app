@@ -7,7 +7,4 @@ const mapDispatchToProps = {
   toggleAside: aside.dispatch,
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Bar);
+export default connect(null, mapDispatchToProps)(Bar);

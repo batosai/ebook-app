@@ -17,64 +17,68 @@ const styles = {
 
 const handleRequestDelete = () => {
   alert('You clicked the delete button.');
-}
+};
 
 const handleTouchTap = () => {
   alert('You clicked the Chip.');
-}
+};
 
 class Book extends Component {
-
   state = {
     modal: {
-      delete: { open:false },
-      book: { open:false }
-    }
+      delete: { open: false },
+      book: { open: false },
+    },
   };
 
-  modalToggle = (type) => {
+  modalToggle = type => {
     let modal = this.state.modal;
     modal[type].open = !modal[type].open;
     this.setState({
-      modal
+      modal,
     });
   };
 
   componentWillMount = () => {
     this.props.findBookById(parseInt(this.props.params.id, 10));
-  }
+  };
 
   componentDidUpdate = (prevProps, prevState) => {
-      if(prevProps.params.id !== this.props.params.id)
-        this.props.findBookById(parseInt(this.props.params.id, 10));
-  }
+    if (prevProps.params.id !== this.props.params.id)
+      this.props.findBookById(parseInt(this.props.params.id, 10));
+  };
 
   handleEdit = () => {
     this.modalToggle('book');
   };
 
   renderFormats = () => {
-    if(this.props.book.formats)
-    {
+    if (this.props.book.formats) {
       return (
         <div style={styles.wrapper}>
           {this.props.book.formats.map(format => (
-            <Chip key={format} style={styles.chip}>{format}</Chip>
+            <Chip key={format} style={styles.chip}>
+              {format}
+            </Chip>
           ))}
           <Chip
             onRequestDelete={handleRequestDelete}
             onTouchTap={handleTouchTap}
-            style={styles.chip} >EPUB</Chip>
+            style={styles.chip}
+          >
+            EPUB
+          </Chip>
         </div>
       );
     }
-  }
+  };
 
   renderModalBook = () => (
     <ModalBook
       open={this.state.modal.book.open}
-      onRequestClose={()=>this.modalToggle('book')}
-      id={parseInt(this.props.params.id, 10)} />
+      onRequestClose={() => this.modalToggle('book')}
+      id={parseInt(this.props.params.id, 10)}
+    />
   );
 
   render = () => {
@@ -89,12 +93,17 @@ class Book extends Component {
         <p>{this.props.book.editor}</p>
         <p>{this.props.book.read ? 'Lu' : 'Non lu'}</p>
         <p>{this.props.book.description}</p>
-        <RaisedButton label="Modify" secondary={true} style={{margin: 12}} onTouchTap={this.handleEdit} />
+        <RaisedButton
+          label="Modify"
+          secondary={true}
+          style={{ margin: 12 }}
+          onTouchTap={this.handleEdit}
+        />
 
         {this.state.modal.book.open ? this.renderModalBook() : ''}
       </div>
     );
-  }
+  };
 }
 
 Book.propTypes = {

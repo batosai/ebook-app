@@ -8,26 +8,34 @@ import { fullWhite } from 'material-ui/styles/colors';
 import Tools from '../../containers/Collection/Tools';
 
 class Action extends Component {
-
   state = {
     download: false,
   };
 
   handleToggle = () => {
-    this.setState({download: !this.state.download});
+    this.setState({ download: !this.state.download });
   };
 
   render = () => {
     return (
       <div>
-        {this.props.tile.local ?
-          <Tools tile={this.props.tile} /> :
-            this.state.download ?
-              <IconButton disableTouchRipple={true}><CloudQueueIcon color={fullWhite} /></ IconButton>:
-              <IconButton><CloudDownloadIcon color={fullWhite} onTouchTap={this.handleToggle} /></IconButton> }
+        {this.props.tile.local ? (
+          <Tools tile={this.props.tile} />
+        ) : this.state.download ? (
+          <IconButton disableTouchRipple={true}>
+            <CloudQueueIcon color={fullWhite} />
+          </IconButton>
+        ) : (
+          <IconButton>
+            <CloudDownloadIcon
+              color={fullWhite}
+              onTouchTap={this.handleToggle}
+            />
+          </IconButton>
+        )}
       </div>
     );
-  }
+  };
 }
 
 Action.propTypes = {

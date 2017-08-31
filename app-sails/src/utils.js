@@ -4,33 +4,33 @@ export const createTypes = name => ({
   REQUEST: `${name}:REQUEST`,
   SUCCESS: `${name}:SUCCESS`,
   FAILURE: `${name}:FAILURE`,
-  ERRORS:  `${name}:ERRORS`
+  ERRORS: `${name}:ERRORS`,
 });
 
 export const createActions = types => ({
-  request: (data) => ({
+  request: data => ({
     type: types.REQUEST,
-    payload: data
+    payload: data,
   }),
-  success: (data) => ({
+  success: data => ({
     type: types.SUCCESS,
-    payload: data
+    payload: data,
   }),
-  errors: (data) => ({
+  errors: data => ({
     type: types.ERRORS,
-    payload: data
+    payload: data,
   }),
-  failure: (error) => ({
+  failure: error => ({
     type: types.FAILURE,
-    payload: error
-  })
+    payload: error,
+  }),
 });
 
 export const request = data =>
   new Promise((resolve, reject) => {
     config.io.socket.request(data, (body, response) => {
       resolve({ body, response });
-console.log(body)
+      console.log(body);
       // si error
       // reject("raison d'echec"); // si elle est rompue -> catch
     });

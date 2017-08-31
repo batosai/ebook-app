@@ -3,7 +3,7 @@ import Aside from '../../components/Aside';
 
 import { aside, library, collection } from '../../actions';
 
-const mapStateToProps = (appState) => {
+const mapStateToProps = appState => {
   return {
     open: appState.aside.open,
     collections: appState.collections.items,
@@ -16,7 +16,4 @@ const mapDispatchToProps = {
   findCollections: collection.fetchAll.dispatch,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Aside);
+export default connect(mapStateToProps, mapDispatchToProps)(Aside);

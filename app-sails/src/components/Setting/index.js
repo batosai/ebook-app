@@ -6,7 +6,6 @@ import TabCollections from '../../containers/Setting/TabCollections';
 import TabGeneral from './TabGeneral';
 
 class Setting extends Component {
-
   render = () => {
     return (
       <Tabs>
@@ -21,8 +20,7 @@ class Setting extends Component {
         </Tab>
       </Tabs>
     );
-  }
-
+  };
 }
 
 export default Setting;

@@ -7,22 +7,18 @@ const initialState = {
 
 describe('Aside reducer', () => {
   it('should return the initial state', () => {
-    expect(
-      reducer(undefined, {})
-    ).toEqual({
+    expect(reducer(undefined, {})).toEqual({
       open: false,
     });
 
-    expect(
-      reducer(undefined, {})
-    ).toMatchSnapshot();
+    expect(reducer(undefined, {})).toMatchSnapshot();
   });
 
   it('should handle ASIDE_TOGGLE', () => {
     expect(
       reducer(initialState, {
         type: types.ASIDE_TOGGLE,
-      })
+      }),
     ).toEqual({
       open: true,
     });
@@ -30,25 +26,17 @@ describe('Aside reducer', () => {
     expect(
       reducer(initialState, {
         type: types.ASIDE_TOGGLE,
-      })
+      }),
     ).toMatchSnapshot();
 
     ////////////
 
-    expect(
-      reducer(
-        { open: true },
-        { type: types.ASIDE_TOGGLE }
-      )
-    ).toEqual({
+    expect(reducer({ open: true }, { type: types.ASIDE_TOGGLE })).toEqual({
       open: false,
     });
 
     expect(
-      reducer(
-        { open: true },
-        { type: types.ASIDE_TOGGLE }
-      )
+      reducer({ open: true }, { type: types.ASIDE_TOGGLE }),
     ).toMatchSnapshot();
   });
 });

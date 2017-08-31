@@ -3,17 +3,14 @@ import TabLibraries from '../../components/Setting/TabLibraries';
 
 import { library } from '../../actions';
 
-const mapStateToProps = (appState) => {
+const mapStateToProps = appState => {
   return {
     libraries: appState.libraries,
   };
 };
 
 const mapDispatchToProps = {
-  deleteLibrary: library.remove.dispatch
+  deleteLibrary: library.remove.dispatch,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TabLibraries);
+export default connect(mapStateToProps, mapDispatchToProps)(TabLibraries);

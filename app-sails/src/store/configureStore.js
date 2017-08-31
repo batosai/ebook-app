@@ -8,28 +8,27 @@ const io = sailsIOClient(socketIOClient);
 
 import { config } from '../config';
 
-import * as reducers from '../reducers'
+import * as reducers from '../reducers';
 import { socketIoMiddleware } from './middlewares';
 
 io.sails.url = 'http://localhost:1337';
 
 config.io = io;
 
-export default () => createStore(
-  combineReducers({
-    routing: routerReducer,
-    ...reducers
-  }),
-  compose(
-    applyMiddleware(
-      store => next => action => {
-        next(action);
-      },
-      thunkMiddleware,
-      socketIoMiddleware(io.socket)
+export default () =>
+  createStore(
+    combineReducers({
+      routing: routerReducer,
+      ...reducers,
+    }),
+    compose(
+      applyMiddleware(
+        store => next => action => {
+          next(action);
+        },
+        thunkMiddleware,
+        socketIoMiddleware(io.socket),
+      ),
+      window.devToolsExtension ? window.devToolsExtension() : f => f,
     ),
-    window.devToolsExtension
-      ? window.devToolsExtension()
-      : f => f
-  )
-);
+  );

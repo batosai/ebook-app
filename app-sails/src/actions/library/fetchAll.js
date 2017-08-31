@@ -1,11 +1,16 @@
-import { createTypes, createActions, request } from '../../utils';
+import { createTypes, createActions, request as req } from '../../utils';
 
-export const types = createTypes("LIBRARY:FETCH_ALL")
-export const actions = createActions(types)
+export const types = createTypes('LIBRARY:FETCH_ALL');
+export const actions = createActions(types);
 
-export const dispatch = () => dispatch => {
+export const request = dispatch => {
   dispatch(actions.request());
 
-  request({ method:'GET', url: '/libraries', data:{} })
-    .then(({body, response}) => dispatch(actions.success(body)));
-}
+  req({
+    method: 'GET',
+    url: '/libraries',
+    data: {},
+  }).then(({ body, response }) => dispatch(actions.success(body)));
+};
+
+export const dispatch = () => request;

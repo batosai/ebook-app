@@ -19,7 +19,6 @@ const style = {
   },
 };
 
-
 class Aside extends Component {
   handleToggle = () => this.props.toggleAside();
 
@@ -27,7 +26,7 @@ class Aside extends Component {
     // TODO lancer à l'init, pendant le splashscreen
     this.props.findLibraries();
     this.props.findCollections();
-  }
+  };
 
   render = () => {
     return (
@@ -36,14 +35,17 @@ class Aside extends Component {
           onLeftIconButtonTouchTap={this.handleToggle}
           showMenuIconButton={true}
           iconElementRight={<Tools libraries={this.props.libraries} />}
-          iconElementLeft={<IconButton><NavigationClose /></IconButton>} />
+          iconElementLeft={
+            <IconButton>
+              <NavigationClose />
+            </IconButton>
+          }
+        />
 
-        <Library
-          style={style}
-          tiles={this.props.collections} />
+        <Library style={style} tiles={this.props.collections} />
       </Drawer>
     );
-  }
+  };
 }
 
 Aside.propTypes = {
@@ -55,7 +57,7 @@ Aside.propTypes = {
 };
 
 Aside.defaultProps = {
-  collections: []
+  collections: [],
 };
 
 export default Aside;

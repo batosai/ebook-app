@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Progress from './Progress';
 
 class Task extends Component {
-
   render = () => {
     return (
       <div>
@@ -11,7 +10,7 @@ class Task extends Component {
         <Progress value={40}>cool.epub</Progress>
       </div>
     );
-  }
+  };
 }
 
 // Task.propTypes = {

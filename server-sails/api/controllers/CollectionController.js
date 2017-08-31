@@ -10,7 +10,7 @@ module.exports = {
     var params = {
       title: req.body.title,
       image: req.body.image,
-      library: req.body.collection
+      library: req.body.library
     };
 
     Collection.create(params).exec(function (err, data) {
@@ -28,7 +28,7 @@ module.exports = {
     var params = {
       title: req.body.title,
       image: req.body.image,
-      library: req.body.collection
+      library: req.body.library
     };
 
     Collection.update(req.params.id, params).exec(function (err, data) {

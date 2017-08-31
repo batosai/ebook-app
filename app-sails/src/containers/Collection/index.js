@@ -3,18 +3,16 @@ import Collection from '../../components/Collection';
 
 import { book } from '../../actions';
 
-const mapStateToProps = (appState) => {
+const mapStateToProps = appState => {
   return {
     books: appState.books,
-    ...appState
+    ...appState,
   };
 };
 
 const mapDispatchToProps = {
-  findBooksByCollectionId: collectionId => book.fetch.dispatch({ collection: collectionId }),
+  findBooksByCollectionId: collectionId =>
+    book.fetch.dispatch({ collection: collectionId }),
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Collection);
+export default connect(mapStateToProps, mapDispatchToProps)(Collection);

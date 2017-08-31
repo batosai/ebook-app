@@ -5,20 +5,22 @@ import { shallow, mount, render } from 'enzyme';
 function setup() {
   const props = {
     // addTodo: jest.fn()
-    tiles: [{
-      id: 1,
-      library_id: 1,
-      img: '',
-      title: 'run test',
-      author: 'jeremy'
-    },
-    {
-      id: 2,
-      library_id: 2,
-      img: '',
-      title: 'run test 2',
-      author: 'jeremy'
-    }],
+    tiles: [
+      {
+        id: 1,
+        library_id: 1,
+        img: '',
+        title: 'run test',
+        author: 'jeremy',
+      },
+      {
+        id: 2,
+        library_id: 2,
+        img: '',
+        title: 'run test 2',
+        author: 'jeremy',
+      },
+    ],
     style: {
       root: {
         display: 'flex',
@@ -30,14 +32,14 @@ function setup() {
         height: '100%',
         overflowY: 'auto',
       },
-    }
+    },
   };
 
   const enzymeWrapper = shallow(<Library {...props} />);
 
   return {
     props,
-    enzymeWrapper
+    enzymeWrapper,
   };
 }
 
@@ -54,7 +56,6 @@ describe('Components', () => {
   it('Library', () => {
     const { enzymeWrapper } = setup();
 
-
     // const expectedAction = createAction(types.LIBRARIES_REQUEST, () => null, {emit:true});
     //
     // expect(actions.librariesRequest()).toEqual(expectedAction());
@@ -64,16 +65,12 @@ describe('Components', () => {
   it('Count Link', () => {
     const { enzymeWrapper } = setup();
 
-
     // const expectedAction = createAction(types.LIBRARIES_REQUEST, () => null, {emit:true});
     //
     // expect(actions.librariesRequest()).toEqual(expectedAction());
     const links = enzymeWrapper.find('Link');
     expect(links.length).toBe(2);
   });
-
-
-
 
   // const style = {
   //   root: {},

@@ -15,19 +15,18 @@ import { fullWhite } from 'material-ui/styles/colors';
 import * as Modal from '../Modal';
 
 class Tools extends Component {
-
   state = {
     modal: {
-      delete: { open:false },
-      book: { open:false }
-    }
+      delete: { open: false },
+      book: { open: false },
+    },
   };
 
-  modalToggle = (type) => {
+  modalToggle = type => {
     let modal = this.state.modal;
     modal[type].open = !modal[type].open;
     this.setState({
-      modal
+      modal,
     });
   };
 
@@ -41,22 +40,24 @@ class Tools extends Component {
   };
 
   confirmDelete = () => {
-    this.setState({modal: !this.state.modal});
+    this.setState({ modal: !this.state.modal });
     this.modalToggle('delete');
   };
 
   renderModalBook = () => (
     <Modal.Book
       open={this.state.modal.book.open}
-      onRequestClose={()=>this.modalToggle('book')}
-      id={this.props.tile.id} />
+      onRequestClose={() => this.modalToggle('book')}
+      id={this.props.tile.id}
+    />
   );
 
   renderModalDelete = () => (
     <Modal.Delete
       open={this.state.modal.delete.open}
-      onRequestClose={()=>this.modalToggle('delete')}
-      onRequestDelete={this.handleDelete}>
+      onRequestClose={() => this.modalToggle('delete')}
+      onRequestDelete={this.handleDelete}
+    >
       Delete book?
     </Modal.Delete>
   );
@@ -68,8 +69,20 @@ class Tools extends Component {
         {this.state.modal.delete.open ? this.renderModalDelete() : ''}
 
         <IconMenu
-          iconButtonElement={<IconButton><MoreHorizIcon color={fullWhite} /></IconButton>} >
-          <MenuItem value="View" primaryText="View" onTouchTap={()=>{browserHistory.push(`/book/${this.props.tile.id}`);}} leftIcon={<VisibilityIcon />} />
+          iconButtonElement={
+            <IconButton>
+              <MoreHorizIcon color={fullWhite} />
+            </IconButton>
+          }
+        >
+          <MenuItem
+            value="View"
+            primaryText="View"
+            onTouchTap={() => {
+              browserHistory.push(`/book/${this.props.tile.id}`);
+            }}
+            leftIcon={<VisibilityIcon />}
+          />
 
           <MenuItem
             primaryText="Convert"
@@ -84,12 +97,22 @@ class Tools extends Component {
           <Divider />
           <MenuItem primaryText="Download" leftIcon={<DownloadIcon />} />
           <Divider />
-          <MenuItem value="Edit" primaryText="Edit" leftIcon={<EditIcon />} onTouchTap={this.handleEdit} />
-          <MenuItem value="Del" primaryText="Delete" leftIcon={<DeleteIcon />} onTouchTap={this.confirmDelete} />
+          <MenuItem
+            value="Edit"
+            primaryText="Edit"
+            leftIcon={<EditIcon />}
+            onTouchTap={this.handleEdit}
+          />
+          <MenuItem
+            value="Del"
+            primaryText="Delete"
+            leftIcon={<DeleteIcon />}
+            onTouchTap={this.confirmDelete}
+          />
         </IconMenu>
       </div>
     );
-  }
+  };
 }
 
 Tools.propTypes = {

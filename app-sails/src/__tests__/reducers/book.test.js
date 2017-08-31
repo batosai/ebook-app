@@ -1,34 +1,28 @@
 import reducer from '../../reducers/book';
 import * as types from '../../types';
 
-const initialState = { /* {id, img, title, collection_id, author, editor, formats, number_pages, number_volumes, year, read, keyword, description} */ };
+const initialState = {
+  /* {id, img, title, collection_id, author, editor, formats, number_pages, number_volumes, year, read, keyword, description} */
+};
 
 describe('Book reducer', () => {
   it('should return the initial state', () => {
-    expect(
-      reducer(undefined, {})
-    ).toEqual({});
+    expect(reducer(undefined, {})).toEqual({});
 
-    expect(
-      reducer(undefined, {})
-    ).toMatchSnapshot();
+    expect(reducer(undefined, {})).toMatchSnapshot();
   });
 
   it('should handle BOOK_SUCCESS', () => {
     let data = {
       type: types.BOOK_SUCCESS,
       payload: {
-        book: {}
-      }
+        book: {},
+      },
     };
 
-    expect(
-      reducer(initialState, data)
-    ).toEqual({});
+    expect(reducer(initialState, data)).toEqual({});
 
-    expect(
-      reducer(initialState, data)
-    ).toMatchSnapshot();
+    expect(reducer(initialState, data)).toMatchSnapshot();
 
     ////////////
     data = {
@@ -47,22 +41,15 @@ describe('Book reducer', () => {
           year: 2005,
           read: true,
           keyword: ['manga'],
-          description: 'Lorem ipsum'
-        }
-      }
+          description: 'Lorem ipsum',
+        },
+      },
     };
 
-    expect(
-      reducer(
-        initialState,
-        data
-      )
-    ).toEqual({
-      ...data.payload.book
+    expect(reducer(initialState, data)).toEqual({
+      ...data.payload.book,
     });
 
-    expect(
-      reducer(initialState, data)
-    ).toMatchSnapshot();
+    expect(reducer(initialState, data)).toMatchSnapshot();
   });
 });

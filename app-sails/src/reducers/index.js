@@ -4,10 +4,4 @@ import collections from './collections';
 import book from './book';
 import books from './books';
 
-export {
-  aside,
-  libraries,
-  collections,
-  book,
-  books,
-};
+export { aside, libraries, collections, book, books };

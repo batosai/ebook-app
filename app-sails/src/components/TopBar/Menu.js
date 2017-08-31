@@ -12,15 +12,21 @@ class Menu extends Component {
   render = () => {
     return (
       <IconMenu
-        iconButtonElement={<IconButton><MoreHorizIcon color={fullWhite} /></IconButton>}
-        anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-        targetOrigin={{horizontal: 'right', vertical: 'top'}}
+        iconButtonElement={
+          <IconButton>
+            <MoreHorizIcon color={fullWhite} />
+          </IconButton>
+        }
+        anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
+        targetOrigin={{ horizontal: 'right', vertical: 'top' }}
       >
-        <Link to={'/setting'}><MenuItem primaryText="Settings" leftIcon={<SettingsIcon />} /></Link>
+        <Link to={'/setting'}>
+          <MenuItem primaryText="Settings" leftIcon={<SettingsIcon />} />
+        </Link>
         <MenuItem primaryText="Help" leftIcon={<HelpIcon />} />
       </IconMenu>
     );
-  }
+  };
 }
 
 export default Menu;

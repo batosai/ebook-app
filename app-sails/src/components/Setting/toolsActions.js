@@ -5,12 +5,12 @@ import IconButton from 'material-ui/IconButton';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import EditIcon from 'material-ui/svg-icons/editor/mode-edit';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import {grey400} from 'material-ui/styles/colors';
+import { grey400 } from 'material-ui/styles/colors';
 
 const style = {
-  padding:0,
-  width:'auto',
-  height:'auto'
+  padding: 0,
+  width: 'auto',
+  height: 'auto',
 };
 
 const iconButtonElement = (
@@ -21,8 +21,12 @@ const iconButtonElement = (
 
 const toolsActions = (onEdit, onDelete) => (
   <IconMenu iconButtonElement={iconButtonElement}>
-    <MenuItem leftIcon={<EditIcon />} onTouchTap={onEdit}>Edit</MenuItem>
-    <MenuItem leftIcon={<DeleteIcon />} onTouchTap={onDelete}>Delete</MenuItem>
+    <MenuItem leftIcon={<EditIcon />} onTouchTap={onEdit}>
+      Edit
+    </MenuItem>
+    <MenuItem leftIcon={<DeleteIcon />} onTouchTap={onDelete}>
+      Delete
+    </MenuItem>
   </IconMenu>
 );
 

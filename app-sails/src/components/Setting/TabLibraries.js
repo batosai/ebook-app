@@ -11,16 +11,16 @@ class TabLibraries extends Component {
     id: 0,
     library: {},
     modal: {
-      delete: { open:false },
-      library: { open:false }
-    }
+      delete: { open: false },
+      library: { open: false },
+    },
   };
 
-  modalToggle = (type) => {
+  modalToggle = type => {
     let modal = this.state.modal;
     modal[type].open = !modal[type].open;
     this.setState({
-      modal
+      modal,
     });
   };
 
@@ -28,20 +28,20 @@ class TabLibraries extends Component {
     this.modalToggle('library');
   };
 
-  handleEdit = (library) => {
+  handleEdit = library => {
     this.setState({
-      library
+      library,
     });
     this.modalToggle('library');
   };
 
   handleDelete = () => {
-    this.props.deleteLibrary(this.state.id);
+    this.props.deleteLibrary({ id: this.state.id });
     this.modalToggle('delete');
   };
 
-  confirmDelete = (id) => {
-    this.setState({id});
+  confirmDelete = id => {
+    this.setState({ id });
     this.modalToggle('delete');
   };
 
@@ -49,8 +49,9 @@ class TabLibraries extends Component {
     <Modal.Delete
       title="Library"
       open={this.state.modal.delete.open}
-      onRequestClose={()=>this.modalToggle('delete')}
-      onRequestDelete={this.handleDelete}>
+      onRequestClose={() => this.modalToggle('delete')}
+      onRequestDelete={this.handleDelete}
+    >
       Delete library?
     </Modal.Delete>
   );
@@ -58,31 +59,40 @@ class TabLibraries extends Component {
   renderModalLibrary = () => (
     <Modal.Library
       open={this.state.modal.library.open}
-      onRequestClose={()=>this.modalToggle('library')}
-      library={this.state.library} />
+      onRequestClose={() => this.modalToggle('library')}
+      library={this.state.library}
+    />
   );
 
   render = () => {
     return (
       <div>
         <List>
-          {this.props.libraries.map(library => (
+          {this.props.libraries ? (
+            this.props.libraries.map(library => (
               <ListItem
                 key={library.id}
                 primaryText={library.name}
                 rightIcon={toolsActions(
                   () => this.handleEdit(library),
-                  () => this.confirmDelete(library.id)
-                )} />
-          ))}
+                  () => this.confirmDelete(library.id),
+                )}
+              />
+            ))
+          ) : null}
         </List>
-        <RaisedButton secondary={true} onTouchTap={this.handleCreate} label="Add" fullWidth={true} />
+        <RaisedButton
+          secondary={true}
+          onTouchTap={this.handleCreate}
+          label="Add"
+          fullWidth={true}
+        />
 
         {this.renderModalDelete()}
         {this.renderModalLibrary()}
       </div>
     );
-  }
+  };
 }
 
 TabLibraries.propTypes = {

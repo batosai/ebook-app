@@ -6,7 +6,7 @@ import AppsIcon from 'material-ui/svg-icons/navigation/apps';
 import Tools from './Tools';
 
 const styles = {
-  position: 'fixed'
+  position: 'fixed',
 };
 
 class Bar extends Component {
@@ -16,12 +16,16 @@ class Bar extends Component {
     return (
       <AppBar
         onLeftIconButtonTouchTap={this.handleToggle}
-        iconElementLeft={<IconButton><AppsIcon /></IconButton>}
+        iconElementLeft={
+          <IconButton>
+            <AppsIcon />
+          </IconButton>
+        }
         iconElementRight={<Tools />}
         style={styles}
       />
     );
-  }
+  };
 }
 
 Bar.propTypes = {

@@ -4,9 +4,11 @@ import Dialog from 'material-ui/Dialog';
 import modalActions from './modalActions';
 
 class ModalDelete extends Component {
-
   render = () => {
-    const actions = modalActions(this.props.onRequestClose, this.props.onRequestDelete);
+    const actions = modalActions(
+      this.props.onRequestClose,
+      this.props.onRequestDelete,
+    );
 
     return (
       <Dialog
@@ -16,10 +18,10 @@ class ModalDelete extends Component {
         open={this.props.open}
         onRequestClose={this.props.onRequestClose}
       >
-        { this.props.children }
+        {this.props.children}
       </Dialog>
     );
-  }
+  };
 }
 
 ModalDelete.propTypes = {

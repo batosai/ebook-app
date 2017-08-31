@@ -6,7 +6,7 @@ function setup() {
   const enzymeWrapper = shallow(<NotFound />);
 
   return {
-    enzymeWrapper
+    enzymeWrapper,
   };
 }
 

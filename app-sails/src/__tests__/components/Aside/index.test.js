@@ -15,7 +15,7 @@ function setup() {
 
   return {
     props,
-    enzymeWrapper
+    enzymeWrapper,
   };
 }
 

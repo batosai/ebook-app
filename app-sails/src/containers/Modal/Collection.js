@@ -3,9 +3,9 @@ import Collection from '../../components/Modal/Collection';
 
 import { collection } from '../../actions';
 
-const mapStateToProps = (appState) => {
+const mapStateToProps = appState => {
   return {
-    libraries: appState.libraries
+    libraries: appState.libraries,
   };
 };
 
@@ -14,7 +14,4 @@ const mapDispatchToProps = {
   editCollection: collection.update.dispatch,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Collection);
+export default connect(mapStateToProps, mapDispatchToProps)(Collection);

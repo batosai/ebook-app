@@ -5,7 +5,7 @@ import Aside from './containers/Aside';
 
 const style = {
   paddingTop: 64,
-  height: "calc(100% - 64px)"
+  height: 'calc(100% - 64px)',
 };
 
 class App extends Component {
@@ -14,9 +14,7 @@ class App extends Component {
       <div>
         <TopBar />
 
-        <div style={style}>
-          { this.props.children }
-        </div>
+        <div style={style}>{this.props.children}</div>
 
         <Aside />
       </div>

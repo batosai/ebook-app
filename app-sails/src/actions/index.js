@@ -13,14 +13,8 @@
 // import { librariesRequestAction, libraryAddRequestAction, libraryEditRequestAction, libraryDeleteRequestAction } from './libraries';
 // export { librariesRequestAction, libraryAddRequestAction, libraryEditRequestAction, libraryDeleteRequestAction };
 
-
 import * as aside from './aside';
 import * as book from './book';
 import * as collection from './collection';
 import * as library from './library';
-export {
-  aside,
-  book,
-  collection,
-  library,
-}
+export { aside, book, collection, library };
