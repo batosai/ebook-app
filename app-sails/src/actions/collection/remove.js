@@ -10,5 +10,5 @@ export const dispatch = data => dispatch => {
     method: 'DELETE',
     url: '/collections',
     data,
-  }).then(({ body, response }) => dispatch(actions.success(body)));
+  }).then(({ body, response }) => dispatch(actions.success(body.id)));
 };

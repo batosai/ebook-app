@@ -28,6 +28,11 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
   // migrate: 'alter'
-  migrate: 'safe'
+  migrate: 'safe',
+
+  schema: true,
+  autoPK: true,
+  autoCreatedAt: true,
+  autoUpdatedAt: true
 
 };

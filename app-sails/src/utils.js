@@ -30,7 +30,6 @@ export const request = data =>
   new Promise((resolve, reject) => {
     config.io.socket.request(data, (body, response) => {
       resolve({ body, response });
-      console.log(body);
       // si error
       // reject("raison d'echec"); // si elle est rompue -> catch
     });

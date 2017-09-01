@@ -20,6 +20,8 @@ class ModalCollection extends Component {
         title: this.props.collection.title,
         library: this.props.collection.library
           ? this.props.collection.library.id
+            ? this.props.collection.library.id
+            : this.props.collection.library
           : null,
       });
     }
@@ -50,7 +52,6 @@ class ModalCollection extends Component {
     if (this.state.id) {
       this.props.editCollection(this.state);
     } else {
-      console.log(this.state);
       this.props.createCollection({
         title: this.state.title,
         library: this.state.library,

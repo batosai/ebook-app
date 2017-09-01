@@ -1,4 +1,5 @@
 import { collection } from '../actions';
+import { stateReducerCreate, stateReducerUpdate, stateReducerRemove } from './';
 
 const initialState = {
   all: [
@@ -32,6 +33,23 @@ const reducers = (state = initialState, { type, payload }) => {
       return Object.assign({}, state, {
         items,
       });
+
+    case collection.create.types.SUCCESS:
+      return Object.assign({}, state, {
+        all: stateReducerCreate(state.all, payload),
+        items: stateReducerCreate(state.items, payload),
+      });
+    case collection.update.types.SUCCESS:
+      return Object.assign({}, state, {
+        all: stateReducerUpdate(state.all, payload),
+        items: stateReducerUpdate(state.items, payload),
+      });
+    case collection.remove.types.SUCCESS:
+      return Object.assign({}, state, {
+        all: stateReducerRemove(state.all, payload),
+        items: stateReducerRemove(state.items, payload),
+      });
+
     default:
       return state;
   }
