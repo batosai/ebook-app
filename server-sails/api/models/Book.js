@@ -24,9 +24,19 @@ module.exports = {
     editor: {
       type: 'string'
     },
-    formats: {
+    extension: {
       type: 'string',
-      enum: ['cbz', 'cbr', 'zip', 'rar', 'pdf', 'epub']
+      enum: ['.cbz', '.cbr', '.cb7', '.cbt', '.zip', '.rar', '.pdf', '.epub']
+    },
+    type: {
+      type: 'string',
+      enum: ['archive', 'pdf', 'epub']
+    },
+    filename: {
+      type: 'string',
+    },
+    size: {
+      type: 'integer',
     },
     numberPages: {
       type: 'integer',

@@ -1,0 +1,12 @@
+{
+  "name": "ebook-pdf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Jeremy Chaufourier",
+  "license": "ISC",
+  "dependencies": {
+    "ebook-utils": "file:///Users/opsone/Developments/NodeJS/perso/ebook/ebook-utils",
+    "fs-extra": "^4.0.1"
+  }
+}
