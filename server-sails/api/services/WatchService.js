@@ -9,7 +9,7 @@ var path = require('path');
 module.exports = {
   launch: function() {
 
-    filePath = path.join(__dirname, '../../data');
+    filePath = path.join(__dirname, '../../data/uploads');
 
     // fs.watch(filePath, {recursive: true, persistent: false}, (eventType, filename) => {
     //   if (!excludes.filter(exclude => filename.search(exclude) !== -1).length) {

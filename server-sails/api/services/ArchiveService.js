@@ -3,7 +3,7 @@ var path = require('path');
 
 module.exports = {
   create: function(filePath) {
-    new comicArchives({ path: filePath })
+    new comicArchives.parse({ path: filePath })
       .then(res => { if (res){
         // sails.log('Success!', res);
         const params = {
@@ -29,5 +29,28 @@ module.exports = {
       }
       sails.log('removed');
     });
+  },
+  illustration: function(opt) {
+    return new Promise((resolve, reject) => {
+      new comicArchives.parse({ path: opt.source })
+        .then(res => {
+          if (res) {
+            const file = res.files.filter(
+              file => file.attr.indexOf('D') === -1
+            )[0];
+
+            new comicArchives.extract({
+              source: opt.source,
+              dest: opt.dest,
+              files: [file.name],
+            }).then(res => {
+              resolve(res);
+            });
+          }
+        });
+    });
   }
 };
+
+
+// 7z e 'Spider-Man v1 - 001.cbz' 'Spider-Man - v1 - 001.jpg' -r

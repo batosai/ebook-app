@@ -3,7 +3,7 @@ var path = require('path');
 
 module.exports = {
   create: function(filePath) {
-    new comicPDF({ path: filePath })
+    new comicPDF.parse({ path: filePath })
       .then(res => { if (res){
         // sails.log('Success!', res);
         const params = {
@@ -29,5 +29,18 @@ module.exports = {
       }
       sails.log('removed');
     });
+  },
+  illustration: function(opt) {
+    return new comicPDF.extract({
+      source: opt.source,
+      dest: opt.dest,
+      first: 1,
+      length: 1
+    });
   }
 };
+
+// pdftocairo -jpeg Walking\ Dead\ -\ T01.pdf
+// extract images
+
+// pdftocairo -jpeg -f 1 -l 1 Walking\ Dead\ -\ T01.pdf

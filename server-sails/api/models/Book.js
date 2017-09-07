@@ -4,6 +4,11 @@
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
+var fs = require('fs');
+var path = require('path');
+
+var cachePath = path.join(__dirname, '../../data/cache');
+var uploadPath = path.join(__dirname, '../../data/uploads/books');
 
 module.exports = {
 
@@ -14,9 +19,6 @@ module.exports = {
     },
     description: {
       type: 'string',
-    },
-    image: {
-      type: 'string'
     },
     author: {
       type: 'string'
@@ -57,6 +59,41 @@ module.exports = {
       type: 'array'
     },
     collection: { model: 'Collection' },
+    image: function (){
+      const p = `${cachePath}/${this.filename}/illustration.jpg`;
+      return fs.existsSync(p) ? p : null;
+    },
+
+    fullpath: function (){
+      return `${uploadPath}/${this.filename}`;
+    },
+  },
+
+  // Lifecycle Callbacks
+
+  afterCreate: function (values, cb) {
+    DirService.create(`${cachePath}/${values.filename}`);
+
+    const opt = {
+      source: `${uploadPath}/${values.filename}`,
+      dest: `${cachePath}/${values.filename}/`
+    };
+
+    let service = null;
+
+    switch (values.type){
+      case 'pdf':
+        // opt.dest = `${opt.dest}/illustration.jpg`;
+        service = PDFService;
+      break;
+      case 'archive':
+        service = ArchiveService;
+      break;
+    }
+
+    service.illustration(opt).then(res => {
+      // save path in db for API ?
+    });
   }
 };
 // localhost:1337/books/create?title=Ultimate&collection=1
