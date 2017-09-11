@@ -1,5 +1,5 @@
-var fs  = require("fs");
-var path = require('path');
+const fs  = require("fs");
+const path = require('path');
 
 module.exports = {
   create: function(path){
@@ -12,6 +12,7 @@ module.exports = {
        });
     }
   },
+
   destroy: function(path){
     path = path.trim();
     if(!fs.existsSync(path)){

@@ -34,7 +34,9 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+
+  'GET /books/:id/illustration': 'BookController.illustration',
 
   /***************************************************************************
   *                                                                          *

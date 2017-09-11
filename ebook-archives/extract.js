@@ -20,7 +20,12 @@ class Extract {
 
     return new Promise((resolve, reject) => {
       exec(`7z e '${opt.source}' ${opt.dest} '${opt.files.join(" ")}' -r`, (error, stdout, stderr) => {
-        resolve(stdout);
+        if(!error) {
+          resolve();
+        }
+        else {
+          reject(error);
+        }
       });
     });
   }

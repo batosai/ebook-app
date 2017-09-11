@@ -8,7 +8,7 @@ class Extract {
     }
 
     if (!opt.dest) {
-      opt.dest = '';
+      opt.dest = '.';
     }
 
     if (!opt.first) {
@@ -27,7 +27,12 @@ class Extract {
 
     return new Promise((resolve, reject) => {
       exec(`pdftocairo -${opt.format} ${opt.first} ${opt.length} '${opt.source}' '${opt.dest}'`, (error, stdout, stderr) => {
-        resolve(stdout);
+        if(!error) {
+          resolve();
+        }
+        else {
+          reject(error);
+        }
       });
     });
   }

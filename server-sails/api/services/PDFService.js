@@ -1,5 +1,5 @@
-var comicPDF = require('ebook-pdf');
-var path = require('path');
+const comicPDF = require('ebook-pdf');
+const path = require('path');
 
 module.exports = {
   create: function(filePath) {
@@ -22,6 +22,7 @@ module.exports = {
       }})
       .catch(err => { if (err){ sails.log('Failed!', err); } });
   },
+
   destroy: function(filePath) {
     Book.destroy({filename: path.basename(filePath)}).exec(function (err){
       if (err) {
@@ -30,12 +31,19 @@ module.exports = {
       sails.log('removed');
     });
   },
+
   illustration: function(opt) {
-    return new comicPDF.extract({
-      source: opt.source,
-      dest: opt.dest,
-      first: 1,
-      length: 1
+    return new Promise((resolve, reject) => {
+      new comicPDF.extract({
+        source: opt.source,
+        dest: opt.dest,
+        first: 1,
+        length: 1
+      }).then(res => {
+        resolve({
+          file: `-001.jpg`
+        });
+      });
     });
   }
 };

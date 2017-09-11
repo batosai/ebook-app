@@ -1,5 +1,5 @@
-var comicArchives = require('ebook-archives');
-var path = require('path');
+const comicArchives = require('ebook-archives');
+const path = require('path');
 
 module.exports = {
   create: function(filePath) {
@@ -22,6 +22,7 @@ module.exports = {
       }})
       .catch(err => { if (err){ sails.log('Failed!', err); } });
   },
+
   destroy: function(filePath) {
     Book.destroy({filename: path.basename(filePath)}).exec(function (err){
       if (err) {
@@ -30,6 +31,7 @@ module.exports = {
       sails.log('removed');
     });
   },
+
   illustration: function(opt) {
     return new Promise((resolve, reject) => {
       new comicArchives.parse({ path: opt.source })
@@ -44,7 +46,9 @@ module.exports = {
               dest: opt.dest,
               files: [file.name],
             }).then(res => {
-              resolve(res);
+              resolve({
+                file: path.basename(file.name)
+              });
             });
           }
         });

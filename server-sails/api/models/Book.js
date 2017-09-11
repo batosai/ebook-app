@@ -4,11 +4,11 @@
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-var cachePath = path.join(__dirname, '../../data/cache');
-var uploadPath = path.join(__dirname, '../../data/uploads/books');
+const cachePath = path.join(__dirname, '../../data/cache');
+const uploadPath = path.join(__dirname, '../../data/uploads/books');
 
 module.exports = {
 
@@ -59,12 +59,12 @@ module.exports = {
       type: 'array'
     },
     collection: { model: 'Collection' },
-    image: function (){
+    getImage: function (){
       const p = `${cachePath}/${this.filename}/illustration.jpg`;
       return fs.existsSync(p) ? p : null;
     },
 
-    fullpath: function (){
+    getFullpath: function (){
       return `${uploadPath}/${this.filename}`;
     },
   },
@@ -83,7 +83,6 @@ module.exports = {
 
     switch (values.type){
       case 'pdf':
-        // opt.dest = `${opt.dest}/illustration.jpg`;
         service = PDFService;
       break;
       case 'archive':
@@ -92,7 +91,7 @@ module.exports = {
     }
 
     service.illustration(opt).then(res => {
-      // save path in db for API ?
+      fs.rename(`${opt.dest}${res.file}`, `${opt.dest}illustration.jpg`);
     });
   }
 };

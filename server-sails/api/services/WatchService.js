@@ -1,8 +1,8 @@
-var watch = require('watch');
-// var fs = require('fs');
-var path = require('path');
+const watch = require('watch');
+// const fs = require('fs');
+const path = require('path');
 
-// var excludes = ['.DS_Store', 'Thumbs.db', 'ehthumbs.db', '.Trashes'];
+// const excludes = ['.DS_Store', 'Thumbs.db', 'ehthumbs.db', '.Trashes'];
 
 // TODO:  Garder cache historique pour gagner du temps. (pochette info etc.)
 
