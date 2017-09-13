@@ -10,7 +10,7 @@ const mapStateToProps = appState => {
 };
 
 const mapDispatchToProps = {
-  findBooksByCollectionId: id => book.delete.dispatch({ id }),
+  deleteBook: id => book.remove.dispatch({ id }),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tools);

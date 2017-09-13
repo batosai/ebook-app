@@ -10,13 +10,3 @@ export const dispatch = data => dispatch => {
     dispatch(actions.success(body)),
   );
 };
-
-// import * as types from '../types';
-//
-// export const booksRequestAction = id => ({
-//   type: types.BOOKS_REQUEST,
-//   emit:true,
-//   method:'GET',
-//   url: '/books',
-//   data: { collection: id }
-// });

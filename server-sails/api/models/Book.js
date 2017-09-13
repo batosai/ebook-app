@@ -71,6 +71,11 @@ module.exports = {
 
   // Lifecycle Callbacks
 
+  beforeCreate: function (values, cb) {
+    values.collection = 6;
+    cb();
+  },
+
   afterCreate: function (values, cb) {
     DirService.create(`${cachePath}/${values.filename}`);
 
@@ -93,6 +98,23 @@ module.exports = {
     service.illustration(opt).then(res => {
       fs.rename(`${opt.dest}${res.file}`, `${opt.dest}illustration.jpg`);
     });
+
+    cb();
+  },
+
+  afterDestroy: function (destroyedRecords, cb) {
+    if (destroyedRecords.length) {
+      const path = `${uploadPath}/${destroyedRecords[0].filename}`;
+      if (fs.existsSync(path)) {
+        fs.unlink(path);
+      }
+    }
+    cb();
   }
 };
 // localhost:1337/books/create?title=Ultimate&collection=1
+
+
+// TODO : event broadcast.
+// TODO : illustration no delete if exist.
+// TODO : illustration default.

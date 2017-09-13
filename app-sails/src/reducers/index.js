@@ -1,10 +1,9 @@
 import aside from './aside';
 import libraries from './libraries';
 import collections from './collections';
-import book from './book';
 import books from './books';
 
-export { aside, libraries, collections, book, books };
+export { aside, libraries, collections, books };
 
 export const stateReducerCreate = (state = [], payload) => {
   const index = state.findIndex(item => item.id === payload.id);

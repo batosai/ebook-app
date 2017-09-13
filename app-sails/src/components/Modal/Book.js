@@ -42,15 +42,15 @@ class ModalBook extends Component {
   state = {
     value: 1,
     book: {
-      title: '',
+      title: null,
       read: false,
-      author: '',
-      editor: '',
-      number_pages: '',
-      number_volumes: '',
-      year: '',
-      collection_id: null,
-      description: '',
+      author: null,
+      editor: null,
+      numberPages: null,
+      numberVolumes: null,
+      year: null,
+      collection: null,
+      description: null,
     },
     tabIndex: 0,
     dropzone: {
@@ -65,13 +65,11 @@ class ModalBook extends Component {
   };
 
   componentWillMount = () => {
-    this.props.findBookById(parseInt(this.props.id, 10));
-  };
-  componentDidUpdate = (prevProps, prevState) => {
-    if (prevProps.book !== this.props.book) {
+    const book = this.props.findBook({ id : parseInt(this.props.id, 10) });
+    if (book) {
       this.setState({
-        book: this.props.book,
-        file: this.props.book.img,
+        book,
+        file: `http://localhost:1337/books/${book.id}/illustration`,
       });
     }
   };
@@ -98,7 +96,7 @@ class ModalBook extends Component {
 
   handleChangeSelectField = (event, index, value) => {
     let book = this.state.book;
-    book.collection_id = parseInt(value, 10);
+    book.collection = parseInt(value, 10);
 
     this.setState({
       book,
@@ -201,7 +199,7 @@ class ModalBook extends Component {
             floatingLabelText="Nb pages"
             name="number_pages"
             onChange={this.handleChange}
-            value={this.state.book.number_pages}
+            value={this.state.book.numberPages}
             type="number"
             style={style.nbPage}
           />
@@ -209,7 +207,7 @@ class ModalBook extends Component {
             floatingLabelText="Nb vol."
             name="number_volumes"
             onChange={this.handleChange}
-            value={this.state.book.number_volumes}
+            value={this.state.book.numberVolumes}
             type="number"
             style={style.nbVol}
           />
@@ -227,7 +225,7 @@ class ModalBook extends Component {
             floatingLabelText="Collection"
             onChange={this.handleChangeSelectField}
             fullWidth={true}
-            value={this.state.book.collection_id}
+            value={this.state.book.collection.id ? this.state.book.collection.id : this.state.book.collection}
           >
             {this.props.collections.map(collection => (
               <MenuItem
@@ -270,9 +268,8 @@ class ModalBook extends Component {
 ModalBook.propTypes = {
   id: T.number.isRequired,
   open: T.bool.isRequired,
-  book: T.object.isRequired,
   collections: T.array,
-  findBookById: T.func.isRequired,
+  findBook: T.func.isRequired,
 };
 
 export default ModalBook;

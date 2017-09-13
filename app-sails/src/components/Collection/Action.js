@@ -19,7 +19,7 @@ class Action extends Component {
   render = () => {
     return (
       <div>
-        {this.props.tile.local ? (
+        {!this.props.tile.local ? (
           <Tools tile={this.props.tile} />
         ) : this.state.download ? (
           <IconButton disableTouchRipple={true}>

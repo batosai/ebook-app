@@ -17,7 +17,7 @@ class Tile extends Component {
         actionIcon={<Action tile={this.props.tile} />}
       >
         <img
-          src={this.props.tile.img}
+          src={`http://localhost:1337/books/${this.props.tile.id}/illustration`}
           onTouchTap={() => {
             browserHistory.push(`/book/${this.props.tile.id}`);
           }}
