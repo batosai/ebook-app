@@ -14,20 +14,21 @@ module.exports = {
           size: res.size,
           type: 'archive'
         }
-        Book.create(params).exec(function (err, data) {
-            if (!err) {
-              Book.publishCreate(data);
-            }
+        Book.create(params).exec((err, data) => {
+          if (!err) {
+            sails.sockets.broadcast('sails_model_create_book', 'book', {verb: 'created', data});
+          }
         });
       }})
       .catch(err => { if (err){ sails.log('Failed!', err); } });
   },
 
   destroy: function(filePath) {
-    Book.destroy({filename: path.basename(filePath)}).exec(function (err){
+    Book.destroy({filename: path.basename(filePath)}).exec(err => {
       if (err) {
         sails.log(err);
       }
+
       sails.log('removed');
     });
   },

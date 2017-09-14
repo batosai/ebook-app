@@ -26,6 +26,9 @@ const reducers = (state = initialState, { type, payload }) => {
   switch (type) {
     case book.fetch.types.SUCCESS:
       return payload;
+
+    case book.create.types.SUCCESS:
+      return stateReducerCreate(state, payload);
     case book.update.types.SUCCESS:
       return stateReducerUpdate(state, payload);
     case book.remove.types.SUCCESS:

@@ -108,13 +108,13 @@ module.exports = {
       if (fs.existsSync(path)) {
         fs.unlink(path);
       }
+
+      sails.sockets.broadcast('sails_model_create_book', 'book', {verb: 'destroyed', id: destroyedRecords[0].id});
     }
     cb();
   }
 };
 // localhost:1337/books/create?title=Ultimate&collection=1
 
-
-// TODO : event broadcast.
 // TODO : illustration no delete if exist.
 // TODO : illustration default.
