@@ -20,13 +20,35 @@ const style = {
 };
 
 class Aside extends Component {
-  handleToggle = () => this.props.toggleAside();
+  state = {
+    collections: [],
+  };
 
   componentWillMount = () => {
     // TODO lancer à l'init, pendant le splashscreen
     this.props.findLibraries();
     this.props.findCollections();
   };
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevProps.collections !== this.props.collections) {
+      this.setState({
+        collections: this.props.collections,
+      });
+    }
+
+    if (prevProps.libraryId !== this.props.libraryId) {
+      this.setState({
+        collections: this.props.libraryId
+          ? this.props.collections.filter(
+              collection => collection.library.id === this.props.libraryId,
+            )
+          : this.props.collections,
+      });
+    }
+  };
+
+  handleToggle = () => this.props.toggleAside();
 
   render = () => {
     return (
@@ -42,7 +64,7 @@ class Aside extends Component {
           }
         />
 
-        <Library style={style} tiles={this.props.collections} />
+        <Library style={style} tiles={this.state.collections} />
       </Drawer>
     );
   };

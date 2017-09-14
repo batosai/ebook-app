@@ -18,7 +18,7 @@ class Tools extends Component {
   };
 
   collectionToggle = id => {
-    this.props.findCollectionByLibrary(id);
+    this.props.selectLibrary(id);
   };
 
   touchTap = library => {
@@ -79,7 +79,7 @@ class Tools extends Component {
 
 Tools.propTypes = {
   libraries: T.array,
-  findCollectionByLibrary: T.func.isRequired,
+  selectLibrary: T.func.isRequired,
 };
 
 Tools.defaultProps = {

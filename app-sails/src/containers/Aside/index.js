@@ -6,6 +6,7 @@ import { aside, library, collection } from '../../actions';
 const mapStateToProps = appState => {
   return {
     open: appState.aside.open,
+    libraryId: appState.aside.library,
     collections: appState.collections.items,
   };
 };

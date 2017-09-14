@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Tools from '../../components/Aside/Tools';
 
-import { collection } from '../../actions';
+import { aside } from '../../actions';
 
 const mapStateToProps = appState => {
   return {
@@ -10,8 +10,7 @@ const mapStateToProps = appState => {
 };
 
 const mapDispatchToProps = {
-  findCollectionByLibrary: libraryId =>
-    collection.fetchAll.dispatch({ library: libraryId }),
+  selectLibrary: libraryId => aside.library.dispatch(libraryId),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tools);
