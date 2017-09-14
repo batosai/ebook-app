@@ -7,8 +7,8 @@ const mapStateToProps = appState => {
   return {
     collections: appState.collections.items,
     findBook: obj => {
-      const books = appState.books.filter(b => b.id === obj.id);
-      return books ? books[0] : {};
+      const book = appState.books.find(b => b.id === obj.id);
+      return book ? book : {};
     },
   };
 };

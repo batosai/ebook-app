@@ -37,9 +37,9 @@ module.exports = {
       new comicArchives.parse({ path: opt.source })
         .then(res => {
           if (res) {
-            const file = res.files.filter(
+            const file = res.files.find(
               file => file.attr.indexOf('D') === -1
-            )[0];
+            );
 
             new comicArchives.extract({
               source: opt.source,
