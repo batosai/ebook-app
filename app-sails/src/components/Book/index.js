@@ -25,6 +25,7 @@ const handleTouchTap = () => {
 
 class Book extends Component {
   state = {
+    book: {},
     modal: {
       delete: { open: false },
       book: { open: false },
@@ -40,12 +41,18 @@ class Book extends Component {
   };
 
   componentWillMount = () => {
-    this.props.findBookById(parseInt(this.props.params.id, 10));
+    console.log(this.props.books);
+    this.setState({
+      book: this.props.books.find(b => b.id === Number(this.props.params.id))
+    });
   };
 
   componentDidUpdate = (prevProps, prevState) => {
-    if (prevProps.params.id !== this.props.params.id)
-      this.props.findBookById(parseInt(this.props.params.id, 10));
+    if (prevProps.params.id !== this.props.params.id) {
+      this.setState({
+        book: this.props.books.find(b => b.id === Number(this.props.params.id))
+      });
+    }
   };
 
   handleEdit = () => {
@@ -53,10 +60,10 @@ class Book extends Component {
   };
 
   renderFormats = () => {
-    if (this.props.book.formats) {
+    if (this.state.book.formats) {
       return (
         <div style={styles.wrapper}>
-          {this.props.book.formats.map(format => (
+          {this.state.book.formats.map(format => (
             <Chip key={format} style={styles.chip}>
               {format}
             </Chip>
@@ -77,7 +84,7 @@ class Book extends Component {
     <ModalBook
       open={this.state.modal.book.open}
       onRequestClose={() => this.modalToggle('book')}
-      id={parseInt(this.props.params.id, 10)}
+      id={Number(this.props.params.id)}
     />
   );
 
@@ -85,14 +92,14 @@ class Book extends Component {
     return (
       <div>
         <Subheader>Subheader</Subheader>
-        <img src={this.props.book.img} alt="" />
-        <h1>{this.props.book.title}</h1>
+        {/*<img src={this.state.book.img} alt="" />*/}
+        <h1>{this.state.book.title}</h1>
 
         {this.renderFormats()}
-        <p>{this.props.book.number_pages} pages</p>
-        <p>{this.props.book.editor}</p>
-        <p>{this.props.book.read ? 'Lu' : 'Non lu'}</p>
-        <p>{this.props.book.description}</p>
+        <p>{this.state.book.number_pages} pages</p>
+        <p>{this.state.book.editor}</p>
+        <p>{this.state.book.read ? 'Lu' : 'Non lu'}</p>
+        <p>{this.state.book.description}</p>
         <RaisedButton
           label="Modify"
           secondary={true}
@@ -107,8 +114,7 @@ class Book extends Component {
 }
 
 Book.propTypes = {
-  book: T.object.isRequired,
-  findBookById: T.func.isRequired,
+  books: T.array.isRequired,
 };
 
 export default Book;
