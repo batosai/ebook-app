@@ -14,7 +14,8 @@ const mapStateToProps = appState => {
 };
 
 const mapDispatchToProps = {
-  editBook: book.update.dispatch,
+  bookUpdate: book.update.dispatch,
+  bookUpdateIllustration: book.illustration.dispatch,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Book);

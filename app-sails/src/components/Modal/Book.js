@@ -65,7 +65,7 @@ class ModalBook extends Component {
   };
 
   componentWillMount = () => {
-    const book = this.props.findBook({ id: parseInt(this.props.id, 10) });
+    const book = this.props.findBook({ id: Number(this.props.id) });
     if (book) {
       this.setState({
         book,
@@ -77,7 +77,7 @@ class ModalBook extends Component {
   handleChange = (event, index, value) => {
     let book = this.state.book;
     book[`${event.target.name}`] = value
-      ? parseInt(value, 10)
+      ? Number(value)
       : event.target.value;
 
     this.setState({
@@ -104,7 +104,7 @@ class ModalBook extends Component {
   };
 
   handleSave = () => {
-    this.props.editBook(this.state.book);
+    this.props.bookUpdate(this.state.book);
     this.props.onRequestClose();
   };
 
@@ -127,8 +127,20 @@ class ModalBook extends Component {
     console.log('Accepted files: ', acceptedFiles);
     console.log('Rejected files: ', rejectedFiles);
 
+    const file = acceptedFiles[0]
+
+    const reader = new FileReader()
+    reader.onload = event => {
+      this.props.bookUpdateIllustration({
+        id: this.state.book.id,
+        image: event.target.result,
+        fileName: file.name,
+      });
+    };
+    reader.readAsDataURL(file)
+
     this.setState({
-      file: acceptedFiles[0].preview,
+      file: file.preview,
     });
     this.onDragLeave();
   };

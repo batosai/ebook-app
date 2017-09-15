@@ -59,9 +59,15 @@ module.exports = {
       type: 'array'
     },
     collection: { model: 'Collection' },
+
+    getDefaultImage: function (){
+      const p = `${cachePath}/${this.filename}/default.jpg`;
+      return fs.existsSync(p) ? p : null;
+    },
+
     getImage: function (){
       const p = `${cachePath}/${this.filename}/illustration.jpg`;
-      return fs.existsSync(p) ? p : null;
+      return fs.existsSync(p) ? p : this.getDefaultImage();
     },
 
     getFullpath: function (){
@@ -96,7 +102,7 @@ module.exports = {
     }
 
     service.illustration(opt).then(res => {
-      fs.rename(`${opt.dest}${res.file}`, `${opt.dest}illustration.jpg`);
+      fs.rename(`${opt.dest}${res.file}`, `${opt.dest}default.jpg`);
     });
 
     cb();
@@ -115,6 +121,3 @@ module.exports = {
   }
 };
 // localhost:1337/books/create?title=Ultimate&collection=1
-
-// TODO : illustration no delete if exist.
-// TODO : illustration default.

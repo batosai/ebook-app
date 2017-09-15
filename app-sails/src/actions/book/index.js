@@ -2,6 +2,7 @@ import * as create from './create';
 import * as update from './update';
 import * as remove from './remove';
 import * as fetch from './fetch';
+import * as illustration from './illustration';
 
 const dispatch = (dispatch, event) => {
   switch (event.verb) {
@@ -23,4 +24,4 @@ const dispatch = (dispatch, event) => {
   }
 };
 
-export { create, update, remove, fetch, dispatch };
+export { create, update, remove, fetch, dispatch, illustration };

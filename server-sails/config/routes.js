@@ -37,6 +37,7 @@ module.exports.routes = {
   },
 
   'GET /books/:id/illustration': 'BookController.illustration',
+  'PUT /books/:id/illustration': 'BookController.illustrationUpdate',
 
   /***************************************************************************
   *                                                                          *

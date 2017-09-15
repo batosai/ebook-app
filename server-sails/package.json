@@ -10,6 +10,8 @@
     "ebook-utils": "file:../ebook-utils",
     "ejs": "2.3.4",
     "include-all": "^1.0.0",
+    "is-jpg": "^1.0.0",
+    "png-to-jpeg": "^1.0.1",
     "rc": "1.0.1",
     "sails": "~0.12.13",
     "sails-disk": "~0.10.9",
