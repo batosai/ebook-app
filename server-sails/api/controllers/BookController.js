@@ -56,5 +56,20 @@ module.exports = {
         res.notFound();
       }
     });
+  },
+
+  upload: function(req, res) {
+    const uploadPath = path.join(__dirname, '../../data/uploads/books/');
+
+    const base64Data = req.body.file.split(/,\s*/)[1];
+    const buffer = new Buffer(base64Data, 'base64');
+
+    Book.findOrCreate({filename:req.body.fileName},
+      {title:req.body.fileName, filename:req.body.fileName, collection: req.body.collectionId}
+    ).exec(function createFindCB(error, createdOrFoundRecords){
+      fs.writeFile(`${uploadPath}${req.body.fileName}`, base64Data, 'base64', function(err) {
+        sails.log(err);
+      });
+    });
   }
 };

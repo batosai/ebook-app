@@ -19,3 +19,16 @@ TODO
   - OPDS
 
 - app mobile
+
+
+
+TODO SERVER:
+
+- Image collection
+- Name func
+- Config -> path pour ne pas copier coller partout.
+
+TODO CLIENT:
+
+- Show all collections
+- Skin

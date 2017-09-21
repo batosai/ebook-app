@@ -14,10 +14,12 @@ module.exports = {
           size: res.size,
           type: 'pdf'
         }
-        Book.create(params).exec((err, data) => {
-          if (!err) {
-            sails.sockets.broadcast('sails_model_create_book', 'book', {verb: 'created', data});
-          }
+        Book.findOrCreate({filename: params.filename}, params).exec((err, data) => {
+          Book.update(data, params).exec(function afterwards(err, updated){
+            if (!err) {
+              sails.sockets.broadcast('sails_model_create_book', 'book', {verb: 'created', data});
+            }
+          });
         });
       }})
       .catch(err => { if (err){ sails.log('Failed!', err); } });

@@ -77,14 +77,17 @@ module.exports = {
 
   // Lifecycle Callbacks
 
-  beforeCreate: function (values, cb) {
-    values.collection = 6;
-    cb();
-  },
+  // beforeCreate: function (values, cb) {
+  //   values.collection = 6;
+  //   cb();
+  // },
 
   afterCreate: function (values, cb) {
     DirService.create(`${cachePath}/${values.filename}`);
+    cb();
+  },
 
+  afterUpdate: function (values, cb) {
     const opt = {
       source: `${uploadPath}/${values.filename}`,
       dest: `${cachePath}/${values.filename}/`

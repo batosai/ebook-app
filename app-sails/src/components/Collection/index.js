@@ -37,6 +37,19 @@ class Collection extends Component {
   onDrop = (acceptedFiles, rejectedFiles) => {
     console.log('Accepted files: ', acceptedFiles);
     console.log('Rejected files: ', rejectedFiles);
+
+    const file = acceptedFiles[0]
+
+    const reader = new FileReader()
+    reader.onload = event => {
+      this.props.bookUpload({
+        collectionId: parseInt(this.props.params.id, 10),
+        file: event.target.result,
+        fileName: file.name,
+      });
+    };
+    reader.readAsDataURL(file)
+
     this.onDragLeave();
   };
 
@@ -51,14 +64,13 @@ class Collection extends Component {
     dropzone.border = '4px dashed white';
     this.setState({ dropzone });
   };
-
+// accept={'application/pdf'}
   render() {
     return (
       <Dropzone
         onDrop={this.onDrop}
         multiple={false}
         disableClick
-        accept={'application/pdf'}
         onDragEnter={this.onDragEnter}
         onDragLeave={this.onDragLeave}
         style={this.state.dropzone}

@@ -13,6 +13,7 @@ const mapStateToProps = appState => {
 const mapDispatchToProps = {
   findBooksByCollectionId: collectionId =>
     book.fetch.dispatch({ collection: collectionId }),
+  bookUpload: book.upload.dispatch,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Collection);
