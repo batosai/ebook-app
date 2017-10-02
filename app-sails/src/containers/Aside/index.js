@@ -7,7 +7,7 @@ const mapStateToProps = appState => {
   return {
     open: appState.aside.open,
     libraryId: appState.aside.library,
-    collections: appState.collections.items,
+    collections: appState.collections,
   };
 };
 

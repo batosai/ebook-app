@@ -30,8 +30,9 @@ class Collection extends Component {
   };
 
   componentDidUpdate = (prevProps, prevState) => {
-    if (prevProps.params.id !== this.props.params.id)
+    if (prevProps.params.id !== this.props.params.id) {
       this.props.findBooksByCollectionId(parseInt(this.props.params.id, 10));
+    }
   };
 
   onDrop = (acceptedFiles, rejectedFiles) => {

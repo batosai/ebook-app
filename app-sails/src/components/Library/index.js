@@ -1,6 +1,7 @@
 import React, { Component, PropTypes as T } from 'react';
 import { GridList, GridTile } from 'material-ui/GridList';
 import { Link } from 'react-router';
+import { config } from '../../config';
 
 class Library extends Component {
   render = () => {
@@ -17,7 +18,7 @@ class Library extends Component {
                   </span>
                 }
               >
-                <img src={tile.img} alt="" />
+                <img src={`${config.server}/collections/${tile.id}/illustration`} alt="" />
               </GridTile>
             </Link>
           ))}

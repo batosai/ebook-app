@@ -5,7 +5,6 @@ module.exports = {
   create: function(filePath) {
     new comicArchives.parse({ path: filePath })
       .then(res => { if (res){
-        // sails.log('Success!', res);
         const params = {
           title: res.name,
           filename: res.filename,
@@ -58,6 +57,5 @@ module.exports = {
     });
   }
 };
-
 
 // 7z e 'Spider-Man v1 - 001.cbz' 'Spider-Man - v1 - 001.jpg' -r

@@ -24,7 +24,6 @@ module.exports = {
         res.notFound();
       }
     });
-
   },
 
   illustrationUpdate: function(req, res) {
@@ -32,11 +31,6 @@ module.exports = {
 
     Book.findOne({id: req.param('id')}).exec(function (err, data) {
       if (data) {
-        // const base64Data = req.body.image
-        //   .replace(/^data:image\/jpeg;base64,/, "")
-        //   .replace(/^data:image\/png;base64,/, "")
-        // ;
-
         const file = `${cachePath}/${data.filename}/illustration.jpg`;
         const base64Data = req.body.image.split(/,\s*/)[1];
         const buffer = new Buffer(base64Data, 'base64');

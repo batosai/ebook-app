@@ -1,6 +1,7 @@
 import React, { Component, PropTypes as T } from 'react';
 import { browserHistory } from 'react-router';
 import { GridTile } from 'material-ui/GridList';
+import { config } from '../../config';
 
 import Action from './Action';
 
@@ -17,7 +18,7 @@ class Tile extends Component {
         actionIcon={<Action tile={this.props.tile} />}
       >
         <img
-          src={`http://localhost:1337/books/${this.props.tile.id}/illustration`}
+          src={`${config.server}/books/${this.props.tile.id}/illustration?cache=${this.props.tile.updatedAt}`}
           onTouchTap={() => {
             browserHistory.push(`/book/${this.props.tile.id}`);
           }}

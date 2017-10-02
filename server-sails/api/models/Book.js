@@ -77,11 +77,6 @@ module.exports = {
 
   // Lifecycle Callbacks
 
-  // beforeCreate: function (values, cb) {
-  //   values.collection = 6;
-  //   cb();
-  // },
-
   afterCreate: function (values, cb) {
     DirService.create(`${cachePath}/${values.filename}`);
     cb();

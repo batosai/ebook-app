@@ -24,11 +24,14 @@ TODO
 
 TODO SERVER:
 
-- Image collection
 - Name func
-- Config -> path pour ne pas copier coller partout.
+- Send notif after illustration.
+- Revoir organisation du code.
 
 TODO CLIENT:
 
 - Show all collections
 - Skin
+- Change collection, refresh list.
+  -> PB, ouverture modal edit book boucle infini. L'idée est de detecter le changement de book pour pouvoir filter si la collection change. et faire en sorte que ça fonctionne en WS.
+- Update lib

@@ -5,7 +5,6 @@ module.exports = {
   create: function(filePath) {
     new comicPDF.parse({ path: filePath })
       .then(res => { if (res){
-        // sails.log('Success!', res);
         const params = {
           title: res.name,
           filename: res.filename,
@@ -52,6 +51,4 @@ module.exports = {
 };
 
 // pdftocairo -jpeg Walking\ Dead\ -\ T01.pdf
-// extract images
-
 // pdftocairo -jpeg -f 1 -l 1 Walking\ Dead\ -\ T01.pdf

@@ -6,6 +6,7 @@ import SelectField from 'material-ui/SelectField';
 import Toggle from 'material-ui/Toggle';
 import MenuItem from 'material-ui/MenuItem';
 import { Tabs, Tab } from 'material-ui/Tabs';
+import { config } from '../../config';
 
 import modalActions from './modalActions';
 
@@ -69,7 +70,7 @@ class ModalBook extends Component {
     if (book) {
       this.setState({
         book,
-        file: `http://localhost:1337/books/${book.id}/illustration`,
+        file: `${config.server}/books/${book.id}/illustration`,
       });
     }
   };

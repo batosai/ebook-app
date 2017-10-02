@@ -5,7 +5,7 @@ import { book } from '../../actions';
 
 const mapStateToProps = appState => {
   return {
-    collections: appState.collections.items,
+    collections: appState.collections,
     findBook: obj => {
       const book = appState.books.find(b => b.id === obj.id);
       return book ? book : {};

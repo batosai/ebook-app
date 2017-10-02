@@ -36,6 +36,7 @@ module.exports.routes = {
     view: 'homepage'
   },
 
+  'GET /collections/:id/illustration': 'CollectionController.illustration',
   'GET /books/:id/illustration': 'BookController.illustration',
   'PUT /books/:id/illustration': 'BookController.illustrationUpdate',
   'POST /books/upload': 'BookController.upload',

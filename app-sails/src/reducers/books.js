@@ -30,6 +30,11 @@ const reducers = (state = initialState, { type, payload }) => {
     case book.create.types.SUCCESS:
       return stateReducerCreate(state, payload);
     case book.update.types.SUCCESS:
+      // const b = state.filter(b => b.id !== payload.id)
+      // console.log(b[0].collection.id, payload.collection);
+      // if(b[0].collection.id !== payload.collection.id) {
+      //   return stateReducerRemove(state, payload);
+      // }
       return stateReducerUpdate(state, payload);
     case book.remove.types.SUCCESS:
       return stateReducerRemove(state, payload);

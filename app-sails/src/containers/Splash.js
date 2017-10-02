@@ -5,7 +5,7 @@ import Splash from '../components/Splash';
 
 const mapStateToProps = appState => {
   return {
-    collections: appState.collections.items,
+    collections: appState.collections,
   };
 };
 

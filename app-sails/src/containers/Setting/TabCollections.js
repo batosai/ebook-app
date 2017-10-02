@@ -5,7 +5,7 @@ import { collection } from '../../actions';
 
 const mapStateToProps = appState => {
   return {
-    collections: appState.collections.all,
+    collections: appState.collections,
   };
 };
 
