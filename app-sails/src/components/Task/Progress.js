@@ -1,4 +1,5 @@
-import React, { Component, PropTypes as T } from 'react';
+import React, { Component } from 'react';
+import { default as T } from 'prop-types';
 import LinearProgress from 'material-ui/LinearProgress';
 import { Card, CardHeader, CardActions } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';

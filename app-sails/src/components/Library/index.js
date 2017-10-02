@@ -1,4 +1,5 @@
-import React, { Component, PropTypes as T } from 'react';
+import React, { Component } from 'react';
+import { default as T } from 'prop-types';
 import { GridList, GridTile } from 'material-ui/GridList';
 import { Link } from 'react-router';
 import { config } from '../../config';

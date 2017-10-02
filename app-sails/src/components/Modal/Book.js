@@ -1,4 +1,5 @@
-import React, { Component, PropTypes as T } from 'react';
+import React, { Component } from 'react';
+import { default as T } from 'prop-types';
 import Dropzone from 'react-dropzone';
 import Dialog from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField';

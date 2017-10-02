@@ -6,10 +6,16 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+import registerServiceWorker from './registerServiceWorker';
+
 import configureStore from './store/configureStore';
 import routes from './config/routes';
 
 import './index.css';
+
+// Add polyfill for fetch for older browsers
+// import 'isomorphic-fetch';
+// require('es6-promise').polyfill();
 
 const store = configureStore();
 
@@ -25,3 +31,4 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root'),
 );
+registerServiceWorker();
