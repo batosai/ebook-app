@@ -4,12 +4,12 @@ import thunkMiddleware from 'redux-thunk';
 import socketIOClient from 'socket.io-client';
 import sailsIOClient from 'sails.io.js';
 
-const io = sailsIOClient(socketIOClient);
-
 import { config } from '../config';
 
 import * as reducers from '../reducers';
 import { socketIoMiddleware } from './middlewares';
+
+const io = sailsIOClient(socketIOClient);
 
 io.sails.url = 'http://localhost:1337';
 
