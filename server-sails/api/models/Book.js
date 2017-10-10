@@ -100,7 +100,9 @@ module.exports = {
     }
 
     service.illustration(opt).then(res => {
-      fs.rename(`${opt.dest}${res.file}`, `${opt.dest}default.jpg`);
+      if (fs.existsSync(`${opt.dest}${res.file}`)) {
+        fs.rename(`${opt.dest}${res.file}`, `${opt.dest}default.jpg`);
+      }
     });
 
     cb();
