@@ -27,12 +27,22 @@ class Collection extends Component {
   };
 
   componentWillMount = () => {
-    this.props.findBooksByCollectionId(parseInt(this.props.params.id, 10));
+    if (this.props.params.id) {
+      this.props.findBooksByCollectionId(parseInt(this.props.params.id, 10));
+    }
+    else {
+      this.props.findAll();
+    }
   };
 
   componentDidUpdate = (prevProps, prevState) => {
     if (prevProps.params.id !== this.props.params.id) {
-      this.props.findBooksByCollectionId(parseInt(this.props.params.id, 10));
+      if (this.props.params.id) {
+        this.props.findBooksByCollectionId(parseInt(this.props.params.id, 10));
+      }
+      else {
+        this.props.findAll();
+      }
     }
   };
 

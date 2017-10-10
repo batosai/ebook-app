@@ -18,6 +18,7 @@ const About = () => (
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Splash} />
+    <Route path="collection" component={Collection} />
     <Route path="collection/:id" component={Collection} />
     <Route path="book/:id" component={Book} />
     <Route path="about" component={About} />

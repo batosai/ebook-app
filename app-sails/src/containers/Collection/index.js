@@ -13,6 +13,7 @@ const mapStateToProps = appState => {
 const mapDispatchToProps = {
   findBooksByCollectionId: collectionId =>
     book.fetch.dispatch({ collection: collectionId }),
+  findAll: book.fetch.dispatch,
   bookUpload: book.upload.dispatch,
 };
 
